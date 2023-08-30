@@ -1,0 +1,9 @@
+/* global STYLE */
+
+:root {
+
+    --main: 30px;
+}
+body {
+    background-color: aqua;
+}
