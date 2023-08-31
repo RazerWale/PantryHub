@@ -13,16 +13,20 @@ class RecipeEntity
 	protected ?int $servings;
 	protected ?int $calories;
 
-
+	/**
+	 * Array of cuisine types
+	 * @var array
+	 */
+	public const CUISINE_TYPES = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek', 'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic', 'Southern', 'Spanish', 'Thai', 'Vietnamese'];
 
 	// Constructor
 	public function __construct(
 		string $name,
 		int $id = null,
 		string $imageUrl = null,
-		array|string $cuisineType = null,
-		array|string $mealType = null,
-		array|string $diets = null,
+		array $cuisineType = null,
+		array $mealType = null,
+		array $diets = null,
 		int $timeToCook = null,
 		int $servings = null,
 		int $calories = null
@@ -119,8 +123,19 @@ class RecipeEntity
 	 */
 	public function setCuisineTypes(array|null $cuisineTypes): self
 	{
-		$this->cuisineTypes = $cuisineTypes;
+
+		foreach ($cuisineTypes as $type) {
+			if (in_array($type, RecipeEntity::CUISINE_TYPES)) {
+				$this->cuisineTypes = $cuisineTypes;
+
+			} else {
+				throw new Exception;
+			}
+
+		}
 		return $this;
+
+
 	}
 
 
