@@ -12,12 +12,29 @@ class RecipeEntity
 	protected ?int $timeToCook;
 	protected ?int $servings;
 	protected ?int $calories;
+	protected array $steps;
+	protected ?DateTime $createdAt;
+	protected array $ingredients;
+	protected array $equipments;
+
 
 	/**
 	 * Array of cuisine types
 	 * @var array
 	 */
 	public const CUISINE_TYPES = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek', 'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic', 'Southern', 'Spanish', 'Thai', 'Vietnamese'];
+
+	/**
+	 * Array of meal types
+	 * @var array
+	 */
+	public const MEAL_TYPES = ['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'marinade', 'fingerfood', 'snack', 'drink'];
+
+	/**
+	 * Array of diets
+	 * @var array
+	 */
+	public const DIETS = ['Gluten Free', 'Ketogenic', 'Vegetarian', 'Lacto Vegetarian', 'Ovo Vegetarian', 'Vegan', 'Pescetarian', 'Paleo', 'Primal', 'Low FODMAP', 'Whole30'];
 
 	// Constructor
 	public function __construct(
@@ -29,7 +46,8 @@ class RecipeEntity
 		array $diets = null,
 		int $timeToCook = null,
 		int $servings = null,
-		int $calories = null
+		int $calories = null,
+		DateTime $createdAt = null
 	) {
 		$this->setId($id)
 			->setName($name)
@@ -39,7 +57,8 @@ class RecipeEntity
 			->setDiets($diets)
 			->setTimeToCook($timeToCook)
 			->setServings($servings)
-			->setCalories($calories);
+			->setCalories($calories)
+			->setCreatedAt($createdAt);
 
 	}
 
@@ -123,21 +142,19 @@ class RecipeEntity
 	 */
 	public function setCuisineTypes(array|null $cuisineTypes): self
 	{
+		if ($cuisineTypes === null) {
+			$this->cuisineTypes = null;
+			return $this;
+		}
 
 		foreach ($cuisineTypes as $type) {
-			if (in_array($type, RecipeEntity::CUISINE_TYPES)) {
-				$this->cuisineTypes = $cuisineTypes;
-
-			} else {
-				throw new Exception;
+			if (!in_array($type, RecipeEntity::CUISINE_TYPES)) {
+				throw new Exception("Invalid cuisine type: $type");
 			}
-
 		}
+		$this->cuisineTypes = $cuisineTypes;
 		return $this;
-
-
 	}
-
 
 	// Meal type 
 
@@ -155,6 +172,16 @@ class RecipeEntity
 	 */
 	public function setMealTypes(array|null $mealTypes): self
 	{
+		if ($mealTypes === null) {
+			$this->mealTypes = null;
+			return $this;
+		}
+
+		foreach ($mealTypes as $type) {
+			if (!in_array($type, RecipeEntity::MEAL_TYPES)) {
+				throw new Exception("Invalid meal type: $type");
+			}
+		}
 		$this->mealTypes = $mealTypes;
 		return $this;
 	}
@@ -177,6 +204,16 @@ class RecipeEntity
 	 */
 	public function setDiets(array|null $diets): self
 	{
+		if ($diets === null) {
+			$this->diets = null;
+			return $this;
+		}
+
+		foreach ($diets as $type) {
+			if (!in_array($type, RecipeEntity::DIETS)) {
+				throw new Exception("Invalid diet: $type");
+			}
+		}
 		$this->diets = $diets;
 		return $this;
 	}
@@ -243,13 +280,84 @@ class RecipeEntity
 		return $this;
 	}
 
+	// Created at
 
+	/**
+	 * @return DateTime|null
+	 */
+	public function getCreatedAt(): ?DateTime
+	{
+		return $this->createdAt;
+	}
 
+	/**
+	 * @param DateTime|null $createdAt 
+	 * @return self
+	 */
+	public function setCreatedAt(?DateTime $createdAt): self
+	{
+		$this->createdAt = $createdAt;
+		return $this;
+	}
 
+	// Steps
 
+	/**
+	 * @return StepEntity[]
+	 */
+	public function getSteps(): array
+	{
+		return $this->steps;
+	}
 
+	/**
+	 * @param StepEntity[] $steps 
+	 * @return self
+	 */
+	public function setSteps(array $steps): self
+	{
+		$this->steps = $steps;
+		return $this;
+	}
 
+	// Ingredients (RecipeIngredientsEntity extends IngredientEntity)
 
+	/**
+	 * @return RecipeIngredientsEntity[]
+	 */
+	public function getIngredients(): array
+	{
+		return $this->ingredients;
+	}
 
+	/**
+	 * @param RecipeIngredientsEntity[] $ingredients 
+	 * @return self
+	 */
+	public function setIngredients(array $ingredients): self
+	{
+		$this->ingredients = $ingredients;
+		return $this;
+	}
+
+	// Equipments (EquipmentEntity)
+
+	/**
+	 * @return EquipmentEntity[]
+	 */
+	public function getEquipments(): array
+	{
+		return $this->equipments;
+	}
+
+	/**
+	 * @param EquipmentEntity[] $equipments 
+	 * @return self
+	 */
+	public function setEquipments(array $equipments): self
+	{
+		$this->equipments = $equipments;
+		return $this;
+	}
 
 }

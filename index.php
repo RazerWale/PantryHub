@@ -2,17 +2,26 @@
 
 
 try {
-    require_once('controllers/TestController.php');
-    require_once('controllers/UserController.php');
+    require_once('controllers/RecipeController.php');
+    // require_once('controllers/UserController.php');
 
     // controller here!
-    $test = new TestController();
+    $test = new RecipeController();
 
     $route = $_GET['action'] ?? null;
 
     switch ($route) {
         case 'test':
-            $test->test();
+            $test->listRecipes();
+            break;
+        case 'test2':
+            $test->listRecipe();
+            break;
+        case 'insert':
+            $test->insertRecipe();
+            break;
+        case 'delete':
+            $test->deleteRecipe();
             break;
         default:
             //should bring me to the home page

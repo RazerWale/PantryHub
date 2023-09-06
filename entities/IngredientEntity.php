@@ -9,6 +9,7 @@ class IngredientEntity
     protected ?string $imageUrl;
     protected ?int $calories;
     protected ?string $type;
+    protected array $recipes;
 
     // Constructor
 
@@ -135,13 +136,23 @@ class IngredientEntity
         return $this;
     }
 
+    // Recipes (RecipeEntity)
 
+    /**
+     * @return RecipeEntity[]
+     */
+    public function getRecipes(): array
+    {
+        return $this->recipes;
+    }
 
-
-
-
-
-
-
-
+    /**
+     * @param RecipeEntity[] $recipes 
+     * @return self
+     */
+    public function setRecipes(array $recipes): self
+    {
+        $this->recipes = $recipes;
+        return $this;
+    }
 }

@@ -5,6 +5,7 @@ class EquipmentEntity
 
     protected ?int $id;
     protected string $name;
+    protected array $recipe;
 
     public function __construct(string $name, int $id = null)
     {
@@ -53,6 +54,26 @@ class EquipmentEntity
     public function setName(string $name): self
     {
         $this->name = $name;
+        return $this;
+    }
+
+    // Recipe Entity
+
+    /**
+     * @return RecipeEntity[]
+     */
+    public function getRecipe(): array
+    {
+        return $this->recipe;
+    }
+
+    /**
+     * @param RecipeEntity[] $recipe 
+     * @return self
+     */
+    public function setRecipe(array $recipe): self
+    {
+        $this->recipe = $recipe;
         return $this;
     }
 }

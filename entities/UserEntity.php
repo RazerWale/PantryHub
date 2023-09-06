@@ -8,6 +8,12 @@ class UserEntity
     protected string $email;
     protected string $password;
     protected ?DateTime $createdAt;
+    protected array $ingredients;
+    protected array $equipments;
+    protected array $ownRecipes;
+    protected array $favouriteRecipes;
+    protected array $ratedRecies;
+
 
     // Constructor 
 
@@ -16,7 +22,7 @@ class UserEntity
         string $email,
         string $password,
         int $id = null,
-        DateTime $createdAt = null // this one is the STRING???
+        DateTime $createdAt = null
     ) {
         $this->setId($id)
             ->setUsername($username)
@@ -126,6 +132,105 @@ class UserEntity
     public function setCreatedAt(?DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    // UsersIngredientsEntity (extends IngredientEnity)
+    /**
+     * @return UsersIngredientsEntity[]
+     */
+    public function getIngredients(): array
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * @param UsersIngredientsEntity[] $ingredients 
+     * @return self
+     */
+    public function setIngredients(array $ingredients): self
+    {
+        $this->ingredients = $ingredients;
+        return $this;
+    }
+
+    // EquipmentEntity
+
+    /**
+     * @return EquipmentEntity[]
+     */
+    public function getEquipments(): array
+    {
+        return $this->equipments;
+    }
+
+    /**
+     * @param EquipmentEntity[] $equipments 
+     * @return self
+     */
+    public function setEquipments(array $equipments): self
+    {
+        $this->equipments = $equipments;
+        return $this;
+    }
+
+    // Own recipes
+
+    /**
+     * @return RecipeEntity[]
+     */
+    public function getOwnRecipes(): array
+    {
+        return $this->ownRecipes;
+    }
+
+    /**
+     * @param RecipeEntity[] $ownRecipes 
+     * @return self
+     */
+    public function setOwnRecipes(array $ownRecipes): self
+    {
+        $this->ownRecipes = $ownRecipes;
+        return $this;
+    }
+
+    // FavouriteRecipes
+
+    /**
+     * @return RecipeEntity[]
+     */
+    public function getFavouriteRecipes(): array
+    {
+        return $this->favouriteRecipes;
+    }
+
+    /**
+     * @param RecipeEntity[] $favouriteRecipes 
+     * @return self
+     */
+    public function setFavouriteRecipes(array $favouriteRecipes): self
+    {
+        $this->favouriteRecipes = $favouriteRecipes;
+        return $this;
+    }
+
+    // Rated Recipes 
+
+    /**
+     * @return RecipeRatingEntity[]
+     */
+    public function getRatedRecies(): array
+    {
+        return $this->ratedRecies;
+    }
+
+    /**
+     * @param RecipeRatingEntity[] $ratedRecies 
+     * @return self
+     */
+    public function setRatedRecies(array $ratedRecies): self
+    {
+        $this->ratedRecies = $ratedRecies;
         return $this;
     }
 }
