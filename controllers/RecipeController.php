@@ -10,26 +10,23 @@ class RecipeController
     {
         $this->recipeManager = new RecipeManager();
     }
+    public function getRecipe()
+    {
+        $id = 406;
 
+        $recipes = $this->recipeManager->fetchRecipe($id);
+        require_once('views/main.php');
+    }
     public function listRecipes()
     {
-        $recipes = $this->recipeManager->getRecipes();
+        $recipes = $this->recipeManager->fetchRecipes();
         require_once('views/main.php');
     }
-
-    public function listRecipe()
-    {
-        $id = 1;
-
-        $recipes = $this->recipeManager->getRecipe($id);
-        require_once('views/main.php');
-    }
-
-    public function insertRecipe()
+    public function addRecipe()
     {
         $recipe = new RecipeEntity('name106', 406, null);
         $ingredients = new RecipeIngredientsEntity('Carrot');
-        $ingredients->setRecipeIngredientId(44)
+        $ingredients->setRecipeIngredientId(47)
             ->setQuantityUs(77)
             ->setQuantityMetric(999)
             ->setUnitUs('miles')
@@ -40,7 +37,7 @@ class RecipeController
         $this->recipeManager->insertRecipes($recipe);
     }
 
-    public function deleteRecipe()
+    public function removeRecipe()
     {
         $id = 406;
         $this->recipeManager->deleteRecipe($id);

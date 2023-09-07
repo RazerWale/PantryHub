@@ -27,12 +27,45 @@ class RecipeManager extends Manager
         $this->equipmentManager = new EquipmentManager();
     }
 
+    /**
+     * Summary of getRecipe
+     * @param int $id
+     * @return RecipeEntity
+     */
+    public function fetchRecipe(int $id): RecipeEntity // this query gives you one recipe by id
+    {
+        $req = $this->db->prepare('
+        SELECT * 
+        FROM recipes 
+        WHERE recipes.id = ?
+    ');
+        $req->execute([$id]);
+        $result = $req->fetch(PDO::FETCH_ASSOC); // gives back only one row each call (if you will use loop, use while!)
+
+        $arrays = $this->checkForArrayExplode($result); // if not NULL split values and put it in array
+        $recipe = new RecipeEntity($result['name'], $result['id'], $result['image_url'], $arrays['cuisines'], $arrays['meals'], $arrays['diets'], $result['time_to_cook'], $result['servings'], $result['calories'], new DateTime($result['created_at']));
+
+        // set steps
+        $steps = $this->getSteps($id);
+        $recipe->setSteps($steps);
+
+        // set ingredients
+        $ingredients = $this->ingredientManager->fetchIngredientsForRecipe($id);
+        $recipe->setIngredients($ingredients);
+
+        // set equipments
+        $equipments = $this->equipmentManager->fetchEquipmentsForRecipe($id);
+        var_dump($recipe->setEquipments($equipments));
+
+        var_dump($recipe);
+        return $recipe;
+    }
 
     /**
      * Summary of getRecipes
      * @return RecipeEntity[]
      */
-    public function getRecipes(): array
+    public function fetchRecipes(): array
     {
         $req = $this->db->query('
         SELECT * 
@@ -42,62 +75,27 @@ class RecipeManager extends Manager
         $rows = $req->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($rows as $row) {
-            $arrayOfCuisines = explode(',', $row['cuisine_type']);
-            $arrayOfMeals = explode(',', $row['meal_type']);
-            $arrayOfDiets = explode(',', $row['diets']);
-            $recipe = new RecipeEntity($row['name'], $row['id'], $row['image_url'], $arrayOfCuisines, $arrayOfMeals, $arrayOfDiets, $row['time_to_cook'], $row['servings'], $row['calories'], new DateTime($row['created_at']));
+            $arrays = $this->checkForArrayExplode($row); // if not NULL split values and put it in array
+
+            $recipe = new RecipeEntity($row['name'], $row['id'], $row['image_url'], $arrays['cuisines'], $arrays['meals'], $arrays['diets'], $row['time_to_cook'], $row['servings'], $row['calories'], new DateTime($row['created_at']));
+            $arrays = $this->checkForArrayExplode($result);
+
             // set steps
             $steps = $this->getSteps($row['id']);
             $recipe->setSteps($steps);
 
             // set ingredients
-            $ingredients = $this->ingredientManager->getIngredientsForRecipe($row['id']);
+            $ingredients = $this->ingredientManager->fetchIngredientsForRecipe($row['id']);
             $recipe->setIngredients($ingredients);
 
             // set equipments
-            $equipments = $this->equipmentManager->getEquipmentsForRecipe($row['id']);
+            $equipments = $this->equipmentManager->fetchEquipmentsForRecipe($row['id']);
             var_dump($recipe->setEquipments($equipments));
 
             $result[] = $recipe;
         }
         // var_dump($result);
         return $result;
-    }
-
-    /**
-     * Summary of getRecipe
-     * @param int $id
-     * @return RecipeEntity
-     */
-    public function getRecipe(int $id): RecipeEntity // this query gives you one recipe by id
-    {
-        $req = $this->db->prepare('
-        SELECT * 
-        FROM recipes 
-        WHERE recipes.id = ?
-    ');
-        $req->execute([$id]);
-        $result = $req->fetch(PDO::FETCH_ASSOC); // gives back only one row each call (if you will use loop, use while!)
-        $arrayOfCuisines = explode(',', $result['cuisine_type']);
-        $arrayOfMeals = explode(',', $result['meal_type']);
-        $arrayOfDiets = explode(',', $result['diets']);
-        $recipe = new RecipeEntity($result['name'], $result['id'], $result['image_url'], $arrayOfCuisines, $arrayOfMeals, $arrayOfDiets, $result['time_to_cook'], $result['servings'], $result['calories'], new DateTime($result['created_at']));
-
-
-        // set steps
-        $steps = $this->getSteps($id);
-        $recipe->setSteps($steps);
-
-        // set ingredients
-        $ingredients = $this->ingredientManager->getIngredientsForRecipe($id);
-        $recipe->setIngredients($ingredients);
-
-        // set equipments
-        $equipments = $this->equipmentManager->getEquipmentsForRecipe($id);
-        var_dump($recipe->setEquipments($equipments));
-
-        var_dump($recipe);
-        return $recipe;
     }
 
     /**
@@ -205,5 +203,31 @@ class RecipeManager extends Manager
         }
 
         return $steps;
+    }
+
+    /**
+     * Transforms selected values within the input associative array into arrays.
+     *
+     * This function examines specific keys in the input array and splits their
+     * values into arrays using the comma (',') delimiter. The resulting arrays
+     * are organized into a new associative array and returned.
+     *
+     * @param array $recipe An associative array containing data to process.
+     *
+     * @return array An associative array with exploded values or null for keys with null values.
+     */
+    public function checkForArrayExplode($recipe)
+    {
+        $array = ['cuisines' => null, 'meals' => null, 'diets' => null];
+        if (isset($recipe['cuisine_type']) && $recipe['cuisine_type'] !== null) {
+            $array['cuisines'] = explode(',', $recipe['cuisine_type']);
+        }
+        if (isset($recipe['meal_type']) && $recipe['meal_type'] !== null) {
+            $array['meals'] = explode(',', $recipe['meal_type']);
+        }
+        if (isset($recipe['diets']) && $recipe['diets'] !== null) {
+            $array['diets'] = explode(',', $recipe['diets']);
+        }
+        return $array;
     }
 }

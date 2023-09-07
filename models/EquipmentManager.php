@@ -8,11 +8,31 @@ require_once('Manager.php');
 class EquipmentManager extends Manager
 {
     /**
+     * Summary of fetchEquipment
+     * @param int $id
+     * @return EquipmentEntity
+     */
+    public function fetchEquipment(int $id): EquipmentEntity
+    {
+        $req = $this->db->prepare('
+        SELECT *
+        FROM equipments
+        WHERE equipments.id = ?
+        ');
+        $req->execute([$id]);
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        $equipment = new EquipmentEntity($result['name'], $result['id']);
+        var_dump($equipment);
+        return $equipment;
+
+
+    }
+    /**
      * Summary of getEquipmentsForRecipe
      * @param int $id
      * @return EquipmentEntity[]
      */
-    public function getEquipmentsForRecipe(int $id): array
+    public function fetchEquipmentsForRecipe(int $id): array
     {
         $req = $this->db->prepare('
         SELECT recipes_equipments.*, equipments.*
