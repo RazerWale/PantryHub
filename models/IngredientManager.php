@@ -45,7 +45,6 @@ class IngredientManager extends Manager
             $ingredient = new IngredientEntity($row['name'], $row['id'], $row['image_url'], $row['calories'], $row['type']);
             $result[] = $ingredient;
         }
-        var_dump($result);
         return $result;
     }
     public function insertIngredient(IngredientEntity $ingredient)

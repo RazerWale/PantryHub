@@ -1,6 +1,7 @@
 <?php
 
 require_once('Manager.php');
+require_once('entities/EquipmentEntity.php');
 
 /**
  * Summary of EquipmentManager
@@ -28,6 +29,35 @@ class EquipmentManager extends Manager
 
     }
     /**
+     * Summary of fetchEquipments
+     * @return EquipmentEntity[]
+     */
+    public function fetchEquipments(): array
+    {
+        $req = $this->db->query('
+        SELECT *
+        FROM equipments
+        ORDER BY name DESC
+        ');
+        $rows = $req->fetchAll(PDO::FETCH_ASSOC);
+        $result = [];
+        foreach ($rows as $row) {
+            $equipment = new EquipmentEntity($row['name'], $row['id']);
+            $result[] = $equipment;
+        }
+        var_dump($result);
+        return $result;
+    }
+    public function insertEquipment(EquipmentEntity $equipmentEntity)
+    {
+        $req = $this->db->prepare('
+        INSERT INTO equipments(id, name)
+        VALUES (?,?)
+        ');
+        $req->execute([$equipmentEntity->getId(), $equipmentEntity->getName()]);
+    }
+
+    /**
      * Summary of getEquipmentsForRecipe
      * @param int $id
      * @return EquipmentEntity[]
@@ -51,5 +81,14 @@ class EquipmentManager extends Manager
         var_dump($equipments);
         return $equipments;
 
+    }
+    public function deleteEquipment(int $id)
+    {
+        $req = $this->db->prepare('
+        DELETE
+        FROM equipments
+        WHERE equipments.id = ?
+        ');
+        $req->execute([$id]);
     }
 }

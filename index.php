@@ -42,6 +42,15 @@ try {
         case 'getEquipment':
             $equipment->getEquipment();
             break;
+        case 'listEquipments':
+            $equipment->listEquipments();
+            break;
+        case 'addEquipment':
+            $equipment->addEquipment();
+            break;
+        case 'removeEquipment':
+            $equipment->removeEquipment();
+            break;
         default:
             //should bring me to the home page
             $test->default();
