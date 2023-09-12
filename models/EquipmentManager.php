@@ -22,8 +22,7 @@ class EquipmentManager extends Manager
         ');
         $req->execute([$id]);
         $result = $req->fetch(PDO::FETCH_ASSOC);
-        $equipment = new EquipmentEntity($result['name'], $result['id']);
-        var_dump($equipment);
+        $equipment = new EquipmentEntity($result['name'], $result['id'], $result['image']);
         return $equipment;
 
 
@@ -42,19 +41,18 @@ class EquipmentManager extends Manager
         $rows = $req->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($rows as $row) {
-            $equipment = new EquipmentEntity($row['name'], $row['id']);
+            $equipment = new EquipmentEntity($row['name'], $row['id'], $row['image']);
             $result[] = $equipment;
         }
-        var_dump($result);
         return $result;
     }
     public function insertEquipment(EquipmentEntity $equipmentEntity)
     {
         $req = $this->db->prepare('
-        INSERT INTO equipments(id, name)
-        VALUES (?,?)
+        INSERT INTO equipments(id, name, image)
+        VALUES (?,?,?)
         ');
-        $req->execute([$equipmentEntity->getId(), $equipmentEntity->getName()]);
+        $req->execute([$equipmentEntity->getId(), $equipmentEntity->getName(), $equipmentEntity->getImage()]);
     }
 
     /**
@@ -75,10 +73,9 @@ class EquipmentManager extends Manager
 
         $equipments = [];
         foreach ($result as $row) {
-            $equipment = new EquipmentEntity($row['name'], $row['id']);
+            $equipment = new EquipmentEntity($row['name'], $row['id'], $row['image']);
             $equipments[] = $equipment;
         }
-        var_dump($equipments);
         return $equipments;
 
     }

@@ -11,7 +11,7 @@ class RecipeEntity
 	protected array|null $diets;
 	protected ?int $timeToCook;
 	protected ?int $servings;
-	protected ?int $calories;
+	protected ?float $calories;
 	protected array $steps;
 	protected ?DateTime $createdAt;
 	protected array $ingredients;
@@ -22,19 +22,19 @@ class RecipeEntity
 	 * Array of cuisine types
 	 * @var array
 	 */
-	public const CUISINE_TYPES = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek', 'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic', 'Southern', 'Spanish', 'Thai', 'Vietnamese'];
+	public const CUISINE_TYPES = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek', 'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic', 'Southern', 'Spanish', 'Thai', 'Vietnamese', 'Creole', 'Central American', 'South American', 'Barbecue', 'bbq'];
 
 	/**
 	 * Array of meal types
 	 * @var array
 	 */
-	public const MEAL_TYPES = ['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'marinade', 'fingerfood', 'snack', 'drink'];
+	public const MEAL_TYPES = ['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'marinade', 'fingerfood', 'snack', 'drink', 'antipasti', 'starter', 'antipasto', "hor d'oeuvre", 'lunch', 'main dish', 'dinner', 'morning meal', 'brunch', 'seasoning', 'condiment', 'dip', 'spread'];
 
 	/**
 	 * Array of diets
 	 * @var array
 	 */
-	public const DIETS = ['Gluten Free', 'Ketogenic', 'Vegetarian', 'Lacto Vegetarian', 'Ovo Vegetarian', 'Vegan', 'Pescetarian', 'Paleo', 'Primal', 'Low FODMAP', 'Whole30'];
+	public const DIETS = ['gluten free', 'ketogenic', 'vegetarian', 'lacto vegetarian', 'ovo vegetarian', 'vegan', 'pescetarian', 'paleo', 'primal', 'Low fodmap', 'whole 30', 'dairy free', 'lacto ovo vegetarian', 'dairy free', 'paleolithic', 'pescatarian', 'fodmap friendly'];
 
 	// Constructor
 	public function __construct(
@@ -46,7 +46,7 @@ class RecipeEntity
 		array $diets = null,
 		int $timeToCook = null,
 		int $servings = null,
-		int $calories = null,
+		float $calories = null,
 		DateTime $createdAt = null
 	) {
 		$this->setId($id)
@@ -263,18 +263,18 @@ class RecipeEntity
 	// Calories
 
 	/**
-	 * @return int|null
+	 * @return float|null
 	 */
-	public function getCalories(): ?int
+	public function getCalories(): ?float
 	{
 		return $this->calories;
 	}
 
 	/**
-	 * @param int|null $calories 
+	 * @param float|null $calories 
 	 * @return self
 	 */
-	public function setCalories(?int $calories): self
+	public function setCalories(?float $calories): self
 	{
 		$this->calories = $calories;
 		return $this;

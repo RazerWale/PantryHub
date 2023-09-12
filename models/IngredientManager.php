@@ -50,13 +50,14 @@ class IngredientManager extends Manager
     public function insertIngredient(IngredientEntity $ingredient)
     {
         $req = $this->db->prepare('
-        INSERT INTO ingredients (name,
+        INSERT INTO ingredients (id,
+        name,
         image_url,
         calories,
         type)
-        VALUES (?,?,?,?)
+        VALUES (?,?,?,?,?)
         ');
-        $req->execute([$ingredient->getName(), $ingredient->getImageUrl(), $ingredient->getCalories(), $ingredient->getType()]);
+        $req->execute([$ingredient->getId(), $ingredient->getName(), $ingredient->getImageUrl(), $ingredient->getCalories(), $ingredient->getType()]);
     }
     public function deleteIngredient(int $id)
     {

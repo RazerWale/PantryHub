@@ -5,12 +5,14 @@ try {
     require_once('controllers/RecipeController.php');
     require_once('controllers/IngredientController.php');
     require_once('controllers/EquipmentController.php');
+    require_once('controllers/UserController.php');
     // require_once('controllers/UserController.php');
 
     // controller here!
     $recipe = new RecipeController();
     $ingredient = new IngredientController();
     $equipment = new EquipmentController();
+    $user = new UserController();
 
     $route = $_GET['action'] ?? null;
 
@@ -51,6 +53,21 @@ try {
         case 'removeEquipment':
             $equipment->removeEquipment();
             break;
+        case 'getUser';
+            $user->getUser();
+            break;
+        case 'listUsers';
+            $user->listUsers();
+            break;
+        case 'addUser';
+            $user->addUser();
+            break;
+        case 'removeUser';
+            $user->removeUser();
+            break;
+        case 'login';
+            $user->login();
+            break;
         default:
             //should bring me to the home page
             $test->default();
@@ -58,7 +75,7 @@ try {
     }
 } catch (Throwable $e) {
     // displayError($e->getMessage());
-    // echo $e->getMessage();
+    echo $e->getMessage();
     throw $e;
     // die;
     // displayTheError($e);

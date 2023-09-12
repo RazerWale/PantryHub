@@ -5,13 +5,15 @@ class EquipmentEntity
 
     protected ?int $id;
     protected string $name;
-    protected array $recipe;
+    protected string $image;
+    protected array $recipes;
 
-    public function __construct(string $name, int $id = null)
+    public function __construct(string $name, int $id = null, string $image)
     {
 
         $this->setId($id)
-            ->setName($name);
+            ->setName($name)
+            ->setImage($image);
 
     }
 
@@ -57,6 +59,24 @@ class EquipmentEntity
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image 
+     * @return self
+     */
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+        return $this;
+    }
+
     // Recipe Entity
 
     /**
@@ -64,16 +84,18 @@ class EquipmentEntity
      */
     public function getRecipe(): array
     {
-        return $this->recipe;
+        return $this->recipes;
     }
 
     /**
-     * @param RecipeEntity[] $recipe 
+     * @param RecipeEntity[] $recipes 
      * @return self
      */
-    public function setRecipe(array $recipe): self
+    public function setRecipe(array $recipes): self
     {
-        $this->recipe = $recipe;
+        $this->recipes = $recipes;
         return $this;
     }
+
+
 }

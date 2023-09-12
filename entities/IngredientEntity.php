@@ -7,7 +7,7 @@ class IngredientEntity
     protected ?int $id;
     protected string $name;
     protected ?string $imageUrl;
-    protected ?int $calories;
+    protected ?float $calories;
     protected ?string $type;
     protected array $recipes;
 
@@ -17,7 +17,7 @@ class IngredientEntity
         string $name,
         int $id = null,
         string $imageUrl = null,
-        int $calories = null,
+        float $calories = null,
         string $type = null
     ) {
         $this->setId($id)
@@ -98,9 +98,9 @@ class IngredientEntity
 
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getCalories(): ?int
+    public function getCalories(): ?float
     {
         return $this->calories;
     }
@@ -109,7 +109,7 @@ class IngredientEntity
      * @param int|null $calories 
      * @return self
      */
-    public function setCalories(?int $calories): self
+    public function setCalories(?float $calories): self
     {
         $this->calories = $calories;
         return $this;

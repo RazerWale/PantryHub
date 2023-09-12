@@ -16,7 +16,7 @@ class IngredientController
 
     public function getIngredient()
     {
-        $id = 44;
+        $id = 45;
         $ingredient = $this->ingredientManager->fetchIngredient($id);
         require_once('views/main.php');
     }

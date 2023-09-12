@@ -5,8 +5,8 @@ require_once('IngredientEntity.php');
 class RecipeIngredientsEntity extends IngredientEntity
 {
     protected ?int $recipeIngredientId;
-    protected ?int $quantityUs;
-    protected ?int $quantityMetric;
+    protected ?float $quantityUs;
+    protected ?float $quantityMetric;
     protected ?string $unitUs;
     protected ?string $unitMetric;
 
@@ -30,36 +30,36 @@ class RecipeIngredientsEntity extends IngredientEntity
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getQuantityUs(): ?int
+    public function getQuantityUs(): ?float
     {
         return $this->quantityUs;
     }
 
     /**
-     * @param int|null $quantityUs 
+     * @param float|null $quantityUs 
      * @return self
      */
-    public function setQuantityUs(?int $quantityUs): self
+    public function setQuantityUs(?float $quantityUs): self
     {
         $this->quantityUs = $quantityUs;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getQuantityMetric(): ?int
+    public function getQuantityMetric(): ?float
     {
         return $this->quantityMetric;
     }
 
     /**
-     * @param int|null $quantityMetric 
+     * @param float|null $quantityMetric 
      * @return self
      */
-    public function setQuantityMetric(?int $quantityMetric): self
+    public function setQuantityMetric(?float $quantityMetric): self
     {
         $this->quantityMetric = $quantityMetric;
         return $this;

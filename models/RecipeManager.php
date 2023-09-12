@@ -155,7 +155,7 @@ class RecipeManager extends Manager
         VALUES (?,?,?,?,?,?)
         ');
         foreach ($recipe->getIngredients() as $ingredient) {
-            $req3->execute([$recipe->getId(), $ingredient->getRecipeIngredientId(), $ingredient->getQuantityUs(), $ingredient->getQuantityMetric(), $ingredient->getUnitUs(), $ingredient->getUnitMetric()]);
+            $req3->execute([$recipe->getId(), $ingredient->getId(), $ingredient->getQuantityUs(), $ingredient->getQuantityMetric(), $ingredient->getUnitUs(), $ingredient->getUnitMetric()]);
         }
 
         $req4 = $this->db->prepare('
