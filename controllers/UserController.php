@@ -93,6 +93,11 @@ class UserController
         $id = 1;
         var_dump($this->userManager->fetchUserIngredients($id));
         require_once('views/main.php');
-
+    }
+    public function removeUserIngredient()
+    {
+        $id = 1;
+        $ingredientId = 1009;
+        $this->userManager->deleteUserIngredient($id, $ingredientId);
     }
 }

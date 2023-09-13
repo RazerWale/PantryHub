@@ -83,6 +83,9 @@ try {
         case 'getUserIngredients';
             $user->getUserIngredients();
             break;
+        case 'removeUserIngredient';
+            $user->removeUserIngredient();
+            break;
         default:
             //should bring me to the home page
             $test->default();

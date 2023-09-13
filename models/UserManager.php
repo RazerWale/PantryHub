@@ -164,4 +164,13 @@ class UserManager extends Manager
         }
         return $result;
     }
+    public function deleteUserIngredient(int $id, int $ingredientId)
+    {
+        $req = $this->db->prepare('
+        DELETE
+        FROM users_ingredients
+        WHERE users_ingredients.user_id = ? AND users_ingredients.ingredient_id = ?
+        ');
+        $req->execute([$id, $ingredientId]);
+    }
 }
