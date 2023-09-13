@@ -103,6 +103,15 @@ class UserManager extends Manager
         }
         return $result;
     }
+    public function deleteUserEquipment(int $id, int $equipmentId)
+    {
+        $req = $this->db->prepare('
+        DELETE 
+        FROM users_equipments
+        WHERE users_equipments.user_id = ? AND users_equipments.equipment_id = ?
+        ');
+        $req->execute([$id, $equipmentId]);
+    }
     public function insertUserEquipment(int $id, int $equipment)
     {
         $req = $this->db->prepare('

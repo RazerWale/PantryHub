@@ -64,8 +64,13 @@ class UserController
     public function getUserEquipments()
     {
         $id = 1;
-        var_dump($this->userManager->fetchUserEquipments($id));
-        require_once('views/main.php');
+        $this->userManager->fetchUserEquipments($id);
+    }
+    public function removeUserEquipment()
+    {
+        $id = 1;
+        $equipmentId = 404629;
+        $this->userManager->deleteUserEquipment($id, $equipmentId);
     }
     public function addUserIngredient()
     {

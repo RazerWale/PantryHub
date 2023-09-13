@@ -74,6 +74,9 @@ try {
         case 'getUserEquipment';
             $user->getUserEquipments();
             break;
+        case 'removeUserEquipment';
+            $user->removeUserEquipment();
+            break;
         case 'addUserIngredient';
             $user->addUserIngredient();
             break;
