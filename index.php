@@ -71,7 +71,7 @@ try {
         case 'addUserEquipment';
             $user->addUserEquipment();
             break;
-        case 'getUserEquipment';
+        case 'getUserEquipments';
             $user->getUserEquipments();
             break;
         case 'removeUserEquipment';
@@ -79,6 +79,9 @@ try {
             break;
         case 'addUserIngredient';
             $user->addUserIngredient();
+            break;
+        case 'getUserIngredients';
+            $user->getUserIngredients();
             break;
         default:
             //should bring me to the home page

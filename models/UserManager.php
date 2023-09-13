@@ -140,4 +140,28 @@ class UserManager extends Manager
             $userIngredients->getUnitMetric()
         ]);
     }
+    public function fetchUserIngredients(int $id): array
+    {
+        $req = $this->db->prepare('
+        SELECT *
+        FROM users_ingredients
+        INNER JOIN ingredients ON users_ingredients.ingredient_id = ingredients.id
+        WHERE users_ingredients.user_id = ?
+        ');
+        $req->execute([$id]);
+        $rows = $req->fetchAll(PDO::FETCH_ASSOC);
+        if (empty($rows)) {
+            throw new Exception('no ingredients for this user');
+        }
+        $result = [];
+        foreach ($rows as $row) {
+            $equipment = new UsersIngredientsEntity($row['name'], $row['ingredient_id'], $row['image_url'], $row['calories'], $row['type']);
+            $equipment->setQuantityMetric($row['quantity_metric'])
+                ->setQuantityUs($row['quantity_us'])
+                ->setUnitMetric($row['unit_metric'])
+                ->setUnitUs($row['unit_us']);
+            $result[] = $equipment;
+        }
+        return $result;
+    }
 }

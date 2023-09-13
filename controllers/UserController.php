@@ -64,7 +64,8 @@ class UserController
     public function getUserEquipments()
     {
         $id = 1;
-        $this->userManager->fetchUserEquipments($id);
+        $userEquipment = $this->userManager->fetchUserEquipments($id);
+
     }
     public function removeUserEquipment()
     {
@@ -86,7 +87,12 @@ class UserController
                 ->setUnitMetric($ingredient['unit_metric']);
             $this->userManager->insertUserIngredient($ingredient['userId'], $userIngredients);
         }
-
+    }
+    public function getUserIngredients()
+    {
+        $id = 1;
+        var_dump($this->userManager->fetchUserIngredients($id));
+        require_once('views/main.php');
 
     }
 }
