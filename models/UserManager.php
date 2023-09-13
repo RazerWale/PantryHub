@@ -1,6 +1,7 @@
 <?php
 require_once('Manager.php');
 require_once('entities/UserEntity.php');
+require_once('entities/UsersIngredientsEntity.php');
 
 /**
  * Summary of UserManager
@@ -81,5 +82,53 @@ class UserManager extends Manager
             return null;
         }
         return new UserEntity($row['username'], $row['email'], $row['password'], $row['id'], new DateTime($row['created_at']));
+    }
+    public function fetchUserEquipments(int $id): array
+    {
+        $req = $this->db->prepare('
+        SELECT *
+        FROM equipments
+        INNER JOIN users_equipments ON users_equipments.equipment_id = equipments.id
+        WHERE users_equipments.user_id = ?
+        ');
+        $req->execute([$id]);
+        $rows = $req->fetchAll(PDO::FETCH_ASSOC);
+        if (empty($rows)) {
+            throw new Exception('no equipments for this user');
+        }
+        $result = [];
+        foreach ($rows as $row) {
+            $equipment = new EquipmentEntity($row['name'], $row['equipment_id'], $row['image_url']);
+            $result[] = $equipment;
+        }
+        return $result;
+    }
+    public function insertUserEquipment(int $id, int $equipment)
+    {
+        $req = $this->db->prepare('
+        INSERT INTO users_equipments(user_id, equipment_id)
+        VALUES (?,?)
+        ');
+        $req->execute([$id, $equipment]);
+    }
+    public function insertUserIngredient(int $userId, UsersIngredientsEntity $userIngredients)
+    {
+        $req = $this->db->prepare('
+        INSERT INTO users_ingredients(user_id, 
+        ingredient_id, 
+        quantity_us, 
+        quantity_metric, 
+        unit_us, 
+        unit_metric)
+        VALUES (?,?,?,?,?,?)
+        ');
+        $req->execute([
+            $userId,
+            $userIngredients->getId(),
+            $userIngredients->getQuantityUs(),
+            $userIngredients->getQuantityMetric(),
+            $userIngredients->getUnitUs(),
+            $userIngredients->getUnitMetric()
+        ]);
     }
 }

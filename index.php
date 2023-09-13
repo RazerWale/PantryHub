@@ -59,14 +59,23 @@ try {
         case 'listUsers';
             $user->listUsers();
             break;
-        case 'addUser';
-            $user->addUser();
+        case 'registerUser';
+            $user->registerUser();
             break;
         case 'removeUser';
             $user->removeUser();
             break;
         case 'login';
             $user->login();
+            break;
+        case 'addUserEquipment';
+            $user->addUserEquipment();
+            break;
+        case 'getUserEquipment';
+            $user->getUserEquipments();
+            break;
+        case 'addUserIngredient';
+            $user->addUserIngredient();
             break;
         default:
             //should bring me to the home page

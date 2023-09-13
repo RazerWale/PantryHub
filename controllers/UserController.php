@@ -20,7 +20,7 @@ class UserController
         $user = $this->userManager->fetchUsers();
         require_once('views/main.php');
     }
-    public function addUser()
+    public function registerUser()
     {
         $password = 'Mighty_Thanos';
         $password2 = 'Tony_Stark';
@@ -29,6 +29,13 @@ class UserController
         $user = new UserEntity('Thanos', 'fingersnap12@yahoo.com', $hashedPassword);
         // $user = new UserEntity('Ironman', 'im_ironman@@starkenterprises.com', $hashedPassword2);
         $this->userManager->insertUser($user);
+    }
+    public function login(): bool
+    {
+        $emailOrUsername = $_GET['username'];
+        $userPassword = $_GET['password'];
+        $isUserVerified = $this->verifyUser($emailOrUsername, $userPassword);
+        return $isUserVerified;
     }
     public function removeUser()
     {
@@ -46,11 +53,35 @@ class UserController
         $hashedPassword = $user->getPassword();
         return password_verify($userPassword, $hashedPassword);
     }
-    public function login(): bool
+    public function addUserEquipment()
     {
-        $emailOrUsername = $_GET['username'];
-        $userPassword = $_GET['password'];
-        $isUserVerified = $this->verifyUser($emailOrUsername, $userPassword);
-        return $isUserVerified;
+        $id = 1;
+        $equipments = [404629, 404645];
+        foreach ($equipments as $equipment) {
+            $this->userManager->insertUserEquipment($id, $equipment);
+        }
+    }
+    public function getUserEquipments()
+    {
+        $id = 1;
+        var_dump($this->userManager->fetchUserEquipments($id));
+        require_once('views/main.php');
+    }
+    public function addUserIngredient()
+    {
+        $userIngredients = [
+            ['userId' => 1, 'ingredientId' => 1009, 'quantity_us' => 212, 'quantity_metric' => 1000, 'unit_us' => 'pounds', 'unit_metric' => 'gramm'],
+            ['userId' => 1, 'ingredientId' => 1119, 'quantity_us' => 2212, 'quantity_metric' => 2355, 'unit_us' => 'rocks', 'unit_metric' => 'litters']
+        ];
+        foreach ($userIngredients as $ingredient) {
+            $userIngredients = new UsersIngredientsEntity('', $ingredient['ingredientId']);
+            $userIngredients->setQuantityUs($ingredient['quantity_us'])
+                ->setQuantityMetric($ingredient['quantity_metric'])
+                ->setUnitUs($ingredient['unit_us'])
+                ->setUnitMetric($ingredient['unit_metric']);
+            $this->userManager->insertUserIngredient($ingredient['userId'], $userIngredients);
+        }
+
+
     }
 }
