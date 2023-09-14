@@ -11,6 +11,12 @@ class TestController
     {
         require_once('views/test.php');
     }
-
-
+    public function register()
+    {
+        require_once('views/register.php');
+    }
+    public function login()
+    {
+        require_once('views/login.php');
+    }
 }

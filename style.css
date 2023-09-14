@@ -1,9 +1,93 @@
 /* global STYLE */
 
+@font-face {
+    font-family:"Ultra";
+    src: url(fonts/Ultra/Ultra-Regular.ttf);
+}
+
+@font-face {
+    font-family:"DM Sans";
+    src: url(fonts/DM_Sans/static/DMSans-Regular.ttf);
+}
+
+@font-face {
+    font-family:"DM Serif Display";
+    src: url(fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf);
+}
+
 :root {
 
-    --main: 30px;
+    --primary-bg-color: #bda891;
+    --secondary-bg-color: #f7f4ef;
+    --tertiary-bg-color: #A61414;
+    --main-font-color: #2D3142;
 }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: aqua;
+    background-color: var(--primary-bg-color);
+    color: var(--main-font-color);
+}
+
+header {
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+nav {
+    display: inline-block;
+}
+
+ul {
+    /*display: flex;*/
+    list-style-type: none;
+}
+
+li {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0px 20px;
+    font-weight: 500;
+    font-family: "DM Serif Display";
+    font-size: 1.5em;
+    color: var(--main-font-color);
+    transition: all .4s;
+}
+
+li:last-of-type {
+    color: var(--tertiary-bg-color);
+}
+
+li:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+    color: var(--tertiary-bg-color);
+}
+
+li:last-of-type:hover {
+    color: var(--main-font-color);
+}
+
+.hamburger-icon {
+    display: none;
+    height: 35px;
+}
+
+.outer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+p {
+    font-family: "DM Sans";
 }

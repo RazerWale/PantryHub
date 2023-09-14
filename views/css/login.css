@@ -1,0 +1,150 @@
+h1 {
+    color: var(--secondary-bg-color);
+    text-align: center;
+}
+
+.hamburger-icon {
+    display: inline;
+    cursor: pointer;
+    z-index: 90;
+}
+
+.hamburger {
+    display: none;
+    position: relative;
+    width: 35px;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.hamburger .bar, .hamburger:after, .hamburger:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: var(--main-font-color);
+    margin: 6px 0;
+    /*transition: .4s;*/
+}
+
+.hamburger .is-active, .hamburger:before {
+    transform: rotate(-45deg) translate(-3px, 4px);
+}
+
+.hamburger .is-active, .hamburger:after {
+    transform: rotate(45deg) translate(-3px, -6px);
+}
+
+.hamburger {
+    flex-shrink: 0;
+}
+
+
+
+
+
+.login-div {
+    background-color: var(--tertiary-bg-color);
+    width: 70vw;
+    height: 75vh;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 5%;
+    text-align: center;
+}
+
+/*nav {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    min-height: 100vh;
+    display: block;
+    background-color: var(--secondary-bg-color);
+}*/
+
+ul {
+    display: flex;
+    position:fixed;
+    inset: 0 0 0 100%;
+    background-color: var(--secondary-bg-color);
+    gap: 1em;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+}
+
+li:hover {
+    transform: scale(1.1);
+}
+
+.input-box {
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: var(--secondary-bg-color);
+    border: none;
+    font-family: "DM Sans";
+    border-radius: 50px;
+    color: var(--main-font-color);
+    padding: 20px 45px 20px 20px;
+    font-size: 16px;
+}
+
+.login-submit {
+    width: 70%;
+    height: 50px;
+    border-radius: 50px;
+    background-color: var(--main-font-color);
+    color: var(--secondary-bg-color);
+    border: none;
+    font-family: "DM Sans";
+}
+
+.sign-in-opts {
+    margin-top: 30px;
+}
+
+.logos img{
+    height: 30px;
+    margin: 10px;
+}
+
+.sign-in-opts p{
+    color: var(--secondary-bg-color);
+}
+
+.sign-in-opts a {
+    color: var(--secondary-bg-color);
+}
+
+.sign-in-opts a:hover {
+    text-decoration: none;
+}
+
+@media (min-width: 800px) {
+    ul {
+        display: block;
+        background-color: transparent;
+        inset: 0;
+        position: static;
+    }
+
+    .hamburger-icon {
+        display: none;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
