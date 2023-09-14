@@ -98,9 +98,6 @@ try {
         case 'register':
             $test->register();
             break;
-        case 'login':
-            $test->login();
-            break;
         default:
             //should bring me to the home page
             $test->default();
