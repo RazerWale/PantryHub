@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="form-outer">
-        <form action="/?action=register" method="POST">
+        <form action="?action=register" method="POST">
             <div class="page page1 slidepage">
                 <div class="field">
                     <div class="label">Username</div>
@@ -51,15 +51,15 @@
                 </div>
                 <div class="field">
                     <div class="label">Email</div>
-                    <input type="text" name="email">
+                    <input type="email" name="email">
                 </div>
                 <div class="field">
                     <div class="label">Password</div>
-                    <input type="text" name="password">
+                    <input type="password" name="password">
                 </div>
                 <div class="field">
                     <div class="label">Confirm Password</div>
-                    <input type="text" name="passCon">
+                    <input type="password" name="passCon">
                 </div>
                 <div class="field">
                     <button class="nextBtn">Next</button>
@@ -161,7 +161,7 @@
                 </div>
                 <div class="field btns">
                     <button class="prev-2 prev">Previous</button>
-                    <button input type="submit" class="reg-submit">Submit</button>
+                    <input type="submit" class="reg-submit">Submit</input>
                 </div>
             </div>
         </form>
