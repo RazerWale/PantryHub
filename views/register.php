@@ -161,7 +161,7 @@
                 </div>
                 <div class="field btns">
                     <button class="prev-2 prev">Previous</button>
-                    <button class="reg-submit">Submit</button>
+                    <button input type="submit" class="reg-submit">Submit</button>
                 </div>
             </div>
         </form>
