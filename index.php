@@ -6,13 +6,13 @@ try {
     require_once('controllers/IngredientController.php');
     require_once('controllers/EquipmentController.php');
     require_once('controllers/UserController.php');
-    // require_once('controllers/UserController.php');
+    require_once('controllers/MainPageController.php');
 
-    // controller here!
     $recipe = new RecipeController();
     $ingredient = new IngredientController();
     $equipment = new EquipmentController();
     $user = new UserController();
+    $main = new MainPageController();
 
     $route = $_GET['action'] ?? null;
 
@@ -97,7 +97,7 @@ try {
             break;
         default:
             //should bring me to the home page
-            $test->default();
+            $main->default();
             break;
     }
 } catch (Throwable $e) {
