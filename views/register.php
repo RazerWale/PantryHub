@@ -47,19 +47,19 @@
             <div class="page page1 slidepage">
                 <div class="field">
                     <div class="label">Username</div>
-                    <input type="text">
+                    <input type="text" name="username">
                 </div>
                 <div class="field">
                     <div class="label">Email</div>
-                    <input type="text">
+                    <input type="text" name="email">
                 </div>
                 <div class="field">
                     <div class="label">Password</div>
-                    <input type="text">
+                    <input type="text" name="password">
                 </div>
                 <div class="field">
                     <div class="label">Confirm Password</div>
-                    <input type="text">
+                    <input type="text" name="passCon">
                 </div>
                 <div class="field">
                     <button class="nextBtn">Next</button>
