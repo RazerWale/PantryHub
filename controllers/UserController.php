@@ -100,4 +100,21 @@ class UserController
         $ingredientId = 1009;
         $this->userManager->deleteUserIngredient($id, $ingredientId);
     }
+    public function addUserFavouriteRecipe()
+    {
+        $id = 1;
+        $favouriteRecipe = 157344;
+        $this->userManager->insertUserFavouriteRecipe($id, $favouriteRecipe);
+    }
+    public function getUserFavouriteRecipes()
+    {
+        $id = 1;
+        $userFavouriteRecipes = $this->userManager->fetchUserFavouriteRecipes($id);
+    }
+    public function removeFavouriteRecipe()
+    {
+        $id = 1;
+        $favouriteRecipeId = 157344;
+        $this->userManager->deleteUserFavouriteRecipe($id, $favouriteRecipeId);
+    }
 }

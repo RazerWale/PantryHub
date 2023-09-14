@@ -86,6 +86,15 @@ try {
         case 'removeUserIngredient';
             $user->removeUserIngredient();
             break;
+        case 'addUserFavouriteRecipe';
+            $user->addUserFavouriteRecipe();
+            break;
+        case 'getUserFavouriteRecipes';
+            $user->getUserFavouriteRecipes();
+            break;
+        case 'removeFavouriteRecipe';
+            $user->removeFavouriteRecipe();
+            break;
         default:
             //should bring me to the home page
             $test->default();

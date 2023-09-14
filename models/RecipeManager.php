@@ -78,7 +78,6 @@ class RecipeManager extends Manager
             $arrays = $this->checkForArrayExplode($row); // if not NULL split values and put it in array
 
             $recipe = new RecipeEntity($row['name'], $row['id'], $row['image_url'], $arrays['cuisines'], $arrays['meals'], $arrays['diets'], $row['time_to_cook'], $row['servings'], $row['calories'], new DateTime($row['created_at']));
-            $arrays = $this->checkForArrayExplode($result);
 
             // set steps
             $steps = $this->getSteps($row['id']);
@@ -90,7 +89,7 @@ class RecipeManager extends Manager
 
             // set equipments
             $equipments = $this->equipmentManager->fetchEquipmentsForRecipe($row['id']);
-            var_dump($recipe->setEquipments($equipments));
+            $recipe->setEquipments($equipments);
 
             $result[] = $recipe;
         }
@@ -218,16 +217,30 @@ class RecipeManager extends Manager
      */
     public function checkForArrayExplode($recipe)
     {
-        $array = ['cuisines' => null, 'meals' => null, 'diets' => null];
-        if (isset($recipe['cuisine_type']) && $recipe['cuisine_type'] !== null) {
+        $array = [];
+        if (empty($recipe['cuisine_type'])) {
+            $array['cuisines'] = null;
+        }
+        if (empty($recipe['meal_type'])) {
+            $array['meals'] = null;
+        }
+        if (empty($recipe['diets'])) {
+            $array['diets'] = null;
+        }
+
+        // $array = ['cuisines' => null, 'meals' => null, 'diets' => null];
+        if (isset($recipe['cuisine_type']) && $recipe['cuisine_type'] !== null && !empty($recipe['cuisine_type'])) {
             $array['cuisines'] = explode(',', $recipe['cuisine_type']);
         }
-        if (isset($recipe['meal_type']) && $recipe['meal_type'] !== null) {
+        var_dump($array['cuisines']);
+
+        if (isset($recipe['meal_type']) && $recipe['meal_type'] !== null && !empty($recipe['meal_type'])) {
             $array['meals'] = explode(',', $recipe['meal_type']);
         }
-        if (isset($recipe['diets']) && $recipe['diets'] !== null) {
+        if (isset($recipe['diets']) && $recipe['diets'] !== null && !empty($recipe['diets'])) {
             $array['diets'] = explode(',', $recipe['diets']);
         }
+
         return $array;
     }
 }

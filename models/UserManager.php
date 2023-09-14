@@ -8,6 +8,16 @@ require_once('entities/UsersIngredientsEntity.php');
  */
 class UserManager extends Manager
 {
+    protected $ingredientManager;
+    protected $equipmentManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->ingredientManager = new IngredientManager();
+        $this->equipmentManager = new EquipmentManager();
+    }
+
     /**
      * Summary of fetchUser
      * @param int $id
@@ -172,5 +182,82 @@ class UserManager extends Manager
         WHERE users_ingredients.user_id = ? AND users_ingredients.ingredient_id = ?
         ');
         $req->execute([$id, $ingredientId]);
+    }
+    public function fetchUserFavouriteRecipes(int $id): array
+    {
+        $req = $this->db->prepare('
+        SELECT *
+        FROM user_favourite_recipes
+        INNER JOIN recipes ON recipes.id = user_favourite_recipes.recipe_id
+        WHERE user_favourite_recipes.user_id = ?
+        ');
+        $req->execute([$id]);
+        $rows = $req->fetchAll(PDO::FETCH_ASSOC);
+        if (empty($rows)) {
+            throw new Exception('no favourite recipes for this user');
+        }
+        $result = [];
+        foreach ($rows as $row) {
+            $arrays = $this->checkForArrayExplode($row); // if not NULL split values and put it in array
+            $recipe = new RecipeEntity($row['name'], $row['id'], $row['image_url'], $arrays['cuisines'], $arrays['meals'], $arrays['diets'], $row['time_to_cook'], $row['servings'], $row['calories'], new DateTime($row['created_at']));
+            $result[] = $recipe;
+        }
+        return $result;
+    }
+    public function deleteUserFavouriteRecipe(int $id, int $favouriteRecipeId)
+    {
+        $req = $this->db->prepare('
+        DELETE 
+        FROM user_favourite_recipes
+        WHERE user_favourite_recipes.user_id = ? AND user_favourite_recipes.recipe_id = ?
+        ');
+        $req->execute([$id, $favouriteRecipeId]);
+    }
+    public function insertUserFavouriteRecipe(int $id, int $favouriteRecipeId)
+    {
+        $req = $this->db->prepare('
+        INSERT INTO user_favourite_recipes(user_id, recipe_id)
+        VALUES (?,?)
+        ');
+        $req->execute([$id, $favouriteRecipeId]);
+    }
+    /**
+     * Transforms selected values within the input associative array into arrays.
+     *
+     * This function examines specific keys in the input array and splits their
+     * values into arrays using the comma (',') delimiter. The resulting arrays
+     * are organized into a new associative array and returned.
+     *
+     * @param array $recipe An associative array containing data to process.
+     *
+     * @return array An associative array with exploded values or null for keys with null values.
+     */
+    public function checkForArrayExplode($recipe)
+    {
+        $array = [];
+        if (empty($recipe['cuisine_type'])) {
+            $array['cuisines'] = null;
+        }
+        if (empty($recipe['meal_type'])) {
+            $array['meals'] = null;
+        }
+        if (empty($recipe['diets'])) {
+            $array['diets'] = null;
+        }
+
+        // $array = ['cuisines' => null, 'meals' => null, 'diets' => null];
+        if (isset($recipe['cuisine_type']) && $recipe['cuisine_type'] !== null && !empty($recipe['cuisine_type'])) {
+            $array['cuisines'] = explode(',', $recipe['cuisine_type']);
+        }
+        var_dump($array['cuisines']);
+
+        if (isset($recipe['meal_type']) && $recipe['meal_type'] !== null && !empty($recipe['meal_type'])) {
+            $array['meals'] = explode(',', $recipe['meal_type']);
+        }
+        if (isset($recipe['diets']) && $recipe['diets'] !== null && !empty($recipe['diets'])) {
+            $array['diets'] = explode(',', $recipe['diets']);
+        }
+
+        return $array;
     }
 }
