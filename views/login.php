@@ -34,7 +34,7 @@
     <h1>Welcome Back<br>
         Login Here.
     </h1>
-    <form form action="/?action=register" method="POST">
+    <form form action="?action=login" method="POST">
         <div class="input-box">
             <input type="text" placeholder="Enter Username/Email" name="useremail" required>
         </div>
@@ -52,7 +52,7 @@
                 <img src="images/applelogo.svg" alt="">
                 <img src="images/fblogo.svg" alt="">
             </div>
-            <p>No account? Sign Up <a href="?action=register">Here</a>.</p>
+            <p>No account? Sign Up <a href="?action=registerUser">Here</a>.</p>
 
         </div>
     </form>
@@ -70,14 +70,14 @@
     let hamburgerBtn = document.querySelector('.hamburger-icon');
     let navMenu = document.querySelector('ul');
 
-    hamburgerExitBtn.addEventListener('click', function() {
+    hamburgerExitBtn.addEventListener('click', function () {
         hamburgerExitBtn.style.display = "none";
         //hamburgerBar.style.display = "none";
         hamburgerBtn.style.display = "inline";
         navMenu.style.inset = "0 0 0 100%";
     });
 
-    hamburgerBtn.addEventListener('click', function() {
+    hamburgerBtn.addEventListener('click', function () {
         hamburgerExitBtn.style.display = "block";
         //hamburgerBar.style.display = "block";
         hamburgerBtn.style.display = "none";

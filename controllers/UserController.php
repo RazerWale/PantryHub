@@ -37,12 +37,18 @@ class UserController
 
 
     }
-    public function login(): bool
+    public function login()
     {
-        $emailOrUsername = $_GET['username'];
-        $userPassword = $_GET['password'];
-        $isUserVerified = $this->verifyUser($emailOrUsername, $userPassword);
-        return $isUserVerified;
+        if (!empty($_POST)) {
+            $emailOrUsername = $_POST['useremail'];
+            $userPassword = $_POST['password'];
+            $isUserVerified = $this->verifyUser($emailOrUsername, $userPassword);
+            var_dump($isUserVerified);
+            return $isUserVerified;
+        }
+
+        require_once('views/login.php');
+
     }
     public function removeUser()
     {
