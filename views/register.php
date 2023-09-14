@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="form-outer">
-        <form action="/?action=register" method="POST">
+        <form action="?action=registerUser" method="POST">
             <div class="page page1 slidepage">
                 <div class="field">
                     <div class="label">Username</div>
@@ -184,22 +184,22 @@
     let secondPrevBtn = document.querySelector(".prev-2");
     let slidePrevPage3 = document.querySelector(".slideprevpg3");
 
-    firstNextBtn.addEventListener("click", function(event) {
+    firstNextBtn.addEventListener("click", function (event) {
         //    event.preventDefault();
         //    slidePage.classList.add('active-pass');
         //});
         event.preventDefault();
         slidePage.style.marginLeft = "-31.2%";
     });
-    firstNextBtn.addEventListener("click", function(event) {
+    firstNextBtn.addEventListener("click", function (event) {
         event.preventDefault();
         slidePage.style.marginLeft = "-31.2%";
     });
-    secondNextBtn.addEventListener("click", function(event) {
+    secondNextBtn.addEventListener("click", function (event) {
         event.preventDefault();
         slidePage2.style.marginLeft = "-31.2%";
     });
-    secondPrevBtn.addEventListener("click", function(event) {
+    secondPrevBtn.addEventListener("click", function (event) {
         event.preventDefault();
         slidePrevPage3.style.marginLeft = "31.2%";
         slidePage2.style.marginLeft = "31.2";

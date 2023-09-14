@@ -22,13 +22,20 @@ class UserController
     }
     public function registerUser()
     {
-        $password = 'Mighty_Thanos';
-        $password2 = 'Tony_Stark';
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $hashedPassword2 = password_hash($password2, PASSWORD_DEFAULT);
-        $user = new UserEntity('Thanos', 'fingersnap12@yahoo.com', $hashedPassword);
-        // $user = new UserEntity('Ironman', 'im_ironman@@starkenterprises.com', $hashedPassword2);
-        $this->userManager->insertUser($user);
+        if (!empty($_POST)) {
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            // $hashedPassword2 = password_hash($password2, PASSWORD_DEFAULT);
+            $user = new UserEntity($username, $email, $hashedPassword);
+            // $user = new UserEntity('Ironman', 'im_ironman@@starkenterprises.com', $hashedPassword2);
+            $this->userManager->insertUser($user);
+
+        }
+        require_once('views/register.php');
+
+
     }
     public function login(): bool
     {
