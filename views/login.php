@@ -36,10 +36,10 @@
     </h1>
     <form form action="/?action=register" method="POST">
         <div class="input-box">
-            <input type="text" placeholder="Enter Username/Email" required>
+            <input type="text" placeholder="Enter Username/Email" name="useremail" required>
         </div>
         <div class="input-box">
-            <input type="password" placeholder="Enter Password" required>
+            <input type="password" placeholder="Enter Password" name="password" required>
         </div>
         <div class="remember-forget">
             <label for=""></label>
