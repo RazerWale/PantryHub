@@ -23,17 +23,18 @@ class UserController
     public function registerUser()
     {
         if (!empty($_POST)) {
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            // $hashedPassword2 = password_hash($password2, PASSWORD_DEFAULT);
-            $user = new UserEntity($username, $email, $hashedPassword);
-            // $user = new UserEntity('Ironman', 'im_ironman@@starkenterprises.com', $hashedPassword2);
-            $this->userManager->insertUser($user);
-
+            try {
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $user = new UserEntity($username, $email, $hashedPassword);
+                $this->userManager->insertUser($user);
+            } catch (Exception $e) {
+                echo $e->getMessage(); // if user or email already exist, it will throw exeption
+                require_once('views/register.php');
+            }
         }
-        require_once('views/register.php');
 
 
     }
@@ -43,8 +44,26 @@ class UserController
             $emailOrUsername = $_POST['useremail'];
             $userPassword = $_POST['password'];
             $isUserVerified = $this->verifyUser($emailOrUsername, $userPassword);
-            var_dump($isUserVerified);
-            return $isUserVerified;
+            if ($isUserVerified) {
+                $user = $this->userManager->fetchUserByEmailOrUsername($emailOrUsername);
+                $userId = $user->getId();
+                $userName = $user->getUsername();
+                setcookie('user', $userName);
+                setcookie('id', $userId);
+                $_SESSION['loggedIn'] = true;
+                $_SESSION['userName'] = $userName;
+                $_SESSION['userId'] = $userId;
+                echo 'welcome back ' . $emailOrUsername;
+            } else {
+                echo 'incorrect username/email or password';
+            }
+            // return $isUserVerified;
+        }
+        // we need logout button
+        if (isset($_GET['logOut'])) {
+            session_destroy();
+            setcookie("user", "", time() - 3600);
+            setcookie("id", "", time() - 3600);
         }
 
         require_once('views/login.php');

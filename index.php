@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 try {
     require_once('controllers/RecipeController.php');
