@@ -66,11 +66,17 @@
     .recipe-links img {
         height: 20px;
     }
+
+    span {
+        background-color: var(--secondary-bg-color);
+    }
 </style>
 
 <?php $style = ob_get_clean() ?>
 
-<h1></h1>
+<h1>Caldo Verde - Portuguese Kale Soup</h1>
+<img src="https://spoonacular.com/recipeImages/636787-636x393.jpg" alt="">
+<span>Diet Type</span>
 
 
 <?php ob_start() ?>

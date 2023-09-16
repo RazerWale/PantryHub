@@ -81,6 +81,7 @@
         <li><a href="#">Payment</a></li>
         <li><a href="#">Support/FAQ</a></li>
         <li><a href="#">My Kitchen</a></li>
+        <li><a href="#">Log Out</a></li>
     </ul>
 </div>
 <div class="search-container">
