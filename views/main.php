@@ -21,7 +21,7 @@
             <li>About</li>
             <li>Pricing</li>
             <li>Help</li>
-            <li>Login</li>
+            <li><a href="?action=registerUser">Login</a></li>
         </ul>
     </nav>
     <button class="hamburger">

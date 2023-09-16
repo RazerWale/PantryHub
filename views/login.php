@@ -22,7 +22,7 @@
             <li>About</li>
             <li>Pricing</li>
             <li>Help</li>
-            <li><a href="views/login.php">Login</a></li>
+            <li><a href="?action=registerUser">Login</a></li>
         </ul>
     </nav>
     <button class="hamburger">
