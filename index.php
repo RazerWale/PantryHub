@@ -96,6 +96,12 @@ try {
         case 'removeFavouriteRecipe';
             $user->removeFavouriteRecipe();
             break;
+        case 'profilePage';
+            $main->profilePage();
+            break;
+        case 'recipePage';
+            $main->recipePage();
+            break;
         default:
             //should bring me to the home page
             $main->default();
