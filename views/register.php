@@ -43,23 +43,23 @@
         </div>
     </div>
     <div class="form-outer">
-        <form action="?action=registerUser" method="POST">
+        <form action="?action=registerUser" method="POST" id="form">
             <div class="page page1 slidepage">
                 <div class="field">
                     <div class="label">Username</div>
-                    <input type="text" name="username">
+                    <input type="text" name="username" required id="username">
                 </div>
                 <div class="field">
                     <div class="label">Email</div>
-                    <input type="email" name="email">
+                    <input type="email" name="email" required id="email">
                 </div>
                 <div class="field">
                     <div class="label">Password</div>
-                    <input type="password" name="password">
+                    <input type="password" name="password" required id="password">
                 </div>
                 <div class="field">
                     <div class="label">Confirm Password</div>
-                    <input type="password" name="passCon">
+                    <input type="password" name="passCon" required id="passCon">
                 </div>
                 <div class="field">
                     <button class="nextBtn">Next</button>
@@ -161,7 +161,10 @@
                 </div>
                 <div class="field btns">
                     <button class="prev-2 prev">Previous</button>
-                    <input type="submit" class="reg-submit" target="mysite.com">Submit</input>
+                    <<<<<<< HEAD <input type="submit" class="reg-submit" id="submit" value="Submit">
+                        =======
+                        <input type="submit" class="reg-submit" target="mysite.com">Submit</input>
+                        >>>>>>> 143f37239c80c2b649ac94295fc31500baaaf4c2
                 </div>
             </div>
         </form>
@@ -184,26 +187,35 @@
     let secondPrevBtn = document.querySelector(".prev-2");
     let slidePrevPage3 = document.querySelector(".slideprevpg3");
 
-    firstNextBtn.addEventListener("click", function(event) {
-        //    event.preventDefault();
-        //    slidePage.classList.add('active-pass');
-        //});
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const passConInput = document.getElementById('passCon');
+    const submitBtn = document.getElementById('submit');
+    const submitForm = document.getElementById('form');
+    console.log(usernameInput.value);
+
+    firstNextBtn.addEventListener("click", function (event) {
         event.preventDefault();
-        slidePage.style.marginLeft = "-31.2%";
+        if (usernameInput.value !== '' && emailInput.value !== '' && passwordInput.value !== '' && passConInput.value !== '') {
+            slidePage.style.marginLeft = "-31.2%";
+        } else {
+            alert('please input all the fields')
+            slidePrevPage3.style.marginLeft = "31.2%";
+            slidePage2.style.marginLeft = "31.2";
+        }
     });
-    firstNextBtn.addEventListener("click", function(event) {
-        event.preventDefault();
-        slidePage.style.marginLeft = "-31.2%";
-    });
-    secondNextBtn.addEventListener("click", function(event) {
+    secondNextBtn.addEventListener("click", function (event) {
         event.preventDefault();
         slidePage2.style.marginLeft = "-31.2%";
     });
-    secondPrevBtn.addEventListener("click", function(event) {
+    secondPrevBtn.addEventListener("click", function (event) {
         event.preventDefault();
         slidePrevPage3.style.marginLeft = "31.2%";
         slidePage2.style.marginLeft = "31.2";
     });
+
+
 </script>
 
 <?php $script = ob_get_clean() ?>
