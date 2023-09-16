@@ -19,4 +19,8 @@ class TestController
     {
         require_once('views/login.php');
     }
+    public function profilePage()
+    {
+        require_once('views/profile.php');
+    }
 }

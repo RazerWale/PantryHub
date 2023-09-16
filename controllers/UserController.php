@@ -30,13 +30,12 @@ class UserController
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $user = new UserEntity($username, $email, $hashedPassword);
                 $this->userManager->insertUser($user);
+                require_once('views/login.php');
             } catch (Exception $e) {
                 echo $e->getMessage(); // if user or email already exist, it will throw exeption
-                require_once('views/register.php');
             }
         }
-
-
+        require_once('views/register.php');
     }
     public function login()
     {
@@ -67,7 +66,6 @@ class UserController
         }
 
         require_once('views/login.php');
-
     }
     public function removeUser()
     {
@@ -97,7 +95,6 @@ class UserController
     {
         $id = 1;
         $userEquipment = $this->userManager->fetchUserEquipments($id);
-
     }
     public function removeUserEquipment()
     {

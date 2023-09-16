@@ -13,7 +13,7 @@
     <!-- PHP -->
 </head>
 
-<body id="boddy">
+<body>
     <?= $content ?>
     <!-- PHP -->
     <?= $script ?>
