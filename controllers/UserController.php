@@ -24,18 +24,26 @@ class UserController
     {
         if (!empty($_POST)) {
             try {
+
                 $username = $_POST['username'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
+                $passwordConfirm = $_POST['passCon'];
+                if ($passwordConfirm !== $password) {
+                    throw new Exception('Your password and confirmation password do not match');
+                }
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $user = new UserEntity($username, $email, $hashedPassword);
                 $this->userManager->insertUser($user);
+                require_once('views/login.php');
+
             } catch (Exception $e) {
                 echo $e->getMessage(); // if user or email already exist, it will throw exeption
-                require_once('views/register.php');
+
             }
         }
 
+        require_once('views/register.php');
 
     }
     public function login()
@@ -57,7 +65,6 @@ class UserController
             } else {
                 echo 'incorrect username/email or password';
             }
-            // return $isUserVerified;
         }
         // we need logout button
         if (isset($_GET['logOut'])) {
