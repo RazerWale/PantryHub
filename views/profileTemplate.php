@@ -1,6 +1,5 @@
 <?php $title = "Profile"; ?>
 
-<?php require_once('profileTemplate.php') ?>
 
 
 <?php ob_start() ?>
@@ -55,7 +54,7 @@
 
     .recommended-recipes,
     .liked-recipe {
-        width: 90vw;
+        width: 80vw;
     }
 
     .recipe-links {
@@ -68,8 +67,29 @@
     }
 </style>
 
-<?php $style = ob_get_clean() ?>
-<main>
+<?php $style2 = ob_get_clean() ?>
+
+
+
+<?php ob_start() ?>
+<!-- html for this page is here!(you can use PHP variables here from the controller) -->
+<img class="logo" src="images/pantryhublogo.svg" alt="">
+<div class="profilemenu">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Personal Info</a></li>
+        <li><a href="#">Payment</a></li>
+        <li><a href="#">Support/FAQ</a></li>
+        <li><a href="#">My Kitchen</a></li>
+    </ul>
+</div>
+<div class="search-container">
+    <form action="">
+        <input type="text" placeholder="Search Here" name="search-item">
+        <button type="submit">Search</button>
+    </form>
+</div>
+<!--<main>
     <div class="liked-recommend-buttons"><button>Recommended Recipes</button><button>Liked Recipes</button></div>
     <div class="liked-recommend">
         <div class="recommended-recipes">
@@ -103,23 +123,16 @@
             </div>
         </div>
     </div>
-</main>
+</main>-->
 
+<?php $content2 = ob_get_clean() ?>
 
-<?php ob_start() ?>
-
-
-<?php $content = ob_get_clean() ?>
 
 
 <?php ob_start() ?>
-<?= $content2 ?>
-
 
 <script src='path to the file'>
     /* JScript for this page is here! */
 </script>
 
-<?php $script = ob_get_clean() ?>
-
-<?php require_once('template.php') ?>
+<?php $script2 = ob_get_clean() ?>

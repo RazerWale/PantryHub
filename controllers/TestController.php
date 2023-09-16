@@ -23,4 +23,8 @@ class TestController
     {
         require_once('views/profile.php');
     }
+    public function recipePage()
+    {
+        require_once('views/recipe.php');
+    }
 }
