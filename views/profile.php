@@ -100,7 +100,7 @@
                     <img src="images/share.svg" alt="">
                     <img src="images/timer.svg" alt="">
                 </div>
-                <p>Spicy Salad with Kidney Beans, Cheddar, and Nuts</p>
+                <a href="#">Spicy Salad with Kidney Beans, Cheddar, and Nuts</a>
             </div>
         </div>
         <div class="liked-recipe">
@@ -110,7 +110,7 @@
                 <img src="images/share.svg" alt="">
                 <img src="images/timer.svg" alt="">
             </div>
-            <p>Butternut Squash Frittata</p>
+            <a href="#">Butternut Squash Frittata</a>
         </div>
     </div>
 </main>
