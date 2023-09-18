@@ -61,13 +61,23 @@ try {
             $user->listUsers();
             break;
         case 'registerUser';
-            $user->registerUser();
+            if (!isset($_SESSION['loggedIn'])) {
+                $user->registerUser();
+            } else {
+                header('Location: ?action=profilePage');
+                exit;
+            }
             break;
         case 'removeUser';
             $user->removeUser();
             break;
         case 'login';
-            $user->login();
+            if (!isset($_SESSION['loggedIn']) || isset($_GET['logOut'])) {
+                $user->login();
+            } else {
+                header('Location: ?action=profilePage');
+                exit;
+            }
             break;
         case 'addUserEquipment';
             $user->addUserEquipment();
@@ -97,13 +107,23 @@ try {
             $user->removeFavouriteRecipe();
             break;
         case 'profilePage';
-            $main->profilePage();
+            if ($_SESSION['loggedIn']) {
+                $main->profilePage();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'recipePage';
             $main->recipePage();
             break;
+<<<<<<< HEAD
         case 'kitchenPage';
             $main->kitchenPage();
+=======
+        case 'search';
+            $recipe->search();
+>>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
             break;
         default:
             //should bring me to the home page

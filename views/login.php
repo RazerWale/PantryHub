@@ -14,7 +14,25 @@
 
 
 <?php ob_start() ?>
+<<<<<<< HEAD
 
+=======
+<header>
+    <img src="images/pantryhublogo.svg" alt="PantryHub logo">
+    <nav>
+        <ul>
+            <li>About</li>
+            <li>Pricing</li>
+            <li>Help</li>
+            <li><a href="?action=login">Login</a></li>
+        </ul>
+    </nav>
+    <button class="hamburger">
+        <!--<div class="bar"></div>-->
+    </button>
+    <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
+</header>
+>>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
 <div class="login-div">
     <h1>Welcome Back<br>
         Login Here.
@@ -51,6 +69,22 @@
 
 <script>
 
+<<<<<<< HEAD
+=======
+    hamburgerExitBtn.addEventListener('click', function () {
+        hamburgerExitBtn.style.display = "none";
+        //hamburgerBar.style.display = "none";
+        hamburgerBtn.style.display = "inline";
+        navMenu.style.inset = "0 0 0 100%";
+    });
+
+    hamburgerBtn.addEventListener('click', function () {
+        hamburgerExitBtn.style.display = "block";
+        //hamburgerBar.style.display = "block";
+        hamburgerBtn.style.display = "none";
+        navMenu.style.inset = "0 0 0 50%";
+    });
+>>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
 </script>
 
 <?php $script = ob_get_clean() ?>

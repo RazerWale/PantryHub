@@ -57,7 +57,9 @@ class UserController
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['userName'] = $userName;
                 $_SESSION['userId'] = $userId;
-                echo 'welcome back ' . $emailOrUsername;
+
+                header('Location: ?action=profilePage');
+                exit;
             } else {
                 echo 'incorrect username/email or password';
             }

@@ -55,9 +55,8 @@ class RecipeManager extends Manager
 
         // set equipments
         $equipments = $this->equipmentManager->fetchEquipmentsForRecipe($id);
-        var_dump($recipe->setEquipments($equipments));
+        $recipe->setEquipments($equipments);
 
-        var_dump($recipe);
         return $recipe;
     }
 
@@ -186,7 +185,7 @@ class RecipeManager extends Manager
     private function getSteps(int $id): array
     {
         // Steps query 
-
+        $steps = [];
         $reqSteps = $this->db->prepare('
              SELECT *
              FROM steps
@@ -232,7 +231,6 @@ class RecipeManager extends Manager
         if (isset($recipe['cuisine_type']) && $recipe['cuisine_type'] !== null && !empty($recipe['cuisine_type'])) {
             $array['cuisines'] = explode(',', $recipe['cuisine_type']);
         }
-        var_dump($array['cuisines']);
 
         if (isset($recipe['meal_type']) && $recipe['meal_type'] !== null && !empty($recipe['meal_type'])) {
             $array['meals'] = explode(',', $recipe['meal_type']);
@@ -242,5 +240,24 @@ class RecipeManager extends Manager
         }
 
         return $array;
+    }
+    public function search(string $searchItem)
+    {
+        $req = $this->db->prepare('
+        SELECT recipes.id
+        FROM recipe_ingredients
+        INNER JOIN recipes ON recipe_ingredients.recipe_id = recipes.id
+        INNER JOIN ingredients ON recipe_ingredients.ingredient_id = ingredients.id
+        WHERE LOWER(ingredients.name) LIKE LOWER(:searchItem) OR LOWER(recipes.name) LIKE LOWER (:searchItem)
+        ');
+        $req->execute(['searchItem' => '%' . $searchItem . '%']);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        $uniqueIds = [];
+        foreach ($result as $row) {
+            $id = $row['id'];
+            if (!in_array($id, $uniqueIds))
+                $uniqueIds[] = $id;
+        }
+        return $uniqueIds;
     }
 }
