@@ -75,26 +75,52 @@
 
 <?php $style = ob_get_clean() ?>
 
-<h1>Caldo Verde - Portuguese Kale Soup</h1>
-<img src="https://spoonacular.com/recipeImages/636787-636x393.jpg" alt="">
-<button class="tags">Diet Type</button>
-<p>In Your Kitchen</p>
-<div class="in-kitchen"></div>
-<p>Items to Buy</p>
-<div class="to-buy"></div>
-<div class="directions">
-    <p>Directions</p>
-</div>
+
 
 
 <?php ob_start() ?>
 
+<h1>
+    <?= $recipe->getName() ?>
+</h1>
+<img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
+<?php foreach ($recipe->getDiets() as $diet) { ?>
+    <button class="tags">
+        <?= $diet ?>
+    </button>
+
+<?php } ?>
+<p>In Your Kitchen</p>
+<div class="in-kitchen"></div>
+<p>Items to Buy</p>
+<div class="to-buy">
+    <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
+        <div class="">
+            <?= $ingredient->getName() ?>
+        </div>
+        <div class="">
+            <?= $ingredient->getQuantityMetric() ?>
+            <?= $ingredient->getUnitMetric() ?>
+        </div>
+    <?php } ?>
+</div>
+<div class="directions">
+    <p>Directions</p>
+    <?php foreach ($recipe->getSteps() as $step) { ?>
+        <div class="">
+            <?= $step->getStepNumber() ?>
+        </div>
+        <div class="">
+            <?= $step->getDescription() ?>
+        </div>
+    <?php } ?>
+
+</div>
 
 <?php $content = ob_get_clean() ?>
 
 
 <?php ob_start() ?>
-<?= $content2 ?>
 
 
 <script src='path to the file'>
@@ -104,4 +130,4 @@
 <?php $script = ob_get_clean() ?>
 
 <?php require_once('template.php')
-?>
+    ?>

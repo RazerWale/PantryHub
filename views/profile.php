@@ -78,13 +78,13 @@
             foreach ($recipes as $recipe) { ?>
                 <div class="rec-recipe">
 
-                    <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
+                    <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-312x150.jpg" alt="">
                     <div class="recipe-links">
                         <img src="images/heart.svg" alt="">
                         <img src="images/share.svg" alt="">
                         <img src="images/timer.svg" alt="">
                     </div>
-                    <a href="#">
+                    <a href="?action=recipePage&id=<?= $recipe->getId() ?>">
                         <?= $recipe->getName() ?>
                     </a>
                     <div class="recipe-ingredients">
@@ -127,7 +127,6 @@
 
 
 <?php ob_start() ?>
-<?= $content2 ?>
 
 
 <script src='path to the file'>
