@@ -73,19 +73,33 @@
     <div class="liked-recommend-buttons"><button>Recommended Recipes</button><button>Liked Recipes</button></div>
     <div class="liked-recommend">
         <div class="recommended-recipes">
-            <div class="rec-recipe">
-                <img src="https://spoonacular.com/recipeImages/157344-636x393.jpg" alt="">
-                <div class="recipe-links">
-                    <img src="images/heart.svg" alt="">
-                    <img src="images/share.svg" alt="">
-                    <img src="images/timer.svg" alt="">
+            <?php
+            /** @var RecipeEntity $recipe */
+            foreach ($recipes as $recipe) { ?>
+                <div class="rec-recipe">
+
+                    <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
+                    <div class="recipe-links">
+                        <img src="images/heart.svg" alt="">
+                        <img src="images/share.svg" alt="">
+                        <img src="images/timer.svg" alt="">
+                    </div>
+                    <a href="#">
+                        <?= $recipe->getName() ?>
+                    </a>
+                    <div class="recipe-ingredients">
+                        <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
+                            <div class="ingredients-needed">
+                                <?= $ingredient->getName() ?>
+                            </div>
+
+                        <?php } ?>
+                    </div>
                 </div>
-                <a href="#">Spicy Salad with Kidney Beans, Cheddar, and Nuts</a>
-                <div class="recipe-ingredients">
-                    <div class="ingredients-needed">kidney beans, nuts</div>
-                    <div class="ingredients-owned">cheddar</div>
-                </div>
-            </div>
+
+            <?php } ?>
+
+
         </div>
         <div class="liked-recipes">
             <div class="liked-recipe">

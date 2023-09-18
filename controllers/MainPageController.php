@@ -8,6 +8,8 @@ class MainPageController
     }
     public function profilePage()
     {
+        $recipes = [];
+
         require_once('views/profile.php');
     }
     public function recipePage()

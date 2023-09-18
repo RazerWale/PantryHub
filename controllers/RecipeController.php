@@ -48,5 +48,26 @@ class RecipeController
     {
         require_once('views/main.php');
     }
+    public function search()
+    {
+        $recipes = [];
+
+        if (!empty($_GET['search-item'])) {
+            $searchItem = $_GET['search-item'];
+            var_dump($searchItem);
+
+
+            $recipeIds = $this->recipeManager->search($searchItem);
+            foreach ($recipeIds as $recipe) {
+                $recipeEntity = $this->recipeManager->fetchRecipe($recipe);
+                $recipes[] = $recipeEntity;
+            }
+            // var_dump($arrayRecipes);
+            // return $recipes;
+        }
+        require_once('views/profile.php');
+
+
+    }
 
 }

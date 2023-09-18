@@ -16,8 +16,8 @@
 <body>
     <?= $content ?>
     <!-- PHP -->
-    <?= $script ?>
     <!-- PHP -->
+    <?= $script ?>
 </body>
 
 
