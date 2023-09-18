@@ -12,18 +12,6 @@
 
 <?php ob_start() ?>
 
-<header>
-    <img src="images/pantryhublogo.svg" alt="PantryHub logo">
-    <nav>
-        <ul>
-            <li>About</li>
-            <li>Pricing</li>
-            <li>Help</li>
-            <li>Login</li>
-        </ul>
-    </nav>
-    <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
-</header>
 <div class="container">
     <div class="progress-bar">
         <div class="step">
