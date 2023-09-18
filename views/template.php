@@ -31,7 +31,6 @@
     </header>
     <?= $content ?>
     <!-- PHP -->
-<<<<<<< HEAD
     <?= $script ?>
     <script>
         let hamburgerExitBtn = document.querySelector('.hamburger');
@@ -39,22 +38,20 @@
         let hamburgerBtn = document.querySelector('.hamburger-icon');
         let navMenu = document.querySelector('ul');
 
-        hamburgerExitBtn.addEventListener('click', function() {
+        hamburgerExitBtn.addEventListener('click', function () {
             hamburgerExitBtn.style.display = "none";
             //hamburgerBar.style.display = "none";
             hamburgerBtn.style.display = "inline";
             navMenu.style.inset = "0 0 0 100%";
         });
 
-        hamburgerBtn.addEventListener('click', function() {
+        hamburgerBtn.addEventListener('click', function () {
             hamburgerExitBtn.style.display = "block";
             //hamburgerBar.style.display = "block";
             hamburgerBtn.style.display = "none";
             navMenu.style.inset = "0 0 0 50%";
         });
     </script>
-=======
->>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
     <!-- PHP -->
     <?= $script ?>
 </body>
