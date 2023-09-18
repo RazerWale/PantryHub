@@ -14,8 +14,47 @@
 </head>
 
 <body>
+    <header>
+        <a href="?action=main"><img src="images/pantryhublogo.svg" alt="PantryHub logo"></a>
+        <nav>
+            <ul>
+                <li>About</li>
+                <li>Pricing</li>
+                <li>Help</li>
+                <li><a href="?action=login">Login</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">
+            <!--<div class="bar"></div>-->
+        </button>
+        <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
+    </header>
     <?= $content ?>
     <!-- PHP -->
+<<<<<<< HEAD
+    <?= $script ?>
+    <script>
+        let hamburgerExitBtn = document.querySelector('.hamburger');
+        //let hamburgerBar = document.querySelector('.bar');
+        let hamburgerBtn = document.querySelector('.hamburger-icon');
+        let navMenu = document.querySelector('ul');
+
+        hamburgerExitBtn.addEventListener('click', function() {
+            hamburgerExitBtn.style.display = "none";
+            //hamburgerBar.style.display = "none";
+            hamburgerBtn.style.display = "inline";
+            navMenu.style.inset = "0 0 0 100%";
+        });
+
+        hamburgerBtn.addEventListener('click', function() {
+            hamburgerExitBtn.style.display = "block";
+            //hamburgerBar.style.display = "block";
+            hamburgerBtn.style.display = "none";
+            navMenu.style.inset = "0 0 0 50%";
+        });
+    </script>
+=======
+>>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
     <!-- PHP -->
     <?= $script ?>
 </body>

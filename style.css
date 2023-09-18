@@ -42,13 +42,61 @@ header {
     padding: 10px 5%;
 }
 
-nav {
+/*nav {
     display: inline-block;
+}*/
+
+.hamburger-icon {
+    display: none;
+    cursor: pointer;
+    z-index: 90;
+}
+
+.hamburger {
+    display: none;
+    position: relative;
+    width: 35px;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.hamburger .bar, .hamburger:after, .hamburger:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: var(--main-font-color);
+    margin: 6px 0;
+    /*transition: .4s;*/
+}
+
+.hamburger .is-active, .hamburger:before {
+    transform: rotate(-45deg) translate(-3px, 4px);
+}
+
+.hamburger .is-active, .hamburger:after {
+    transform: rotate(45deg) translate(-3px, -6px);
+}
+
+.hamburger {
+    flex-shrink: 0;
+
 }
 
 ul {
-    /*display: flex;*/
+    display: flex;
+    /*position:fixed;
+    inset: 0 0 0 100%;
+    background-color: var(--secondary-bg-color);*/
     list-style-type: none;
+    gap: 1em;
+    /*flex-direction: column;*/
+    justify-content: center;
+    margin: 0;
 }
 
 li {
@@ -67,10 +115,14 @@ li:last-of-type {
 }
 
 li:hover {
+    transform: scale(1.05);
     cursor: pointer;
-    transform: scale(1.3);
     color: var(--tertiary-bg-color);
 }
+
+/*li:hover {
+    transform: scale(1.3);
+}*/
 
 li:last-of-type:hover {
     color: var(--main-font-color);
@@ -78,8 +130,13 @@ li:last-of-type:hover {
 
 .hamburger-icon {
     display: none;
-    height: 35px;
 }
+
+header a {
+    text-decoration: none;
+    color: var(--tertiary-bg-color);
+}
+
 
 .outer {
     display: flex;
@@ -90,4 +147,33 @@ li:last-of-type:hover {
 
 p {
     font-family: "DM Sans";
+}
+
+@media (max-width: 800px) {
+    /*ul {
+        display: block;
+        background-color: transparent;
+        inset: 0;
+        position: static;
+    }*/
+
+    ul {
+        display: flex;
+        position:fixed;
+        inset: 0 0 0 100%;
+        background-color: var(--secondary-bg-color);
+        list-style-type: none;
+        gap: 1em;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .hamburger-icon {
+        display: inline-block;
+    }
+
+    .hamburger {
+        display: none;
+    }
 }

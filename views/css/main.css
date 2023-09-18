@@ -1,50 +1,3 @@
-/*header {
-    display: flex;
-    margin: 20px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5%;
-}
-
-nav {
-    display: inline-block;
-}
-
-ul {
-    /*display: flex;
-    list-style-type: none;
-}
-
-li {
-    display: inline-block;
-    text-decoration: none;
-    padding: 0px 20px;
-    font-weight: 500;
-    font-family: "DM Serif Display";
-    font-size: 1.5em;
-    color: var(--main-font-color);
-    transition: all .4s;
-}
-
-li:last-of-type {
-    color: var(--tertiary-bg-color);
-}
-
-li:hover {
-    cursor: pointer;
-    transform: scale(1.3);
-    color: var(--tertiary-bg-color);
-}
-
-li:last-of-type:hover {
-    color: var(--main-font-color);
-}
-
-.hamburger-icon {
-    display: none;
-}*/
-
-
 .main-info {
     display: grid;
     grid-template-columns: 1fr .5fr .5fr 1fr;
@@ -58,14 +11,14 @@ li:last-of-type:hover {
     
 }
 
-h1 {
+.main-info h1 {
     font-family:"Ultra";
     color: var(--tertiary-bg-color);
     font-size: 2.6em;
 }
 
 
-button {
+.main-info button {
     grid-row-start: 3;
     grid-row-end: 4;
     background-color: var(--tertiary-bg-color);
@@ -78,13 +31,14 @@ button {
     font-family: "DM Serif Display";
 }
 
-p {
+.main-info p {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
     font-family: "DM Sans";
     margin: 20px 0;
+    color: var(--main-font-color);
 }
 
 .main-info img {
@@ -92,45 +46,51 @@ p {
     grid-row-start:1;
     grid-row-end: 3;
     grid-column-start: 4;
-    grid-column-end: 5;
+}
+
+.main-info a {
+    text-decoration: none;
+    color: var(--secondary-bg-color);
 }
 
 @media (max-width: 850px) {
-    h1 {
+    .main-info h1 {
         text-align: center;
+        font-size: 2.2rem;
         grid-row-start: 2;
         grid-row-end:3;
+        padding: 0;
     }
     .main-info {
       display: grid;
       justify-items: center;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr;
-      /*flex-direction: column;
-      align-items:center;*/
+      flex-direction: column;
+      align-items:center;
     }
 
-    p {
+    .main-info p {
         text-align: justify;
         grid-row-start: 3;
         grid-row-end:4;
     }
 
     .main-info img {
-        width: 25%;
+        width: 23%;
         margin: 0;
         grid-column-start: 1;
         grid-row-start: 1;
         grid-row-end:2;
     }
 
-    button {
+    .main-info button {
         grid-row-start: 4;
         grid-row-end:5;
     }
   }
 
-@media only screen and (max-width: 800px) {
+/*@media only screen and (max-width: 800px) {
     ul {
         display: flex;
         position:fixed;

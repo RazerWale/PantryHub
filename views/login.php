@@ -4,7 +4,6 @@
 
 <?php ob_start() ?>
 
-<link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="views/css/login.css">
 <style>
     /* CSS for this page is here! */
@@ -15,6 +14,9 @@
 
 
 <?php ob_start() ?>
+<<<<<<< HEAD
+
+=======
 <header>
     <img src="images/pantryhublogo.svg" alt="PantryHub logo">
     <nav>
@@ -30,6 +32,7 @@
     </button>
     <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
 </header>
+>>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
 <div class="login-div">
     <h1>Welcome Back<br>
         Login Here.
@@ -65,11 +68,9 @@
 <?php ob_start() ?>
 
 <script>
-    let hamburgerExitBtn = document.querySelector('.hamburger');
-    //let hamburgerBar = document.querySelector('.bar');
-    let hamburgerBtn = document.querySelector('.hamburger-icon');
-    let navMenu = document.querySelector('ul');
 
+<<<<<<< HEAD
+=======
     hamburgerExitBtn.addEventListener('click', function () {
         hamburgerExitBtn.style.display = "none";
         //hamburgerBar.style.display = "none";
@@ -83,6 +84,7 @@
         hamburgerBtn.style.display = "none";
         navMenu.style.inset = "0 0 0 50%";
     });
+>>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
 </script>
 
 <?php $script = ob_get_clean() ?>
