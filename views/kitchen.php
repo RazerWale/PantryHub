@@ -1,4 +1,4 @@
-<?php $title = "Recipe"; ?>
+<?php $title = "Profile"; ?>
 
 <?php require_once('profileTemplate.php') ?>
 
@@ -8,7 +8,7 @@
 <!--<link rel="stylesheet" href="path to the file">-->
 <style>
     /* CSS for this page is here! */
-    body {
+    /*body {
         display: grid;
         grid-template-columns: 300px 1fr;
         grid-template-rows: 80px 1fr 1fr 1fr;
@@ -65,25 +65,16 @@
 
     .recipe-links img {
         height: 20px;
-    }
-
-    .tags {
-        height: 30px;
-        width: 100px;
-    }
+    }*/
 </style>
 
 <?php $style = ob_get_clean() ?>
-
-<h1>Caldo Verde - Portuguese Kale Soup</h1>
-<img src="https://spoonacular.com/recipeImages/636787-636x393.jpg" alt="">
-<button class="tags">Diet Type</button>
-<p>In Your Kitchen</p>
-<div class="in-kitchen"></div>
-<p>Items to Buy</p>
-<div class="to-buy"></div>
-<div class="directions">
-    <p>Directions</p>
+<div class="kitchen">
+    <h1>My Groceries</h1>
+    <div class="add-groceries">
+        <h2>Edit Groceries</h2>
+        <div class="add-"></div>
+    </div>
 </div>
 
 
@@ -103,5 +94,4 @@
 
 <?php $script = ob_get_clean() ?>
 
-<?php require_once('template.php')
-?>
+<?php require_once('template.php') ?>

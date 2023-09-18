@@ -102,6 +102,9 @@ try {
         case 'recipePage';
             $main->recipePage();
             break;
+        case 'kitchenPage';
+            $main->kitchenPage();
+            break;
         default:
             //should bring me to the home page
             $main->default();

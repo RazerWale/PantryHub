@@ -14,4 +14,8 @@ class MainPageController
     {
         require_once('views/recipe.php');
     }
+    public function kitchenPage()
+    {
+        require_once('views/kitchen.php');
+    }
 }

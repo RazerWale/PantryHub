@@ -3,7 +3,7 @@ h1 {
     text-align: center;
 }
 
-.hamburger-icon {
+/*.hamburger-icon {
     display: inline;
     cursor: pointer;
     z-index: 90;
@@ -28,7 +28,7 @@ h1 {
     height: 5px;
     background-color: var(--main-font-color);
     margin: 6px 0;
-    /*transition: .4s;*/
+    /*transition: .4s;
 }
 
 .hamburger .is-active, .hamburger:before {
@@ -42,10 +42,7 @@ h1 {
 .hamburger {
     flex-shrink: 0;
 }
-
-
-
-
+*/
 
 .login-div {
     background-color: var(--tertiary-bg-color);
@@ -55,32 +52,6 @@ h1 {
     border-radius: 5px;
     padding: 5%;
     text-align: center;
-}
-
-/*nav {
-    display: inline-block;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50%;
-    min-height: 100vh;
-    display: block;
-    background-color: var(--secondary-bg-color);
-}*/
-
-ul {
-    display: flex;
-    position:fixed;
-    inset: 0 0 0 100%;
-    background-color: var(--secondary-bg-color);
-    gap: 1em;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-}
-
-li:hover {
-    transform: scale(1.1);
 }
 
 .input-box {
@@ -132,19 +103,3 @@ li:hover {
     text-decoration: none;
 }
 
-@media (min-width: 800px) {
-    ul {
-        display: block;
-        background-color: transparent;
-        inset: 0;
-        position: static;
-    }
-
-    .hamburger-icon {
-        display: none;
-    }
-
-    .hamburger {
-        display: none;
-    }
-}
