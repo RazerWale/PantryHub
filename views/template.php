@@ -31,7 +31,6 @@
     </header>
     <?= $content ?>
     <!-- PHP -->
-<<<<<<< HEAD
     <?= $script ?>
     <script>
         let hamburgerExitBtn = document.querySelector('.hamburger');
@@ -53,8 +52,6 @@
             navMenu.style.inset = "0 0 0 50%";
         });
     </script>
-=======
->>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
     <!-- PHP -->
     <?= $script ?>
 </body>

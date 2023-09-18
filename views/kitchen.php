@@ -70,10 +70,10 @@
 
 <?php $style = ob_get_clean() ?>
 <div class="kitchen">
-    <h1>My Groceries</h1>
+    <h1>My Kitchen</h1>
     <div class="add-groceries">
         <h2>Edit Groceries</h2>
-        <div class="add-"></div>
+        <div class="add-groceries"></div>
     </div>
 </div>
 

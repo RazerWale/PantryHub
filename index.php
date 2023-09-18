@@ -117,13 +117,10 @@ try {
         case 'recipePage';
             $main->recipePage();
             break;
-<<<<<<< HEAD
         case 'kitchenPage';
             $main->kitchenPage();
-=======
         case 'search';
             $recipe->search();
->>>>>>> 85723fa31c9b4877119a9df199603adfcfe53642
             break;
         default:
             //should bring me to the home page

@@ -12,18 +12,6 @@
 
 <?php ob_start() ?>
 
-<header>
-    <img src="images/pantryhublogo.svg" alt="PantryHub logo">
-    <nav>
-        <ul>
-            <li>About</li>
-            <li>Pricing</li>
-            <li>Help</li>
-            <li>Login</li>
-        </ul>
-    </nav>
-    <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
-</header>
 <div class="container">
     <div class="progress-bar">
         <div class="step">
@@ -195,7 +183,7 @@
     const submitForm = document.getElementById('form');
     console.log(usernameInput.value);
 
-    firstNextBtn.addEventListener("click", function (event) {
+    firstNextBtn.addEventListener("click", function(event) {
         event.preventDefault();
         if (usernameInput.value !== '' && emailInput.value !== '' && passwordInput.value !== '' && passConInput.value !== '') {
             slidePage.style.marginLeft = "-31.2%";
@@ -205,17 +193,15 @@
             slidePage2.style.marginLeft = "31.2";
         }
     });
-    secondNextBtn.addEventListener("click", function (event) {
+    secondNextBtn.addEventListener("click", function(event) {
         event.preventDefault();
         slidePage2.style.marginLeft = "-31.2%";
     });
-    secondPrevBtn.addEventListener("click", function (event) {
+    secondPrevBtn.addEventListener("click", function(event) {
         event.preventDefault();
         slidePrevPage3.style.marginLeft = "31.2%";
         slidePage2.style.marginLeft = "31.2";
     });
-
-
 </script>
 
 <?php $script = ob_get_clean() ?>
