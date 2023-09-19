@@ -75,6 +75,10 @@
         <h2>Edit Groceries</h2>
         <div class="add-groceries"></div>
     </div>
+    <div class="add-appliances">
+        <h2>Edit Appliances</h2>
+        <div class="add-groceries"></div>
+    </div>
 </div>
 
 
