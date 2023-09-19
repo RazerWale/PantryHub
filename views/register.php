@@ -149,10 +149,7 @@
                 </div>
                 <div class="field btns">
                     <button class="prev-2 prev">Previous</button>
-                    <<<<<<< HEAD <input type="submit" class="reg-submit" id="submit" value="Submit">
-                        =======
-                        <input type="submit" class="reg-submit" target="mysite.com">Submit</input>
-                        >>>>>>> 143f37239c80c2b649ac94295fc31500baaaf4c2
+                    <input type="submit" class="reg-submit" id="submit" value="Submit">
                 </div>
             </div>
         </form>

@@ -31,7 +31,6 @@
     </header>
     <?= $content ?>
     <!-- PHP -->
-    <?= $script ?>
     <script>
         let hamburgerExitBtn = document.querySelector('.hamburger');
         //let hamburgerBar = document.querySelector('.bar');
