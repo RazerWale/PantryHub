@@ -103,9 +103,9 @@ class UserManager extends Manager
         ');
         $req->execute([$id]);
         $rows = $req->fetchAll(PDO::FETCH_ASSOC);
-        if (empty($rows)) {
-            throw new Exception('no equipments for this user');
-        }
+        // if (empty($rows)) {
+        //     throw new Exception('no equipments for this user');
+        // }
         $result = [];
         foreach ($rows as $row) {
             $equipment = new EquipmentEntity($row['name'], $row['equipment_id'], $row['image_url']);
@@ -160,9 +160,9 @@ class UserManager extends Manager
         ');
         $req->execute([$id]);
         $rows = $req->fetchAll(PDO::FETCH_ASSOC);
-        if (empty($rows)) {
-            throw new Exception('no ingredients for this user');
-        }
+        // if (empty($rows)) {
+        //     throw new Exception('no ingredients for this user');
+        // }
         $result = [];
         foreach ($rows as $row) {
             $equipment = new UsersIngredientsEntity($row['name'], $row['ingredient_id'], $row['image_url'], $row['calories'], $row['type']);

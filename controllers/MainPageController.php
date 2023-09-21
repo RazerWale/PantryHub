@@ -17,6 +17,9 @@ class MainPageController
     }
     public function profilePage()
     {
+        $recipesByIngredient = [];
+        $recipesByEquipment = [];
+
         $recipes = [];
         $userId = $_SESSION['userId'];
         $userIngredients = $this->userManager->fetchUserIngredients($userId);
@@ -29,9 +32,12 @@ class MainPageController
         foreach ($userEquipments as $equipment) {
             $equipmentsIds[] = $equipment->getId();
         }
-
-        $recipesByIngredient = $this->recipeManager->fetchRecipesByIngredients($ingredientsIds);
-        $recipesByEquipment = $this->recipeManager->fetchRecipesByEquipments($equipmentsIds);
+        if (!empty($ingredientsIds)) {
+            $recipesByIngredient = $this->recipeManager->fetchRecipesByIngredients($ingredientsIds);
+        }
+        if (!empty($equipmentsIds)) {
+            $recipesByEquipment = $this->recipeManager->fetchRecipesByEquipments($equipmentsIds);
+        }
         $recipesIds = [];
         foreach ($recipesByIngredient as $id) {
             $recipesIds[] = [
