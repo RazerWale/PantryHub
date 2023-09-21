@@ -13,40 +13,43 @@
 <?php ob_start() ?>
 
 <div class="container">
-    <div class="progress-bar">
+    <h1>Registration Form</h1>
+    <!--<div class="progress-bar">
         <div class="step">
-            <p>Personal Information</p>
+            <p>Personal Info</p>
+            <span class="bullet">1</span>
         </div>
         <div class="step">
-            <p>Diet & Restrictions</p>
+            <p>Diet Info</p>
+            <span class="bullet">2</span>
         </div>
         <div class="step">
             <p>Appliances</p>
+            <span class="bullet">3</span>
         </div>
-        <!--<div class="step">
-            <p>Goods & Groceries</p>
-        </div>-->
         <div class="step">
             <p>Confirm</p>
+            <span class="bullet">4</span>
         </div>
-    </div>
+    </div>-->
     <div class="form-outer">
         <form action="?action=registerUser" method="POST" id="form">
             <div class="page page1 slidepage">
+                <h2>Personal Info</h2>
                 <div class="field">
-                    <div class="label">Username</div>
+                    <label for="username">Username</label>
                     <input type="text" name="username" required id="username">
                 </div>
                 <div class="field">
-                    <div class="label">Email</div>
+                    <label for="email">Email</label>
                     <input type="email" name="email" required id="email">
                 </div>
                 <div class="field">
-                    <div class="label">Password</div>
+                    <label for="password">Password</label>
                     <input type="password" name="password" required id="password">
                 </div>
                 <div class="field">
-                    <div class="label">Confirm Password</div>
+                    <label for="passCon"></label>
                     <input type="password" name="passCon" required id="passCon">
                 </div>
                 <div class="field">
@@ -55,6 +58,7 @@
             </div>
 
             <div class="page page2 slidenextpg2">
+                <h2>Diets & Restrictions</h2>
                 <div class="field">
                     <img src="images/dairyfree.svg" alt="">
                     <input type="checkbox" id="dairy-free" name="dairy-free">
@@ -107,6 +111,7 @@
             </div>
 
             <div class="page page3 slideprevpg3">
+                <h2>Appliances</h2>
                 <div class="field">
                     <img src="images/oven.svg" alt="">
                     <input type="checkbox" id="oven" name="oven">
@@ -161,16 +166,20 @@
 
 <?php ob_start() ?>
 
+
 <script>
-    /* JScript for this page is here! */
+    /* JScript for this page is here!*/
     let slidePage = document.querySelector(".slidepage");
     let firstNextBtn = document.querySelector(".nextBtn");
 
     let secondNextBtn = document.querySelector(".next-1");
-    let slidePage2 = document.querySelector(".slidenextpg2");
+    let secondPrevBtn = document.querySelector(".prev-1");
 
-    let secondPrevBtn = document.querySelector(".prev-2");
-    let slidePrevPage3 = document.querySelector(".slideprevpg3");
+    let thirdPrevBtn = document.querySelector(".prev-2");
+    let formSubmitBtn = document.querySelector(".reg-submit");
+
+    /*let slidePage2 = document.querySelector(".slidenextpg2");*/
+    /*let slidePrevPage3 = document.querySelector(".slideprevpg3");*/
 
     const usernameInput = document.getElementById('username');
     const emailInput = document.getElementById('email');
@@ -183,7 +192,7 @@
     firstNextBtn.addEventListener("click", function(event) {
         event.preventDefault();
         if (usernameInput.value !== '' && emailInput.value !== '' && passwordInput.value !== '' && passConInput.value !== '') {
-            slidePage.style.marginLeft = "-31.2%";
+            slidePage.style.marginLeft = "-31.24%";
         } else {
             alert('please input all the fields')
             slidePrevPage3.style.marginLeft = "31.2%";
@@ -192,13 +201,22 @@
     });
     secondNextBtn.addEventListener("click", function(event) {
         event.preventDefault();
-        slidePage2.style.marginLeft = "-31.2%";
+        slidePage.style.marginLeft = "-62.48%";
     });
     secondPrevBtn.addEventListener("click", function(event) {
         event.preventDefault();
-        slidePrevPage3.style.marginLeft = "31.2%";
-        slidePage2.style.marginLeft = "31.2";
+        slidePage.style.marginLeft = "0";
     });
+    thirdPrevBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        slidePage.style.marginLeft = "-31.24%";
+    });
+    /*secondPrevBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        slidePage.style.marginLeft = "-93.72%";
+        /*slidePrevPage3.style.marginLeft = "31.2%";
+        slidePage2.style.marginLeft = "31.2";
+    });*/
 </script>
 
 <?php $script = ob_get_clean() ?>
