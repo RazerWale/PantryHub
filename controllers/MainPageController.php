@@ -1,9 +1,20 @@
 <?php
 require_once('models/UserManager.php');
 
+/**
+ * Summary of MainPageController
+ */
 class MainPageController
 {
+    /**
+     * Summary of recipeManager
+     * @var RecipeManager
+     */
     protected $recipeManager; // Attribute 
+    /**
+     * Summary of userManager
+     * @var UserManager
+     */
     protected $userManager; // Attribute 
 
     public function __construct() // Constructor 
@@ -45,10 +56,7 @@ class MainPageController
                 'count' => $id['ingredients_count']
             ];
         }
-        $recipesIds[] = [
-            'id' => 660306,
-            'count' => 1
-        ];
+
 
         foreach ($recipesByEquipment as $equipment) {
             $result = false;
@@ -65,6 +73,15 @@ class MainPageController
                 ];
             }
         }
+        $column = array_column($recipesIds, 'count');
+        array_multisort($column, SORT_DESC, $recipesIds);
+
+
+        $ids = array_map(function ($value) {
+            return $value['id'];
+        }, $recipesIds);
+
+        $recipes = $this->recipeManager->fetchRecipesByIds($ids);
         require_once('views/profile.php');
     }
 
