@@ -69,6 +69,7 @@ class UserController
             session_destroy();
             setcookie("user", "", time() - 3600);
             setcookie("id", "", time() - 3600);
+            header('Location: ?action=login');
         }
 
         require_once('views/login.php');

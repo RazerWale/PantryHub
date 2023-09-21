@@ -73,7 +73,7 @@ class EquipmentManager extends Manager
 
         $equipments = [];
         foreach ($result as $row) {
-            $equipment = new EquipmentEntity($row['name'], $row['id'], $row['image']);
+            $equipment = new EquipmentEntity($row['name'], $row['id'], $row['image_url']);
             $equipments[] = $equipment;
         }
         return $equipments;

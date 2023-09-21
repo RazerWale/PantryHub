@@ -260,4 +260,39 @@ class RecipeManager extends Manager
         }
         return $uniqueIds;
     }
+    public function fetchRecipesByIngredients(array $ingredientsIds): array
+    {
+        // $ingredients = implode(', ', $ingredientsIds);
+        $inClause = str_repeat('?,', count($ingredientsIds) - 1) . '?';
+        $req = $this->db->prepare("
+        SELECT recipes.id, COUNT(recipes.id) as ingredients_count
+        FROM recipes
+         
+        LEFT JOIN recipe_ingredients ON recipes.id = recipe_ingredients.recipe_id
+       
+        WHERE recipe_ingredients.ingredient_id IN ($inClause) 
+        GROUP BY recipes.id
+        ORDER BY ingredients_count DESC
+        ");
+        // $req->bindParam(':ingredient', $ingredientsIds);
+        $req->execute($ingredientsIds);
+        // var_dump($req->debugDumpParams());
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function fetchRecipesByEquipments(array $equipmentsIds): array
+    {
+        $inClause = str_repeat('?,', count($equipmentsIds) - 1) . '?';
+        $req = $this->db->prepare("
+        SELECT recipes.id, COUNT(recipes.id) as equipments_count
+        FROM recipes
+        LEFT JOIN recipes_equipments ON recipes.id = recipes_equipments.recipe_id
+        WHERE recipes_equipments.equipment_id IN ($inClause) 
+        GROUP BY recipes.id
+        ORDER BY equipments_count DESC
+        ");
+        $req->execute($equipmentsIds);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

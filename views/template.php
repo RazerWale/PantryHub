@@ -14,21 +14,23 @@
 </head>
 
 <body>
-    <header>
-        <a href="?action=main"><img src="images/pantryhublogo.svg" alt="PantryHub logo"></a>
-        <nav>
-            <ul>
-                <li>About</li>
-                <li>Pricing</li>
-                <li>Help</li>
-                <li><a href="?action=login">Login</a></li>
-            </ul>
-        </nav>
-        <button class="hamburger">
-            <!--<div class="bar"></div>-->
-        </button>
-        <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
-    </header>
+    <?php if (!isset($_SESSION['loggedIn'])) { ?>
+        <header>
+            <a href="?action=main"><img src="images/pantryhublogo.svg" alt="PantryHub logo"></a>
+            <nav>
+                <ul>
+                    <li>About</li>
+                    <li>Pricing</li>
+                    <li>Help</li>
+                    <li><a href="?action=login">Login</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger">
+                <!--<div class="bar"></div>-->
+            </button>
+            <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
+        </header>
+    <?php } ?>
     <?= $content ?>
     <!-- PHP -->
     <script>

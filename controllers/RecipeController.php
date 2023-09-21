@@ -10,13 +10,6 @@ class RecipeController
     {
         $this->recipeManager = new RecipeManager();
     }
-    public function getRecipe()
-    {
-        $id = 406;
-
-        $recipes = $this->recipeManager->fetchRecipe($id);
-        require_once('views/main.php');
-    }
     public function listRecipes()
     {
         $recipes = $this->recipeManager->fetchRecipes();
