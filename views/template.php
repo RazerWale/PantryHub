@@ -39,14 +39,14 @@
         let hamburgerBtn = document.querySelector('.hamburger-icon');
         let navMenu = document.querySelector('ul');
 
-        hamburgerExitBtn.addEventListener('click', function () {
+        hamburgerExitBtn.addEventListener('click', function() {
             hamburgerExitBtn.style.display = "none";
             //hamburgerBar.style.display = "none";
             hamburgerBtn.style.display = "inline";
             navMenu.style.inset = "0 0 0 100%";
         });
 
-        hamburgerBtn.addEventListener('click', function () {
+        hamburgerBtn.addEventListener('click', function() {
             hamburgerExitBtn.style.display = "block";
             //hamburgerBar.style.display = "block";
             hamburgerBtn.style.display = "none";

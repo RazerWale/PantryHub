@@ -145,7 +145,7 @@ header a {
     min-height: 90vh;
 }
 
-p {
+p, label {
     font-family: "DM Sans";
 }
 

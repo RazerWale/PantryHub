@@ -45,16 +45,6 @@ class MainPageController
         ];
 
         foreach ($recipesByEquipment as $equipment) {
-            // foreach ($recipesIds as $key => $id) {
-            //     if ($equipment['id'] == $id['id']) {
-            //         $recipesIds[$key]['count'] += $equipment['equipments_count'];
-            //         continue;
-            //     }
-            // }
-            // $recipesIds[] = [
-            //     'id' => $equipment['id'],
-            //     'count' => $equipment['equipments_count']
-            // ];
             $result = false;
             foreach ($recipesIds as $key => $recipe) {
                 if ($recipe['id'] === $equipment['id']) {
@@ -68,16 +58,7 @@ class MainPageController
                     'count' => $equipment['equipments_count']
                 ];
             }
-
-
-
         }
-
-
-
-        // var_dump($recipesByEquipment);
-        var_dump($recipesIds);
-
         require_once('views/profile.php');
     }
 
@@ -95,14 +76,4 @@ class MainPageController
     {
         require_once('views/kitchen.php');
     }
-// public function recommendedRecipes()
-// {
-//     $userId = $_SESSION['userId'];
-//     $userIngredients = $this->userManager->fetchUserIngredients($userId);
-//     $userEquipments = $this->userManager->fetchUserEquipments($userId);
-
-//     $recipes = $this->recipeManager->fetchRecommendedRecipes($userIngredients, $userEquipments);
-//     var_dump($recipes);
-
-// }
 }
