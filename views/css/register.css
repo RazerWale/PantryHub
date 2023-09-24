@@ -13,7 +13,7 @@ h1, h2 {
 
 .form-outer {
     width: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .form-outer form {
@@ -40,14 +40,14 @@ h1, h2 {
     border-radius: 5px;
 }
 
-.form-outer form .page1 .field button {
+/*.form-outer button {
     height: 100%;
     width: 50%;
     border: none;
     border-radius: 90px;
     cursor: pointer;
     text-transform: uppercase;
-}
+}*/
 
 /*.container .progress-bar{
     display: flex;
@@ -89,9 +89,6 @@ h1, h2 {
     border: none;
     font-family: "DM Sans";
     border-radius: 50px;
-    color: var(--main-font-color);
-    padding: 20px 45px 20px 20px;
-    font-size: 16px;
 }
 
 .page2 {
