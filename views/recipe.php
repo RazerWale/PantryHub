@@ -1,6 +1,6 @@
 <?php $title = "Recipe"; ?>
 
-<?php /*require_once('profileTemplate.php')*/ ?>
+<?php /*require_once('profileTemplate.php')*/?>
 
 
 <?php ob_start() ?>
@@ -85,12 +85,14 @@
         <?= $recipe->getName() ?>
     </h1>
     <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
-    <div class="tags"><?php foreach ($recipe->getDiets() as $diet) { ?>
-            <button class="tag">
-                <p><?= $diet ?></p>
-            </button>
-
-        <?php } ?>
+    <div class="tags">
+        <?php if ($recipe->getDiets() !== null) {
+            foreach ($recipe->getDiets() as $diet) { ?>
+                <button class="tags">
+                    <?= $diet ?>
+                </button>
+            <?php }
+        } ?>
     </div>
     <div class="recipe-ingredients">
         <div class="in-kitchen-container">
@@ -121,7 +123,9 @@
                         <?= $step->getStepNumber() ?>
                     </div>-->
                 <li class="">
-                    <p><?= $step->getDescription() ?></p>
+                    <p>
+                        <?= $step->getDescription() ?>
+                    </p>
                 </li>
             <?php } ?>
         </ol>
@@ -142,4 +146,4 @@
 <?php $script = ob_get_clean() ?>
 
 <?php require_once('template.php')
-?>
+    ?>

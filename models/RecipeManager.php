@@ -95,6 +95,44 @@ class RecipeManager extends Manager
         // var_dump($result);
         return $result;
     }
+    /**
+     * Summary of fetchRecipesByIds
+     * @param array $ids
+     * @return RecipeEntity[]
+     */
+    public function fetchRecipesByIds(array $ids): array
+    {
+        $inClause = str_repeat('?,', count($ids) - 1) . '?';
+
+        $req = $this->db->prepare("
+        SELECT * 
+        FROM recipes 
+        WHERE recipes.id IN ($inClause)
+    ");
+        $req->execute($ids);
+        $rows = $req->fetchAll(PDO::FETCH_ASSOC);
+        $result = [];
+        foreach ($rows as $row) {
+            $arrays = $this->checkForArrayExplode($row); // if not NULL split values and put it in array
+
+            $recipe = new RecipeEntity($row['name'], $row['id'], $row['image_url'], $arrays['cuisines'], $arrays['meals'], $arrays['diets'], $row['time_to_cook'], $row['servings'], $row['calories'], new DateTime($row['created_at']));
+
+            // set steps
+            $steps = $this->getSteps($row['id']);
+            $recipe->setSteps($steps);
+
+            // set ingredients
+            $ingredients = $this->ingredientManager->fetchIngredientsForRecipe($row['id']);
+            $recipe->setIngredients($ingredients);
+
+            // set equipments
+            $equipments = $this->equipmentManager->fetchEquipmentsForRecipe($row['id']);
+            $recipe->setEquipments($equipments);
+
+            $result[] = $recipe;
+        }
+        return $result;
+    }
 
     /**
      * Summary of insertRecipes
