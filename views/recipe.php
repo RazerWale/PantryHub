@@ -1,6 +1,6 @@
 <?php $title = "Recipe"; ?>
 
-<?php require_once('profileTemplate.php') ?>
+<?php /*require_once('profileTemplate.php')*/ ?>
 
 
 <?php ob_start() ?>
@@ -131,4 +131,4 @@
 <?php $script = ob_get_clean() ?>
 
 <?php require_once('template.php')
-    ?>
+?>
