@@ -13,7 +13,7 @@ class EquipmentManager extends Manager
      * @param int $id
      * @return EquipmentEntity
      */
-    public function fetchEquipment(int $id): EquipmentEntity
+    public function fetchEquipment(int $id): ?EquipmentEntity
     {
         $req = $this->db->prepare('
         SELECT *
@@ -31,7 +31,7 @@ class EquipmentManager extends Manager
      * Summary of fetchEquipments
      * @return EquipmentEntity[]
      */
-    public function fetchEquipments(): array
+    public function fetchEquipments(): ?array
     {
         $req = $this->db->query('
         SELECT *
@@ -60,7 +60,7 @@ class EquipmentManager extends Manager
      * @param int $id
      * @return EquipmentEntity[]
      */
-    public function fetchEquipmentsForRecipe(int $id): array
+    public function fetchEquipmentsForRecipe(int $id): ?array
     {
         $req = $this->db->prepare('
         SELECT recipes_equipments.*, equipments.*

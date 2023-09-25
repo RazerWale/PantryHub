@@ -83,13 +83,14 @@
 <h1>
     <?= $recipe->getName() ?>
 </h1>
-<img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
-<?php foreach ($recipe->getDiets() as $diet) { ?>
-    <button class="tags">
-        <?= $diet ?>
-    </button>
-
-<?php } ?>
+<img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-312x231.jpg" alt="">
+<?php if ($recipe->getDiets() !== null) {
+    foreach ($recipe->getDiets() as $diet) { ?>
+        <button class="tags">
+            <?= $diet ?>
+        </button>
+    <?php }
+} ?>
 <p>In Your Kitchen</p>
 <div class="in-kitchen"></div>
 <p>Items to Buy</p>
