@@ -1,14 +1,15 @@
 <?php $title = "Recipe"; ?>
 
-<?php /*require_once('profileTemplate.php')*/ ?>
+<?php /*require_once('profileTemplate.php')*/?>
 
 
 <?php ob_start() ?>
 
 <!--<link rel="stylesheet" href="path to the file">-->
+<link rel="stylesheet" href="views/css/recipe.css">
 <style>
     /* CSS for this page is here! */
-    body {
+    /*body {
         display: grid;
         grid-template-columns: 300px 1fr;
         grid-template-rows: 80px 1fr 1fr 1fr;
@@ -70,7 +71,7 @@
     .tags {
         height: 30px;
         width: 100px;
-    }
+    }*/
 </style>
 
 <?php $style = ob_get_clean() ?>
@@ -79,44 +80,57 @@
 
 
 <?php ob_start() ?>
+<main class="recipe-container">
+    <h1>
+        <?= $recipe->getName() ?>
+    </h1>
+    <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
+    <div class="tags">
+        <?php if ($recipe->getDiets() !== null) {
+            foreach ($recipe->getDiets() as $diet) { ?>
+                <button class="tags">
+                    <?= $diet ?>
+                </button>
+            <?php }
+        } ?>
+    </div>
+    <div class="recipe-ingredients">
+        <div class="in-kitchen-container">
+            <h3>In Your Kitchen</h3>
+            <div class="in-kitchen"></div>
+        </div>
+        <div class="to-buy-container">
+            <h3>Items to Buy</h3>
+            <div class="to-buy">
+                <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
+                    <p class="">
+                        <?= $ingredient->getName() ?>
+                    </p>
+                    <p class="">
+                        <?= $ingredient->getQuantityMetric() ?>
+                        <?= $ingredient->getUnitMetric() ?>
+                    </p>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <div class="directions">
+        <h3>Directions</h3>
+        <ol>
+            <?php foreach ($recipe->getSteps() as $step) { ?>
+                <!--<div class="">
+                        <?= $step->getStepNumber() ?>
+                    </div>-->
+                <li class="">
+                    <p>
+                        <?= $step->getDescription() ?>
+                    </p>
+                </li>
+            <?php } ?>
+        </ol>
 
-<h1>
-    <?= $recipe->getName() ?>
-</h1>
-<img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-312x231.jpg" alt="">
-<?php if ($recipe->getDiets() !== null) {
-    foreach ($recipe->getDiets() as $diet) { ?>
-        <button class="tags">
-            <?= $diet ?>
-        </button>
-    <?php }
-} ?>
-<p>In Your Kitchen</p>
-<div class="in-kitchen"></div>
-<p>Items to Buy</p>
-<div class="to-buy">
-    <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
-        <div class="">
-            <?= $ingredient->getName() ?>
-        </div>
-        <div class="">
-            <?= $ingredient->getQuantityMetric() ?>
-            <?= $ingredient->getUnitMetric() ?>
-        </div>
-    <?php } ?>
-</div>
-<div class="directions">
-    <p>Directions</p>
-    <?php foreach ($recipe->getSteps() as $step) { ?>
-        <div class="">
-            <?= $step->getStepNumber() ?>
-        </div>
-        <div class="">
-            <?= $step->getDescription() ?>
-        </div>
-    <?php } ?>
-
-</div>
+    </div>
+</main>
 
 <?php $content = ob_get_clean() ?>
 
@@ -131,4 +145,4 @@
 <?php $script = ob_get_clean() ?>
 
 <?php require_once('template.php')
-?>
+    ?>

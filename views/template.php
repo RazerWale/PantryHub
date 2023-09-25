@@ -42,7 +42,7 @@
                         <li><a href="#">Personal Info</a></li>
                         <li><a href="#">Payment</a></li>
                         <li><a href="#">Support/FAQ</a></li>
-                        <li><a href="#">My Kitchen</a></li>
+                        <li><a href="?action=kitchenPage">My Kitchen</a></li>
                         <form action="?action=login" method="GET">
                             <div class="logOut">
                                 <input type="hidden" name="action" value="login"></input>

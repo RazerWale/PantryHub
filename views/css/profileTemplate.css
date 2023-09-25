@@ -1,10 +1,8 @@
-
-
-
 .profile-template-body {
     display: flex;
     align-items: start;
     gap: 1rem;
+    background-color: var(--tertiary-bg-color);
     /*grid-template-rows: 300px 1fr;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 80px 1fr 1fr 1fr;*/
@@ -32,7 +30,7 @@
     grid-column-start: 1;
     grid-column-end: 2;*/
     height: 100%;
-    background-color: var(--tertiary-bg-color);
+    background-color: var(--primary-bg-color);
 }
 
 .profilemenu ul {
