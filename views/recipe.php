@@ -100,9 +100,20 @@
             <div class="in-kitchen"></div>
         </div>
         <div class="to-buy-container">
-            <h3>Items to Buy</h3>
+            <h3>Ingredients</h3>
             <div class="to-buy">
-                <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
+                <?php foreach ($ingredientsUserHave as $ingredient) { ?>
+                    <p class="green">
+                        <?= $ingredient->getName() ?>
+                        <span class="">
+                            <?= $ingredient->getQuantityMetric() ?>
+                            <?= $ingredient->getUnitMetric() ?>
+                        </span>
+                    </p>
+
+                <?php } ?>
+                <hr>
+                <?php foreach ($ingredientsUserHaveNot as $ingredient) { ?>
                     <p class="">
                         <?= $ingredient->getName() ?>
                         <span class="">

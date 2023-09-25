@@ -96,7 +96,21 @@ class MainPageController
         $recipeIngredients = $recipe->getIngredients();
 
         $userIngredients = $this->userManager->fetchUserIngredients($userId);
+        $userIngredientsIds = array_map(function ($ingredient) {
+            return $ingredient->getId();
+        }, $userIngredients);
 
+        $ingredientsUserHave = [];
+        $ingredientsUserHaveNot = [];
+
+        foreach ($recipeIngredients as $ingredients) {
+            $ingredientId = $ingredients->getId();
+            if (in_array($ingredientId, $userIngredientsIds)) {
+                $ingredientsUserHave[] = $ingredients;
+            } else {
+                $ingredientsUserHaveNot[] = $ingredients;
+            }
+        }
 
 
         require_once('views/recipe.php');
