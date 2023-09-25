@@ -103,11 +103,12 @@
                 <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
                     <p class="">
                         <?= $ingredient->getName() ?>
+                        <span class="">
+                            <?= $ingredient->getQuantityMetric() ?>
+                            <?= $ingredient->getUnitMetric() ?>
+                        </span>
                     </p>
-                    <p class="">
-                        <?= $ingredient->getQuantityMetric() ?>
-                        <?= $ingredient->getUnitMetric() ?>
-                    </p>
+
                 <?php } ?>
             </div>
         </div>
