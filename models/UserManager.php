@@ -150,6 +150,11 @@ class UserManager extends Manager
             $userIngredients->getUnitMetric()
         ]);
     }
+    /**
+     * Summary of fetchUserIngredients
+     * @param int $id
+     * @return UsersIngredientsEntity[]
+     */
     public function fetchUserIngredients(int $id): array
     {
         $req = $this->db->prepare('

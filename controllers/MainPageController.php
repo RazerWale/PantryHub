@@ -91,7 +91,13 @@ class MainPageController
             throw new Exception('no id is provided!');
         }
         $id = $_GET['id'];
+        $userId = $_SESSION['userId'];
         $recipe = $this->recipeManager->fetchRecipe($id);
+        $recipeIngredients = $recipe->getIngredients();
+
+        $userIngredients = $this->userManager->fetchUserIngredients($userId);
+
+
 
         require_once('views/recipe.php');
     }
