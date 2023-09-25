@@ -85,19 +85,20 @@
         <?= $recipe->getName() ?>
     </h1>
     <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
-    <?php foreach ($recipe->getDiets() as $diet) { ?>
-        <button class="tags">
-            <?= $diet ?>
-        </button>
+    <div class="tags"><?php foreach ($recipe->getDiets() as $diet) { ?>
+            <button class="tag">
+                <p><?= $diet ?></p>
+            </button>
 
-    <?php } ?>
+        <?php } ?>
+    </div>
     <div class="recipe-ingredients">
         <div class="in-kitchen-container">
-            <p>In Your Kitchen</p>
+            <h3>In Your Kitchen</h3>
             <div class="in-kitchen"></div>
         </div>
         <div class="to-buy-container">
-            <p>Items to Buy</p>
+            <h3>Items to Buy</h3>
             <div class="to-buy">
                 <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
                     <p class="">

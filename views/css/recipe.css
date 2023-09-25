@@ -28,10 +28,36 @@
 .recipe-ingredients {
     display: flex;
     gap: 20px;
-    width: 50%;
+    width: 80%;
+    margin: 50px;
 }
 
 .recipe-ingredients div {
-    background-color: var(--primary-bg-color);
+    background-color: var(--main-font-color);
     width: 50%;
+    height: 100px;
+    overflow: scroll;
+    color: var(--secondary-bg-color);
+}
+
+.recipe-ingredients div h3 {
+    text-align: center;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 20px;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.tag {
+    width: 100px;
+    height: 20px;
+    background-color: var(--primary-bg-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--secondary-bg-color);
 }
