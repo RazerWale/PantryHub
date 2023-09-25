@@ -1,0 +1,37 @@
+.recipe-container {
+    background-color: var(--secondary-bg-color);
+    padding: 0;
+}
+
+.directions {
+    padding: 20px 30px;
+    width: 70%;
+}
+
+.directions li p {
+    margin: 30px;
+}
+
+.directions h3 {
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    width: 80%;
+}
+
+.recipe-ingredients {
+    display: flex;
+    gap: 20px;
+    width: 50%;
+}
+
+.recipe-ingredients div {
+    background-color: var(--primary-bg-color);
+    width: 50%;
+}
