@@ -1,6 +1,6 @@
 <?php $title = "Profile"; ?>
 
-<?php /*require_once('profileTemplate.php')*/ ?>
+<?php /*require_once('profileTemplate.php')*/?>
 
 
 <?php ob_start() ?>
@@ -15,7 +15,8 @@
 
 <?php ob_start() ?>
 <main class="liked-recommended-container">
-    <div class="liked-recommend-buttons"><button class="recommend-button">Searched Recipes</button><button class="liked-button">Liked Recipes</button></div>
+    <div class="liked-recommend-buttons"><button class="recommend-button">Searched Recipes</button><button
+            class="liked-button">Liked Recipes</button></div>
     <div class="liked-recommend">
         <div class="recommended-recipes">
             <?php
@@ -35,10 +36,13 @@
                         <?= $recipe->getName() ?>
                     </a>
                     <ul class="recipe-ingredients">
-                        <li><a href="#">Ingredients</a>
+                        <li>
+                            <a href="#">Ingredients</a>
                             <ul class="dropdown">
                                 <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
-                                    <li class="ingredient"><?= $ingredient->getName() ?></li>
+                                    <li class="ingredient">
+                                        <?= $ingredient->getName() ?>
+                                    </li>
 
                                 <?php } ?>
                             </ul>
@@ -69,7 +73,7 @@
 </main>
 
 
-<?php /*ob_start()*/ ?>
+<?php /*ob_start()*/?>
 
 
 <?php $content = ob_get_clean() ?>
@@ -78,7 +82,7 @@
 <?php ob_start() ?>
 
 
-<script src='path to the file'>
+<script src='views/javascript/profile.js'>
     /* JScript for this page is here! */
 </script>
 

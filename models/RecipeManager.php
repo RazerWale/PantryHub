@@ -100,16 +100,26 @@ class RecipeManager extends Manager
      * @param array $ids
      * @return RecipeEntity[]
      */
-    public function fetchRecipesByIds(array $ids): array
+    public function fetchRecipesByIds(array $ids, int $page = 1, int $perPage = 10): array
     {
+        if (empty($ids)) {
+            return [];
+        }
         $inClause = str_repeat('?,', count($ids) - 1) . '?';
+        $offset = ($page - 1) * $perPage;
+        $arrayOfParams = [...$ids, $perPage, $offset];
 
         $req = $this->db->prepare("
         SELECT * 
         FROM recipes 
         WHERE recipes.id IN ($inClause)
+        LIMIT ? OFFSET ?
     ");
-        $req->execute($ids);
+        foreach ($arrayOfParams as $index => &$param) {
+            $key = $index + 1;
+            $req->bindParam($key, $param, PDO::PARAM_INT);
+        }
+        $req->execute();
         $rows = $req->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach ($rows as $row) {
@@ -279,22 +289,28 @@ class RecipeManager extends Manager
 
         return $array;
     }
-    public function search(string $searchItem)
+    public function search(string $searchItem, int $page = 1, int $perPage = 10)
     {
+        $searchParam = '%' . $searchItem . '%';
+        $offset = ($page - 1) * $perPage;
+
         $req = $this->db->prepare('
-        SELECT recipes.id
+        SELECT DISTINCT recipes.id
         FROM recipe_ingredients
         INNER JOIN recipes ON recipe_ingredients.recipe_id = recipes.id
         INNER JOIN ingredients ON recipe_ingredients.ingredient_id = ingredients.id
         WHERE LOWER(ingredients.name) LIKE LOWER(:searchItem) OR LOWER(recipes.name) LIKE LOWER (:searchItem)
+        LIMIT :perPage OFFSET :page
         ');
-        $req->execute(['searchItem' => '%' . $searchItem . '%']);
+        $req->bindParam(':searchItem', $searchParam, PDO::PARAM_STR);
+        $req->bindParam(':perPage', $perPage, PDO::PARAM_INT);
+        $req->bindParam(':page', $offset, PDO::PARAM_INT);
+        $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         $uniqueIds = [];
         foreach ($result as $row) {
             $id = $row['id'];
-            if (!in_array($id, $uniqueIds))
-                $uniqueIds[] = $id;
+            $uniqueIds[] = $id;
         }
         return $uniqueIds;
     }

@@ -28,10 +28,57 @@ class MainPageController
     }
     public function profilePage()
     {
+        $ids = $this->fetchRecipesIdsByIngredientsAndEquipments();
+        // $page = $_GET['page'];
+        $recipes = $this->recipeManager->fetchRecipesByIds($ids);
+        require_once('views/profile.php');
+    }
+    public function profilePageJson()
+    {
+        $ids = $this->fetchRecipesIdsByIngredientsAndEquipments();
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $recipes = $this->recipeManager->fetchRecipesByIds($ids, $page);
+        $result = array_map(function (RecipeEntity $recipe) {
+            return [
+                'id' => $recipe->getId(),
+                'name' => $recipe->getName(),
+                'ingredients' => array_map(function (RecipeIngredientsEntity $ingredient) {
+                    return [
+                        'name' => $ingredient->getName()
+                    ];
+                }, $recipe->getIngredients())
+            ];
+        }, $recipes);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($result);
+    }
+    public function searchPageJson()
+    {
+        if (!empty($_GET['search-item'])) {
+            $searchItem = $_GET['search-item'];
+
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $ids = $this->recipeManager->search($searchItem, $page);
+            $recipes = $this->recipeManager->fetchRecipesByIds($ids);
+            $result = array_map(function (RecipeEntity $recipe) {
+                return [
+                    'id' => $recipe->getId(),
+                    'name' => $recipe->getName(),
+                    'ingredients' => array_map(function (RecipeIngredientsEntity $ingredient) {
+                        return [
+                            'name' => $ingredient->getName()
+                        ];
+                    }, $recipe->getIngredients())
+                ];
+            }, $recipes);
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($result);
+        }
+    }
+    public function fetchRecipesIdsByIngredientsAndEquipments(): array
+    {
         $recipesByIngredient = [];
         $recipesByEquipment = [];
-
-        $recipes = [];
         $userId = $_SESSION['userId'];
         $userIngredients = $this->userManager->fetchUserIngredients($userId);
         $userEquipments = $this->userManager->fetchUserEquipments($userId);
@@ -57,7 +104,6 @@ class MainPageController
             ];
         }
 
-
         foreach ($recipesByEquipment as $equipment) {
             $result = false;
             foreach ($recipesIds as $key => $recipe) {
@@ -75,14 +121,9 @@ class MainPageController
         }
         $column = array_column($recipesIds, 'count');
         array_multisort($column, SORT_DESC, $recipesIds);
-
-
-        $ids = array_map(function ($value) {
+        return array_map(function ($value) {
             return $value['id'];
         }, $recipesIds);
-
-        $recipes = $this->recipeManager->fetchRecipesByIds($ids);
-        require_once('views/profile.php');
     }
 
     public function recipePage()

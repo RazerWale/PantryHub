@@ -64,24 +64,28 @@
     <?php } ?>
     <!-- PHP -->
     <script>
-        let hamburgerExitBtn = document.querySelector('.hamburger');
-        //let hamburgerBar = document.querySelector('.bar');
-        let hamburgerBtn = document.querySelector('.hamburger-icon');
-        let navMenu = document.querySelector('ul');
+        <?php if (!isset($_SESSION['loggedIn'])) { ?>
 
-        hamburgerExitBtn.addEventListener('click', function() {
-            hamburgerExitBtn.style.display = "none";
-            //hamburgerBar.style.display = "none";
-            hamburgerBtn.style.display = "inline";
-            navMenu.style.inset = "0 0 0 100%";
-        });
+            let hamburgerExitBtn = document.querySelector('.hamburger');
+            //let hamburgerBar = document.querySelector('.bar');
+            let hamburgerBtn = document.querySelector('.hamburger-icon');
+            let navMenu = document.querySelector('ul');
 
-        hamburgerBtn.addEventListener('click', function() {
-            hamburgerExitBtn.style.display = "block";
-            //hamburgerBar.style.display = "block";
-            hamburgerBtn.style.display = "none";
-            navMenu.style.inset = "0 0 0 50%";
-        });
+            hamburgerExitBtn.addEventListener('click', function () {
+                hamburgerExitBtn.style.display = "none";
+                //hamburgerBar.style.display = "none";
+                hamburgerBtn.style.display = "inline";
+                navMenu.style.inset = "0 0 0 100%";
+            });
+
+            hamburgerBtn.addEventListener('click', function () {
+                hamburgerExitBtn.style.display = "block";
+                //hamburgerBar.style.display = "block";
+                hamburgerBtn.style.display = "none";
+                navMenu.style.inset = "0 0 0 50%";
+            });
+        <?php } ?>
+
     </script>
     <!-- PHP -->
     <?= $script ?>

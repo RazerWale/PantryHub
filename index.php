@@ -42,6 +42,12 @@ try {
                 exit;
             }
             break;
+        case 'profilePageJson';
+            $main->profilePageJson();
+            break;
+        case 'searchPageJson';
+            $main->searchPageJson();
+            break;
         case 'recipePage';
             $main->recipePage();
             break;

@@ -107,3 +107,7 @@
 .recipe-link-container {
     display: inline-block;
 }*/
+.search-container{
+    height: 100vh;
+    overflow-y: scroll;
+}

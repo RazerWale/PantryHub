@@ -47,9 +47,6 @@ class RecipeController
 
         if (!empty($_GET['search-item'])) {
             $searchItem = $_GET['search-item'];
-            var_dump($searchItem);
-
-
             $recipeIds = $this->recipeManager->search($searchItem);
             foreach ($recipeIds as $recipe) {
                 $recipeEntity = $this->recipeManager->fetchRecipe($recipe);
