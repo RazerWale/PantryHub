@@ -1,6 +1,6 @@
 <?php $title = "Profile"; ?>
 
-<?php /*require_once('profileTemplate.php')*/ ?>
+<?php /*require_once('profileTemplate.php')*/?>
 
 
 <?php ob_start() ?>
@@ -36,9 +36,13 @@
     <div class="edit-appliances-container">
         <h2>Edit Appliances</h2>
         <div class="appliances"></div>
-        <input type="text" id="input-box" placeholder="Add Items Here" name="addItems">
+        <input type="text" id="input-bo" placeholder="Add Items Here" name="addItems">
         <button onclick="addAppliances()">+</button>
     </div>
+    <ul class="list-container">
+        <li>Apple</li>
+        <li>whole wheat bread</li>
+    </ul>
 </div>
 
 
@@ -67,7 +71,21 @@
         inputBox.value = "";
     }
 
-    listContainer.addEventListener("click", function(e) {
+    function addAppliances() {
+        if (inputBox.value === '') {
+            alert('You must write something!');
+        } else {
+            let li = document.createElement('li');
+            li.innerHTML = inputBox.value;
+            listContainer.appendChild(li);
+            let span = document.createElement("span");
+            span.innerHTML = "\u00d7";
+            li.appendChild(span);
+        }
+        inputBox.value = "";
+    }
+
+    listContainer.addEventListener("click", function (e) {
         if (e.target.tagName === "SPAN") {
             e.target.parentElement.remove();
         }

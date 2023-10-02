@@ -150,7 +150,7 @@
 <?php ob_start() ?>
 
 
-<script src='path to the file'>
+<script>
     /* JScript for this page is here! */
 </script>
 

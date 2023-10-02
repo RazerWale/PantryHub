@@ -56,6 +56,9 @@ try {
         case 'search';
             $recipe->search();
             break;
+        case 'searchByLetters';
+            $main->searchByLetters();
+            break;
         default:
             //should bring me to the home page
             $main->default();

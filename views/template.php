@@ -55,8 +55,9 @@
             <div class="search-container">
                 <form class="search-form" action="?action=search" method="GET">
                     <input type="hidden" name="action" value="search">
-                    <input type="text" placeholder="Search Here" name="search-item">
+                    <input type="text" placeholder="Search Here" id="search" name="search-item" autocomplete="off">
                     <button type="submit">Search</button>
+                    <ul class="search-output"></ul>
                 </form>
                 <?= $content ?>
             </div>

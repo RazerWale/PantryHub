@@ -314,6 +314,20 @@ class RecipeManager extends Manager
         }
         return $uniqueIds;
     }
+    public function searchRecipesByLetter(string $searchItem)
+    {
+        $searchParam = '%' . $searchItem . '%';
+
+        $req = $this->db->prepare('
+        SELECT DISTINCT recipes.name as recipe_name
+        FROM recipes
+        WHERE LOWER(recipes.name) LIKE LOWER(:searchItem)
+        ');
+        $req->bindParam(':searchItem', $searchParam, PDO::PARAM_STR);
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function fetchRecipesByIngredients(array $ingredientsIds): array
     {
         // $ingredients = implode(', ', $ingredientsIds);

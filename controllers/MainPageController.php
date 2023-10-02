@@ -1,5 +1,7 @@
 <?php
 require_once('models/UserManager.php');
+require_once('models/IngredientManager.php');
+
 
 /**
  * Summary of MainPageController
@@ -16,11 +18,17 @@ class MainPageController
      * @var UserManager
      */
     protected $userManager; // Attribute 
+    /**
+     * Summary of userManager
+     * @var IngredientManager
+     */
+    protected $ingredientManager;
 
     public function __construct() // Constructor 
     {
         $this->recipeManager = new RecipeManager();
         $this->userManager = new UserManager();
+        $this->ingredientManager = new IngredientManager();
     }
     public function default()
     {
@@ -160,4 +168,17 @@ class MainPageController
     {
         require_once('views/kitchen.php');
     }
+    public function searchByLetters()
+    {
+        if (!empty($_GET['search-input'])) {
+            $searchValue = $_GET['search-input'];
+            $recipesNames = $this->recipeManager->searchRecipesByLetter($searchValue);
+            $ingredinetsName = $this->ingredientManager->searchIngredientByLetter($searchValue);
+            $result = [];
+            $result = [...$ingredinetsName, ...$recipesNames];
+            echo json_encode($result);
+        }
+
+    }
+
 }
