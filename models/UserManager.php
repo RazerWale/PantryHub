@@ -226,6 +226,19 @@ class UserManager extends Manager
         ');
         $req->execute([$id, $favouriteRecipeId]);
     }
+    public function isRecipeLiked(int $userId, int $recipeId): bool
+    {
+        $req = $this->db->prepare('
+        SELECT recipe_id 
+        FROM user_favourite_recipes
+        WHERE user_favourite_recipes.user_id = ?
+        AND
+        user_favourite_recipes.recipe_id = ?
+        ');
+        $req->execute([$userId, $recipeId]);
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return ($result !== false);
+    }
     /**
      * Transforms selected values within the input associative array into arrays.
      *

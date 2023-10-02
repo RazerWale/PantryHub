@@ -143,6 +143,7 @@ class MainPageController
         $userId = $_SESSION['userId'];
         $recipe = $this->recipeManager->fetchRecipe($id);
         $recipeIngredients = $recipe->getIngredients();
+        $isRecipeLiked = $this->userManager->isRecipeLiked($userId, $id);
 
         $userIngredients = $this->userManager->fetchUserIngredients($userId);
         $userIngredientsIds = array_map(function ($ingredient) {

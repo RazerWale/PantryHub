@@ -94,6 +94,12 @@
             <?php }
         } ?>
     </div>
+    <?php if ($isRecipeLiked) { ?>
+        <div class="favourite-recipe liked">like</div>
+    <?php } else { ?>
+        <div class="favourite-recipe not-liked">like</div>
+    <?php } ?>
+
     <div class="recipe-ingredients">
         <div class="in-kitchen-container">
             <h3>In Your Kitchen</h3>
@@ -150,7 +156,7 @@
 <?php ob_start() ?>
 
 
-<script>
+<script src='views/javascript/recipe.js'>
     /* JScript for this page is here! */
 </script>
 
