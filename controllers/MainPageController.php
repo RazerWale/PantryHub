@@ -1,5 +1,7 @@
 <?php
 require_once('models/UserManager.php');
+require_once('models/IngredientManager.php');
+
 
 /**
  * Summary of MainPageController
@@ -16,8 +18,13 @@ class MainPageController
      * @var UserManager
      */
     protected $userManager; // Attribute 
-
+    /**
+     * Summary of userManager
+     * @var IngredientManager
+     */
     protected $ingredientManager;
+
+    //protected $ingredientManager;
 
     public function __construct() // Constructor 
     {
@@ -138,6 +145,7 @@ class MainPageController
         $userId = $_SESSION['userId'];
         $recipe = $this->recipeManager->fetchRecipe($id);
         $recipeIngredients = $recipe->getIngredients();
+        $isRecipeLiked = $this->userManager->isRecipeLiked($userId, $id);
 
         $userIngredients = $this->userManager->fetchUserIngredients($userId);
         $userIngredientsIds = array_map(function ($ingredient) {
@@ -172,6 +180,18 @@ class MainPageController
             $results = [];
             $results = [$groceryName];
             echo json_encode($results);
+        }
+    }
+
+    public function searchByLetters()
+    {
+        if (!empty($_GET['search-input'])) {
+            $searchValue = $_GET['search-input'];
+            $recipesNames = $this->recipeManager->searchRecipesByLetter($searchValue);
+            $ingredinetsName = $this->ingredientManager->searchIngredientByLetter($searchValue);
+            $result = [];
+            $result = [...$ingredinetsName, ...$recipesNames];
+            echo json_encode($result);
         }
     }
 }

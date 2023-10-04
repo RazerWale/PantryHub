@@ -147,6 +147,24 @@
 .recipe-link-container {
     display: inline-block;
 }*/
+.search-form{
+    position: relative;
+}
+.search-output{
+    position: absolute;
+    background-color: white;
+    width: 50vw;
+}
+.search-result-div:hover{
+    cursor: pointer;
+    font-weight: 600;
+}
+.search-output li{
+    list-style-type: none;
+    padding-left: 10px;
+    margin: 5px 0 0 0;
+}
+
 .search-container{
     height: 100vh;
     overflow-y: scroll;

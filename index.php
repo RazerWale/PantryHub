@@ -58,6 +58,14 @@ try {
             break;
         case 'groceriesByLetter';
             $main->addGroceries();
+        case 'searchByLetters';
+            $main->searchByLetters();
+            break;
+        case 'removeFavouriteRecipe';
+            $user->removeFavouriteRecipe();
+            break;
+        case 'addUserFavouriteRecipe';
+            $user->addUserFavouriteRecipe();
             break;
         default:
             //should bring me to the home page

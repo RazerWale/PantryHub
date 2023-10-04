@@ -108,4 +108,11 @@ h1 {
     height: 35px;
     top: 315px;
     right: 304px;
+
+}
+.liked {
+    color: red;
+}
+.not-liked {
+    color: green;
 }

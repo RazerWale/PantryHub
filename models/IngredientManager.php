@@ -98,6 +98,20 @@ class IngredientManager extends Manager
         }
         return $ingredients;
     }
+    public function searchIngredientByLetter(string $searchItem)
+    {
+        $searchParam = '%' . $searchItem . '%';
+
+        $req = $this->db->prepare('
+        SELECT DISTINCT ingredients.name as ingredient_name
+        FROM ingredients
+        WHERE LOWER(ingredients.name) LIKE LOWER(:searchItem)
+        ');
+        $req->bindParam(':searchItem', $searchParam, PDO::PARAM_STR);
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
     public function groceriesByLetter(string $grocerySearchItem)
     {

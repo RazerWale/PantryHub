@@ -37,7 +37,7 @@
     <div class="edit-appliances-container">
         <h2>Edit Appliances</h2>
         <div class="appliances"></div>
-        <input type="text" id="input-box" placeholder="Add Items Here" name="addItems">
+        <input type="text" id="input-bo" placeholder="Add Items Here" name="addItems">
         <button onclick="addAppliances()">+</button>
     </div>-->
     <form class="groceries-form" autocomplete="off">
