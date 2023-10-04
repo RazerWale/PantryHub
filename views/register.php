@@ -14,8 +14,11 @@
 
 <div class="container">
     <h1>Registration Form</h1>
-    <!--<div class="progress-bar">
-        <div class="step">
+    <div class="progress-bar">
+        <div class="progress-step" data-title="Personal"></div>
+        <div class="progress-step" data-title="Diets & Restrictions"></div>
+        <div class="progress-step" data-title="Appliances"></div>
+        <!-- <div class="step">
             <p>Personal Info</p>
             <span class="bullet">1</span>
         </div>
@@ -30,8 +33,8 @@
         <div class="step">
             <p>Confirm</p>
             <span class="bullet">4</span>
-        </div>
-    </div>-->
+        </div> -->
+    </div>
     <div class="form-outer">
         <form action="?action=registerUser" method="POST" id="form">
             <div class="page page1 slidepage">
@@ -49,7 +52,7 @@
                     <input type="password" name="password" required id="password">
                 </div>
                 <div class="field">
-                    <label for="passCon"></label>
+                    <label for="passCon">Confirm Password</label>
                     <input type="password" name="passCon" required id="passCon">
                 </div>
                 <div class="field">
@@ -195,8 +198,8 @@
             slidePage.style.marginLeft = "-31.24%";
         } else {
             alert('please input all the fields')
-            slidePrevPage3.style.marginLeft = "31.2%";
-            slidePage2.style.marginLeft = "31.2";
+            // slidePrevPage3.style.marginLeft = "31.2%";
+            // slidePage2.style.marginLeft = "31.2";
         }
     });
     secondNextBtn.addEventListener("click", function(event) {
@@ -211,12 +214,12 @@
         event.preventDefault();
         slidePage.style.marginLeft = "-31.24%";
     });
-    secondPrevBtn.addEventListener("click", function(event) {
-        event.preventDefault();
-        slidePage.style.marginLeft = "-93.72%";
-        slidePrevPage3.style.marginLeft = "31.2%";
-        slidePage2.style.marginLeft = "31.2";
-    });
+    // secondPrevBtn.addEventListener("click", function(event) {
+    //     event.preventDefault();
+    //     slidePage.style.marginLeft = "-93.72%";
+    //     slidePrevPage3.style.marginLeft = "31.2%";
+    //     slidePage2.style.marginLeft = "31.2";
+    // });
 </script>
 
 <?php $script = ob_get_clean() ?>

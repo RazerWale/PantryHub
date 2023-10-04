@@ -47,29 +47,51 @@ header {
 .hamburger-icon {
     display: none;
     cursor: pointer;
-    z-index: 90;
+    /*z-index: 90;*/
+    height: 35px;
 }
 
-.hamburger {
+.hamburger-exit {
     display: none;
-    position: relative;
+    cursor: pointer;
+    z-index: 90;
+    /* position: relative;
     width: 35px;
     cursor: pointer;
 
     appearance: none;
     background: none;
     outline: none;
-    border: none;
+    border: none; */
 }
 
-.hamburger .bar, .hamburger:after, .hamburger:before {
+.bar {
+    display: block;
+    width: 37px;
+    height: 5px;
+    margin: 5px auto;
+    background-color: var(--main-font-color);
+}
+
+/* .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+.bar:nth-child(2) {
+    opacity: 0;
+} */
+/*.hamburger .bar, .hamburger:after, .hamburger:before {
     content: '';
     display: block;
     width: 100%;
     height: 5px;
     background-color: var(--main-font-color);
     margin: 6px 0;
-    /*transition: .4s;*/
+    /*transition: .4s;*
 }
 
 .hamburger .is-active, .hamburger:before {
@@ -83,7 +105,7 @@ header {
 .hamburger {
     flex-shrink: 0;
 
-}
+}*/
 
 .nav-links ul {
     display: flex;
@@ -126,9 +148,9 @@ header {
     color: var(--main-font-color);
 }
 
-.hamburger-icon {
+/*.hamburger-icon {
     display: none;
-}
+}*/
 
 header a {
     text-decoration: none;
@@ -147,41 +169,6 @@ p, label {
     font-family: "DM Sans";
 }
 
-@media (max-width: 800px) {
-    /*ul {
-        display: block;
-        background-color: transparent;
-        inset: 0;
-        position: static;
-    }*/
-
-    .nav-links ul {
-        display: flex;
-        position:fixed;
-        inset: 0 0 0 100%;
-        background-color: var(--secondary-bg-color);
-        list-style-type: none;
-        gap: 1em;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0;
-    }
-
-    .hamburger-icon {
-        display: inline-block;
-    }
-
-    .hamburger {
-        display: none;
-    }
-}
-
-
-
-
-
-
-
 
 .profile-template-body {
     display: flex;
@@ -199,7 +186,8 @@ p, label {
     /*grid-row-start: 1;
     grid-column-start: 1;*/
     position: sticky;
-    height: 90vh;
+    height: 100vh;
+    width: 300px;
     top: 0;
 }
 
@@ -221,7 +209,7 @@ p, label {
     display: flex;
     justify-content: center;
     flex-direction:column;
-    padding: 20px 0;
+    /*padding: 20px 0;*/
 }
 
 .profilemenu a {
@@ -233,9 +221,9 @@ p, label {
     padding: 20px 20px;
 }
 
-.profilemenu li:first-of-type {
+/*.profilemenu li:first-of-type {
     padding-top: 40px;
-}
+}*/
 
 .logOut button {
     background-color: transparent;
@@ -277,4 +265,90 @@ p, label {
     background-color: var(--tertiary-bg-color);
     color: var(--secondary-bg-color);
     font-family: "DM Sans";
+}
+
+
+@media(max-width: 800px) {
+    /* ul {
+        display: block;
+        background-color: transparent;
+        inset: 0;
+        position: static;
+    } */
+
+    .nav-links ul {
+        /*display: flex;
+        position:fixed;
+        background-color: var(--secondary-bg-color);
+        /*list-style-type: none;
+        gap: 1em;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;*/
+        margin: 50px;
+    }
+
+    .nav-links li {
+        /*display: flex;
+        position:fixed;
+        background-color: var(--secondary-bg-color);
+        /*list-style-type: none;
+        gap: 1em;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;*/
+        margin: 30px;
+    }
+
+    .nav-links{
+        display: none;
+        position:fixed;
+        left: 50%;
+        top: 0;
+        background-color: var(--secondary-bg-color);
+        list-style-type: none;
+        gap: 0;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+        /*justify-content: center;
+        margin: 0;*/
+        padding: 100px 10px;
+    }
+
+    .hamburger-icon {
+        display: inline-block;
+    }
+
+    .hamburger-icon.active {
+        display: inline-block;
+    }
+
+    .hamburger-icon.inactive {
+        display: none;
+    }
+
+    .hamburger-exit.active {
+        display: inline-block;
+    }
+
+    .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+    
+    .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .active {
+        display: inline-block;
+    }
+
+    .nav-links.active{
+        display: flex;
+    }
 }

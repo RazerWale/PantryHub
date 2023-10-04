@@ -14,7 +14,7 @@
     <!-- PHP -->
 </head>
 
-<body>
+<body <?php if (isset($_SESSION['loggedIn'])) { ?> style="background-color: var(--secondary-bg-color);" <?php } ?>>
     <?php if (!isset($_SESSION['loggedIn'])) { ?>
         <header>
             <a href="?action=main"><img src="images/pantryhublogo.svg" alt="PantryHub logo"></a>
@@ -26,17 +26,19 @@
                     <li><a href="?action=login">Login</a></li>
                 </ul>
             </nav>
-            <button class="hamburger">
-                <!--<div class="bar"></div>-->
-            </button>
+            <div class="hamburger-exit">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <img class="hamburger-icon" src="images/hamburgermenu.svg" alt="Hamburger Menu">
         </header>
         <?= $content ?>
     <?php } else { ?>
         <div class="profile-template-body">
             <div class="profile-container">
-                <img class="logo" src="images/pantryhublogo.svg" alt="">
                 <div class="profilemenu">
+                    <img class="logo" src="images/pantryhublogo.svg" alt="">
                     <ul class="nav-links">
                         <li><a href="http://localhost/PantryHub/?action=profilePage">Home</a></li>
                         <li><a href="#">Personal Info</a></li>
@@ -66,26 +68,24 @@
     <script>
         <?php if (!isset($_SESSION['loggedIn'])) { ?>
 
-            let hamburgerExitBtn = document.querySelector('.hamburger');
-            //let hamburgerBar = document.querySelector('.bar');
+            let hamburgerExitBtn = document.querySelector('.hamburger-exit');
             let hamburgerBtn = document.querySelector('.hamburger-icon');
-            let navMenu = document.querySelector('ul');
+            let navMenu = document.querySelector('.nav-links');
 
-            hamburgerExitBtn.addEventListener('click', function () {
-                hamburgerExitBtn.style.display = "none";
-                //hamburgerBar.style.display = "none";
-                hamburgerBtn.style.display = "inline";
-                navMenu.style.inset = "0 0 0 100%";
+            hamburgerBtn.addEventListener('click', function() {
+                //hamburgerBtn.classList.toggle("inactive");
+                navMenu.classList.toggle("active");
+                hamburgerExitBtn.classList.toggle("active");
+
             });
 
-            hamburgerBtn.addEventListener('click', function () {
-                hamburgerExitBtn.style.display = "block";
-                //hamburgerBar.style.display = "block";
-                hamburgerBtn.style.display = "none";
-                navMenu.style.inset = "0 0 0 50%";
+            hamburgerExitBtn.addEventListener('click', function() {
+                hamburgerExitBtn.classList.remove("active");
+                //hamburgerBtn.style.classList.remove("inactive");
+                //hamburgerBtn.style.classList.toggle("active");
+                navMenu.classList.remove("active");
             });
         <?php } ?>
-
     </script>
     <!-- PHP -->
     <?= $script ?>

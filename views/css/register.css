@@ -1,5 +1,6 @@
 .container {
     width: 80vw;
+    height: 80vh;
     /*border-top: 1px solid var(--main-font-color);*/
     background-color: var(--secondary-bg-color);
     margin: 0 auto;
@@ -13,7 +14,7 @@ h1, h2 {
 
 .form-outer {
     width: 100%;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .form-outer form {
@@ -27,10 +28,9 @@ h1, h2 {
     transition: margin-left .3s ease-in-out;
 }
 
-.form-outer form .page1 .field {
+.form-outer form .page1 .field:not(.nextBtn) {
     height: 45px;
     width: 330px;
-    margin: 45px 0;
 }
 
 .form-outer form .page1 .field input {
@@ -83,40 +83,263 @@ h1, h2 {
     /*left: 50%;
 }*/
 
+.progress-bar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 25%;
+    counter-reset: step;
+}
+
+.progress-bar::before {
+    content:'';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #e5dcd3;
+}
+
+.progress-step {
+    width: 2rem;
+    height: 2rem;
+    background-color: #e5dcd3;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+    z-index: 1;
+    color: var(--main-font-color);
+    font-family: "DM Serif Display";
+}
+
+/*.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + .75rem);
+    color: var(--main-font-color);
+    font-family: "DM Serif Display";
+}*/
+
+.progress-step-active {
+    background-color: var(--tertiary-bg-color);
+}
+
+
+.page {
+    padding: 0 30px;
+}
+
+.page1 {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 50px 130px 130px 100px;
+    grid-template-columns: 1fr 1fr;
+}
 .page1 input {
     width: 100%;
     height: 100%;
     border: none;
     font-family: "DM Sans";
     border-radius: 50px;
+    padding: 5px;
 }
 
-.page2 {
-    margin-top: 20px;
+h2 {
+    margin: 10px;
+}
+
+.page1 h2, .page3 h2{
+    /*margin: 10px;*/
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+}
+
+/*.page1:nth-last-of-type(1) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}*/
+
+.page1 .field:last-of-type, .page3 .field:last-of-type{
+    justify-self: center;
+    align-self: end;
+    text-align: center;
+    grid-row-start: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.page1 button, .page3 button {
+    height: 100%;
+    width: 220px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--tertiary-bg-color);
+    color: var(--secondary-bg-color);
+    font-family: "DM Sans";
+    /*margin: 20px 0;*/
+}
+
+.page button:hover, #submit {
+    cursor: pointer;
+}
+
+.page2 .field:not(.btns), .page3 .field:not(.btns){
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /*margin-top: 20px;
     height: 70vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
 }
 
 .page2 img, .page3 img {
-    height: 90px;
+    height: 50px;
 }
 
 .page2 div {
     display: inline-block;
 }
 
+.page2{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 50px 130px 130px 100px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.page2 h2{
+    /*margin: 10px;*/
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+}
+
+.page2 .btns {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    height: 45px;
+    width: 100%;
+    justify-self: center;
+    align-self: end;
+    text-align: center;
+}
+
+.page3 .btns {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    height: 45px;
+    width: 100%;
+    justify-self: center;
+    align-self: end;
+    text-align: center;
+}
+
+/*.page2 .field:last-of-type{
+    height: 45px;
+    width: 100%;
+    justify-self: center;
+    align-self: end;
+    text-align: center;
+}*/
+
+.page2 button, #submit {
+    height: 100%;
+    width: 220px;
+    margin: 0 10px;
+    border-radius: 10px;
+    border: none;
+    /*background-color: var(--tertiary-bg-color);*/
+    color: var(--secondary-bg-color);
+    font-family: "DM Sans";
+    /*margin: 20px 0;*/
+}
+
+.page2 button:first-of-type, .page3 button:first-of-type {
+    background-color: var(--main-font-color);
+    /*margin: 20px 0;*/
+}
+
+.page2 button:last-of-type, #submit {
+    background-color: var(--tertiary-bg-color);
+    /*margin: 20px 0;*/
+}
+
 .page3 {
     margin-top: 20px;
     height: 70vh;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     align-items: center;
-    flex-wrap: wrap;
+    justify-items: center;
+    grid-template-rows: 50px 130px 130px 100px;
+    grid-template-columns: 1fr 1fr;
 }
 
 /*.active-pass {
     transform: translateX(-500px);
 }*/
+
+@media(max-width: 950px) {
+
+    .page1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page1 .field:last-of-type {
+        align-self: center;
+    }
+    .form-outer form .page1 .field {
+        margin: 20px 0;
+    }
+
+    .page2 {
+        grid-template-rows: 50px 120px 120px 120px 50px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .page2 h2{
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+
+    .page2 .field:not(.btns) {
+        height: 110px;
+    }
+
+    .page2 .btns, .page3 .btns {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 5;
+        height: 45px;
+        width: 100%;
+        justify-self: center;
+        align-self: end;
+        text-align: center;
+    }
+
+    .page2 button, .page3 button, #submit {
+        width: 42%;
+    }
+}

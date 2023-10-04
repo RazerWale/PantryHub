@@ -56,6 +56,9 @@ try {
         case 'search';
             $recipe->search();
             break;
+        case 'groceriesByLetter';
+            $main->addGroceries();
+            break;
         default:
             //should bring me to the home page
             $main->default();

@@ -17,10 +17,13 @@ class MainPageController
      */
     protected $userManager; // Attribute 
 
+    protected $ingredientManager;
+
     public function __construct() // Constructor 
     {
         $this->recipeManager = new RecipeManager();
         $this->userManager = new UserManager();
+        $this->ingredientManager = new IngredientManager();
     }
     public function default()
     {
@@ -159,5 +162,16 @@ class MainPageController
     public function kitchenPage()
     {
         require_once('views/kitchen.php');
+    }
+
+    public function addGroceries()
+    {
+        if (!empty($_GET['add-groceries-input'])) {
+            $grocerySearchItem = $_GET['add-groceries-input'];
+            $groceryName = $this->ingredientManager->groceriesByLetter($grocerySearchItem);
+            $results = [];
+            $results = [$groceryName];
+            echo json_encode($results);
+        }
     }
 }

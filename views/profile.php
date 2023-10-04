@@ -1,6 +1,6 @@
 <?php $title = "Profile"; ?>
 
-<?php /*require_once('profileTemplate.php')*/?>
+<?php /*require_once('profileTemplate.php')*/ ?>
 
 
 <?php ob_start() ?>
@@ -15,8 +15,7 @@
 
 <?php ob_start() ?>
 <main class="liked-recommended-container">
-    <div class="liked-recommend-buttons"><button class="recommend-button">Searched Recipes</button><button
-            class="liked-button">Liked Recipes</button></div>
+    <div class="liked-recommend-buttons"><button class="recommend-button">Recommended Recipes</button><button class="liked-button">Liked Recipes</button></div>
     <div class="liked-recommend">
         <div class="recommended-recipes">
             <?php
@@ -35,21 +34,29 @@
                     <a class="recipe-name" href="?action=recipePage&id=<?= $recipe->getId() ?>">
                         <?= $recipe->getName() ?>
                     </a>
+                    <div class="time"><img src="images/timer.svg" alt=""><span>minutes</span></div>
                     <ul class="recipe-ingredients">
-                        <li>
-                            <a href="#">Ingredients</a>
-                            <ul class="dropdown">
-                                <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
-                                    <li class="ingredient">
-                                        <?= $ingredient->getName() ?>
-                                    </li>
+                        <!-- <li> -->
+                        <!-- <a href="#">Ingredients</a> -->
+                        <!-- <ul class="dropdown"> -->
+                        <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
+                            <li class="ingredient">
+                                <?= $ingredient->getName() ?>,
+                            </li>
 
-                                <?php } ?>
-                            </ul>
-                        </li>
+                        <?php } ?>
+                        <!-- </ul> -->
+                        <!-- </li> -->
                     </ul>
+                    <!-- <div class="recipe-misc-container">
+                        <div class="recipe-info">
+                            <img src="images/heart.svg" alt="">
+                            <img src="images/share.svg" alt="">
+                            <img src="images/timer.svg" alt="">
+                        </div>
+                    </div> -->
+                    <img class="like-button" src="images/heart.svg" alt="">
                 </div>
-
             <?php } ?>
 
 
@@ -73,7 +80,7 @@
 </main>
 
 
-<?php /*ob_start()*/?>
+<?php /*ob_start()*/ ?>
 
 
 <?php $content = ob_get_clean() ?>

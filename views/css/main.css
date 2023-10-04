@@ -90,7 +90,7 @@
     }
   }
 
-/*@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
     ul {
         display: flex;
         position:fixed;
@@ -105,4 +105,4 @@
     li:hover {
         transform: scale(1.1);
     }
-}
+} */
