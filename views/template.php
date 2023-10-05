@@ -38,7 +38,7 @@
         <div class="profile-template-body">
             <div class="profile-container">
                 <div class="profilemenu">
-                    <img class="logo" src="images/pantryhublogo.svg" alt="">
+                    <a href="?action=profilePage"><img class="logo" src="images/pantryhublogo.svg" alt=""></a>
                     <ul class="nav-links">
                         <li><a href="http://localhost/PantryHub/?action=profilePage">Home</a></li>
                         <li><a href="#">Personal Info</a></li>

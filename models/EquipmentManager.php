@@ -86,7 +86,7 @@ class EquipmentManager extends Manager
         $req->execute([$id]);
     }
 
-    public function appliancesByLetter(string $applianceSearchItem)
+    public function appliancesbyLetter(string $applianceSearchItem)
     {
         $searchParams = '%' . $applianceSearchItem . '%';
 

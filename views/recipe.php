@@ -17,13 +17,19 @@
 
 
 <?php ob_start() ?>
+<form class="search-form" action="?action=search" method="GET">
+    <input type="hidden" name="action" value="search">
+    <input type="text" placeholder="Search Here" id="search" name="search-item" autocomplete="off">
+    <button type="submit">Search</button>
+    <ul class="search-output"></ul>
+</form>
 <main class="recipe-container">
     <h1>
         <?= $recipe->getName() ?>
     </h1>
     <div class="info-btn-container"><img class="like-recipe" src="images/heart.svg" alt="">
         <img class="timer-recipe" src="images/timer.svg" alt="">
-        <img class="star-recipe" src="images/star.svg" alt="">
+        <!-- <img class="star-recipe" src="images/star.svg" alt=""> -->
     </div>
     <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-636x393.jpg" alt="">
     <div class="tags">

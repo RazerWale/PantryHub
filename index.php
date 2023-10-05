@@ -63,8 +63,10 @@ try {
             break;
         case 'groceriesByLetter';
             $main->addGroceries();
+            break;
         case 'appliancesByLetter';
             $main->addAppliances();
+            break;
         case 'searchByLetters';
             $main->searchByLetters();
             break;

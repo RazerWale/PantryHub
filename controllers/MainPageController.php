@@ -166,7 +166,6 @@ class MainPageController
                 }
             }
             $recipeRating = $this->recipeManager->fetchRecipeRating($id);
-
         } catch (Throwable $t) {
             http_response_code(500);
             echo json_encode($t->getMessage());
@@ -184,7 +183,6 @@ class MainPageController
             throw new Exception($t->getMessage());
         }
         require_once('views/profile.php');
-
     }
     public function kitchenPage()
     {
