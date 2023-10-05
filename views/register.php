@@ -214,6 +214,10 @@
         event.preventDefault();
         slidePage.style.marginLeft = "-31.24%";
     });
+
+    submitBtn.addEventListener("click", function(event) {
+
+    })
     // secondPrevBtn.addEventListener("click", function(event) {
     //     event.preventDefault();
     //     slidePage.style.marginLeft = "-93.72%";

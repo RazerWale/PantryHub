@@ -172,6 +172,17 @@ class MainPageController
         require_once('views/kitchen.php');
     }
 
+    public function addAppliances()
+    {
+        if (!empty($_GET['add-appliances-input'])) {
+            $applianceSearchItem = $_GET['add-appliances-input'];
+            $applianceName = $this->equipmentManager->appliancesByLetter($applianceSearchItem);
+            $results = [];
+            $results = [$applianceName];
+            echo json_encode($results);
+        }
+    }
+
     public function addGroceries()
     {
         if (!empty($_GET['add-groceries-input'])) {

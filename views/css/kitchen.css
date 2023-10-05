@@ -1,0 +1,49 @@
+h1 {
+    font-size: 5rem;
+    margin: 20px;
+    display: block;
+}
+
+.kitchen-container {
+    width: 100%;
+}
+
+.search-container {
+    width: 100%;
+}
+
+.groceries-list, .appliances-list {
+    width: 300px;
+    height: 100vh;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+li {
+    list-style: none;
+}
+
+.grocery-list {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+li {
+    padding: 15px 10px;
+    text-align: left;
+}
+
+.grocery-options li:hover {
+    background-color: #ddd;
+}
+
+.grocery-list li span:hover {
+    background-color: #ddd;
+}
+

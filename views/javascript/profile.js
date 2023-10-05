@@ -145,3 +145,21 @@ function addRecipes(resMessages) {
     recommendedRecipes.appendChild(recRecipe);
   }
 }
+
+//////////////////////////
+
+let likedBtn = document.querySelector(".liked-button");
+let recBtn = document.querySelector(".recommend-button");
+let likedSlide = document.querySelector(".liked-recipes");
+
+likedBtn.addEventListener("click", function(e) {
+  likedSlide.style.display = "grid";
+  likedBtn.style.backgroundColor = "var(--main-font-color)";
+  recBtn.style.backgroundColor = "#81838e";
+});
+
+recBtn.addEventListener("click", function(e) {
+  likedSlide.style.display = "none";
+  recBtn.style.backgroundColor = "var(--main-font-color)";
+  likedBtn.style.backgroundColor = "#81838e";
+});

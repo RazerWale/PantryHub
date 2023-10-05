@@ -24,8 +24,6 @@ class EquipmentManager extends Manager
         $result = $req->fetch(PDO::FETCH_ASSOC);
         $equipment = new EquipmentEntity($result['name'], $result['id'], $result['image']);
         return $equipment;
-
-
     }
     /**
      * Summary of fetchEquipments
@@ -77,7 +75,6 @@ class EquipmentManager extends Manager
             $equipments[] = $equipment;
         }
         return $equipments;
-
     }
     public function deleteEquipment(int $id)
     {
@@ -87,5 +84,19 @@ class EquipmentManager extends Manager
         WHERE equipments.id = ?
         ');
         $req->execute([$id]);
+    }
+
+    public function appliancesByLetter(string $applianceSearchItem)
+    {
+        $searchParams = '%' . $applianceSearchItem . '%';
+
+        $req = $this->db->prepare('
+        SELECT DISTINCT equipments.name as equipment_name 
+        FROM equipments
+        WHERE LOWER(equipments.name) LIKE LOWER(:applianceSearchItem)');
+        $req->bindParam(':applianceSearchItem', $searchParams, PDO::PARAM_STR);
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
