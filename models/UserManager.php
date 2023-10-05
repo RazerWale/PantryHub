@@ -209,6 +209,22 @@ class UserManager extends Manager
         }
         return $result;
     }
+    public function fetchUserFavouriteRecipesIds(int $id): array
+    {
+        $req = $this->db->prepare('
+        SELECT recipe_id 
+        FROM user_favourite_recipes
+        WHERE user_favourite_recipes.user_id = ?
+        ');
+        $req->execute([$id]);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        $uniqueIds = [];
+        foreach ($result as $row) {
+            $id = $row['recipe_id'];
+            $uniqueIds[] = $id;
+        }
+        return $uniqueIds;
+    }
     public function deleteUserFavouriteRecipe(int $id, int $favouriteRecipeId)
     {
         $req = $this->db->prepare('
@@ -225,19 +241,6 @@ class UserManager extends Manager
         VALUES (?,?)
         ');
         $req->execute([$id, $favouriteRecipeId]);
-    }
-    public function isRecipeLiked(int $userId, int $recipeId): bool
-    {
-        $req = $this->db->prepare('
-        SELECT recipe_id 
-        FROM user_favourite_recipes
-        WHERE user_favourite_recipes.user_id = ?
-        AND
-        user_favourite_recipes.recipe_id = ?
-        ');
-        $req->execute([$userId, $recipeId]);
-        $result = $req->fetch(PDO::FETCH_ASSOC);
-        return ($result !== false);
     }
     /**
      * Transforms selected values within the input associative array into arrays.

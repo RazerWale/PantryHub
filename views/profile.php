@@ -15,8 +15,9 @@
 
 <?php ob_start() ?>
 <main class="liked-recommended-container">
-    <div class="liked-recommend-buttons"><button class="recommend-button">Searched Recipes</button><button
-            class="liked-button">Liked Recipes</button></div>
+    <div class="liked-recommend-buttons"><button class="recommend-button">Searched Recipes</button>
+        <a href="?action=addUserFavouriteRecipes"><button class="liked-button">Liked Recipes</button></a>
+    </div>
     <div class="liked-recommend">
         <div class="recommended-recipes">
             <?php

@@ -49,7 +49,12 @@ try {
             $main->searchPageJson();
             break;
         case 'recipePage';
-            $main->recipePage();
+            if ($_SESSION['loggedIn']) {
+                $main->recipePage();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'kitchenPage';
             $main->kitchenPage();
@@ -64,6 +69,12 @@ try {
             break;
         case 'addUserFavouriteRecipe';
             $user->addUserFavouriteRecipe();
+            break;
+        case 'addOrUpdateRecipeRating';
+            $recipe->addOrUpdateRecipeRating();
+            break;
+        case 'addUserFavouriteRecipes';
+            $main->addUserFavouriteRecipes();
             break;
         default:
             //should bring me to the home page

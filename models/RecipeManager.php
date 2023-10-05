@@ -363,4 +363,59 @@ class RecipeManager extends Manager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function isRecipeLiked(int $userId, int $recipeId): bool
+    {
+        $req = $this->db->prepare('
+        SELECT recipe_id 
+        FROM user_favourite_recipes
+        WHERE user_favourite_recipes.user_id = ?
+        AND
+        user_favourite_recipes.recipe_id = ?
+        ');
+        $req->execute([$userId, $recipeId]);
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return ($result !== false);
+    }
+    public function fetchRecipeRating(int $recipeId)
+    {
+        $req = $this->db->prepare('
+        SELECT AVG(rating) AS average_rating, COUNT(user_id) as count_rating
+        FROM recipe_rating
+        WHERE recipe_rating.recipe_id = ?
+        ');
+        $req->execute([$recipeId]);
+        return $result = $req->fetch(PDO::FETCH_ASSOC);
+    }
+    public function isUserRatedRecipe(int $userId, int $recipeId): bool
+    {
+        $req = $this->db->prepare('
+        SELECT *
+        FROM recipe_rating
+        WHERE recipe_rating.user_id = ?
+        AND
+        recipe_rating.recipe_id = ?
+        ');
+        $req->execute([$userId, $recipeId]);
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return ($result !== false);
+    }
+    public function inserRecipeRating(int $userId, int $recipeId, int $rating)
+    {
+        $req = $this->db->prepare('
+        INSERT INTO recipe_rating(user_id, 
+        recipe_id, 
+        rating)
+        VALUES (?,?,?)
+        ');
+        $req->execute([$userId, $recipeId, $rating]);
+    }
+    public function updateRecipeRating(int $userId, int $recipeId, int $newRating)
+    {
+        $req = $this->db->prepare('
+        UPDATE recipe_rating
+        SET rating = ?
+        WHERE user_id = ? AND recipe_id = ?
+        ');
+        $req->execute([$newRating, $userId, $recipeId]);
+    }
 }

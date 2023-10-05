@@ -56,8 +56,32 @@ class RecipeController
             // return $recipes;
         }
         require_once('views/profile.php');
-
-
+    }
+    public function addOrUpdateRecipeRating()
+    {
+        if (!isset($_GET['recipeId'])) {
+            http_response_code(400);
+            echo json_encode('Error! no recipe provided!');
+            die;
+        }
+        // if (!isset($_POST['recipeRating'])) {
+        //     http_response_code(400);
+        //     echo json_encode('Error! no recipe rating is provided!');
+        //     die;
+        // }
+        $recipeId = $_GET['recipeId'];
+        $userId = $_SESSION['userId'];
+        $recipeRating = $_POST['recipeRating'];
+        try {
+            if ($this->recipeManager->isUserRatedRecipe($userId, $recipeId)) {
+                $this->recipeManager->updateRecipeRating($userId, $recipeId, $recipeRating);
+            } else {
+                $this->recipeManager->inserRecipeRating($userId, $recipeId, $recipeRating);
+            }
+        } catch (Throwable $t) {
+            http_response_code(500);
+            echo json_encode($t->getMessage());
+        }
     }
 
 }
