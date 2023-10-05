@@ -61,6 +61,8 @@ try {
         case 'search';
             $recipe->search();
             break;
+        case 'groceriesByLetter';
+            $main->addGroceries();
         case 'searchByLetters';
             $main->searchByLetters();
             break;

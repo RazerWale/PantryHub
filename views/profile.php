@@ -36,21 +36,29 @@
                     <a class="recipe-name" href="?action=recipePage&id=<?= $recipe->getId() ?>">
                         <?= $recipe->getName() ?>
                     </a>
+                    <div class="time"><img src="images/timer.svg" alt=""><span>minutes</span></div>
                     <ul class="recipe-ingredients">
-                        <li>
-                            <a href="#">Ingredients</a>
-                            <ul class="dropdown">
-                                <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
-                                    <li class="ingredient">
-                                        <?= $ingredient->getName() ?>
-                                    </li>
+                        <!-- <li> -->
+                        <!-- <a href="#">Ingredients</a> -->
+                        <!-- <ul class="dropdown"> -->
+                        <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
+                            <li class="ingredient">
+                                <?= $ingredient->getName() ?>,
+                            </li>
 
-                                <?php } ?>
-                            </ul>
-                        </li>
+                        <?php } ?>
+                        <!-- </ul> -->
+                        <!-- </li> -->
                     </ul>
+                    <!-- <div class="recipe-misc-container">
+                        <div class="recipe-info">
+                            <img src="images/heart.svg" alt="">
+                            <img src="images/share.svg" alt="">
+                            <img src="images/timer.svg" alt="">
+                        </div>
+                    </div> -->
+                    <img class="like-button" src="images/heart.svg" alt="">
                 </div>
-
             <?php } ?>
 
 

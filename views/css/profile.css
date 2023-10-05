@@ -1,6 +1,7 @@
 .liked-recommend {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .liked-recommend-buttons button{
@@ -12,7 +13,7 @@
 }
 
 .liked-recommend-buttons button:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
     cursor: pointer;
 }
 
@@ -28,43 +29,82 @@
 }
 
 .recommended-recipes {
+    display: grid;
     margin: 20px 0;
-    width: 70%;
+    width: 40%;
 }
 
 .rec-recipe {
-    margin: 10px;
+    margin: 20px 0;
     text-align: center;
-    background-color: var(--secondary-bg-color);
+    background-color: #f2eee9;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    width: 90%;
+    height: 370px;
 }
 
 .recipe-name {
     display: block;
     font-family: "DM Serif Display";
-    font-size: 2em;
+    font-size: 1.2em;
     text-decoration: none;
     color: var(--main-font-color);
 }
 
-.rec-recipe img {
+.rec-recipe img:first-of-type {
     border-radius: 5px;
     width: 60%;
     margin-top: 10px;
 }
 
 .recipe-ingredients {
-    background-color: var(--tertiary-bg-color);
+    /* background-color: var(--tertiary-bg-color); */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    /* white-space: nowrap; */
+    text-align: center;
+    width: 100%;
+    line-height: 2;
 }
 
-.recipe-ingredients ul, .recipe-ingredients li{
+ .recipe-ingredients li{
     font-family: "DM Sans";
-    color: var(--secondary-bg-color);
+    /* color: var(--tertiary-bg-color); */
     list-style: none;
     display: inline-block;
     position: relative;
+    color: #81838e;
+    font-size: 13px;
 }
 
-.recipe-ingredients a {
+/* .recipe-info {
+    display: inline-block;
+}
+
+.recipe-info img {
+    position: relative;
+}*/
+
+.time img {
+    height: 25px;
+    /* top: 15px;
+    right: -150px; */
+}
+
+.like-button {
+    height: 30px;
+}
+
+/* .recipe-info img:last-of-type {
+    height: 25px;
+    right: 150px;
+    top: 5px;
+} */ */
+
+/*.recipe-ingredients a {
     display: block;
     padding: 20px 25px;
     text-decoration: none;
@@ -90,7 +130,7 @@
 
 .recipe-ingredients li:hover .dropdown {
     display: block;
-}
+} */
 
 .recipe-links {
     display: flex;
