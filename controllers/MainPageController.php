@@ -3,6 +3,7 @@ require_once('models/UserManager.php');
 require_once('models/IngredientManager.php');
 
 
+
 /**
  * Summary of MainPageController
  */
@@ -23,6 +24,12 @@ class MainPageController
      * @var IngredientManager
      */
     protected $ingredientManager;
+    /**
+     * Summary of userManager
+     * @var EquipmentManager
+     */
+    protected $equipmentManager;
+
 
     //protected $ingredientManager;
 
@@ -31,6 +38,7 @@ class MainPageController
         $this->recipeManager = new RecipeManager();
         $this->userManager = new UserManager();
         $this->ingredientManager = new IngredientManager();
+        $this->equipmentManager = new EquipmentManager();
     }
     public function default()
     {

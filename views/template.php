@@ -40,7 +40,7 @@
                 <div class="profilemenu">
                     <a href="?action=profilePage"><img class="logo" src="images/pantryhublogo.svg" alt=""></a>
                     <ul class="nav-links">
-                        <li><a href="http://localhost/PantryHub/?action=profilePage">Home</a></li>
+                        <li><a href="?action=profilePage">Home</a></li>
                         <li><a href="#">Personal Info</a></li>
                         <li><a href="#">Payment</a></li>
                         <li><a href="#">Support/FAQ</a></li>
@@ -62,35 +62,35 @@
                         <button type="submit">Search</button>
                         <ul class="search-output"></ul>
                     </form> -->
-            <?php } ?>
-            <?= $content ?>
+                <?= $content ?>
             </div>
         </div>
-        <!-- PHP -->
-        <script>
-            <?php if (!isset($_SESSION['loggedIn'])) { ?>
+    <?php } ?>
+    <!-- PHP -->
+    <script>
+        <?php if (!isset($_SESSION['loggedIn'])) { ?>
 
-                let hamburgerExitBtn = document.querySelector('.hamburger-exit');
-                let hamburgerBtn = document.querySelector('.hamburger-icon');
-                let navMenu = document.querySelector('.nav-links');
+            let hamburgerExitBtn = document.querySelector('.hamburger-exit');
+            let hamburgerBtn = document.querySelector('.hamburger-icon');
+            let navMenu = document.querySelector('.nav-links');
 
-                hamburgerBtn.addEventListener('click', function() {
-                    //hamburgerBtn.classList.toggle("inactive");
-                    navMenu.classList.toggle("active");
-                    hamburgerExitBtn.classList.toggle("active");
+            hamburgerBtn.addEventListener('click', function() {
+                //hamburgerBtn.classList.toggle("inactive");
+                navMenu.classList.toggle("active");
+                hamburgerExitBtn.classList.toggle("active");
 
-                });
+            });
 
-                hamburgerExitBtn.addEventListener('click', function() {
-                    hamburgerExitBtn.classList.remove("active");
-                    //hamburgerBtn.style.classList.remove("inactive");
-                    //hamburgerBtn.style.classList.toggle("active");
-                    navMenu.classList.remove("active");
-                });
-            <?php } ?>
-        </script>
-        <!-- PHP -->
-        <?= $script ?>
+            hamburgerExitBtn.addEventListener('click', function() {
+                hamburgerExitBtn.classList.remove("active");
+                //hamburgerBtn.style.classList.remove("inactive");
+                //hamburgerBtn.style.classList.toggle("active");
+                navMenu.classList.remove("active");
+            });
+        <?php } ?>
+    </script>
+    <!-- PHP -->
+    <?= $script ?>
 </body>
 
 

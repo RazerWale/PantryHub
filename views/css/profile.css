@@ -38,7 +38,7 @@
     background-color: var(--main-font-color);
 }
 
-.liked-button {
+.fave-recipes {
     color: var(--secondary-bg-color);
     background-color: #81838e;
 }
@@ -116,6 +116,7 @@
     bottom: 2px;
 }
 
+
 /* .recipe-info img:last-of-type {
     height: 25px;
     right: 150px;
@@ -189,12 +190,4 @@
 }
 .favourite-recipes{
     color: blue;
-}
-
-.liked-recipes {
-    display: grid;
-    grid-template-columns: repeat(3, 30%);;
-    gap: 2rem;
-    background-color: greenyellow;
-    display: none;
 }

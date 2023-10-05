@@ -22,7 +22,7 @@
 </form>
 <main class="liked-recommended-container">
     <div class="liked-recommend-buttons"><button class="recommend-button">Recommended Recipes</button>
-        <a href="?action=addUserFavouriteRecipes"><button class="liked-button">Liked Recipes</button></a>
+        <a class="fave-recipes" href="?action=addUserFavouriteRecipes"><button class="liked-button">Liked Recipes</button></a>
     </div>
     <div class="liked-recommend">
         <div class="recommended-recipes">
@@ -69,9 +69,6 @@
             <?php } ?>
 
 
-        </div>
-        <div class="liked-recipes">
-            <p>put shit here</p>
         </div>
     </div>
 </main>
