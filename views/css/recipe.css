@@ -116,3 +116,43 @@ h1 {
 .not-liked {
     color: green;
 }
+/* .rating {
+    font-size: 3rem;
+}
+.star {
+    cursor: pointer;
+    color: white;
+}
+.star:hover ~  {
+    cursor: pointer;
+    color: red;
+} */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+
+}
+radio {
+    display: none;
+}
+  
+  .star {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ddd;
+    margin-right: 5px;
+}
+
+.star:hover,
+.star:hover ~ .star
+/* input[type="radio"]:checked ~ label.star,
+input[type="radio"]:checked ~ label.star ~ .star */
+ {
+    color: #fdd835;
+}
+.count-rating {
+    font-size: 1rem;
+}

@@ -40,6 +40,24 @@
     <?php } else { ?>
         <div class="favourite-recipe not-liked">like</div>
     <?php } ?>
+    <div class="rating">
+        <div class="count-rating">
+            <?= '(' . $recipeRating["count_rating"] . ')' ?>
+        </div>
+        <input type="radio" class="radio-button" name="rating" id="star5" value="5" hidden>
+        <label class="star" for="star5">&#9733;</label>
+        <input type="radio" class="radio-button" name="rating" id="star4" value="4" hidden>
+        <label class="star" for="star4">&#9733;</label>
+        <input type="radio" class="radio-button" name="rating" id="star3" value="3" hidden>
+        <label class="star" for="star3">&#9733;</label>
+        <input type="radio" class="radio-button" name="rating" id="star2" value="2" hidden>
+        <label class="star" for="star2">&#9733;</label>
+        <input type="radio" class="radio-button" name="rating" id="star1" value="1" hidden>
+        <label class="star" for="star1">&#9733;</label>
+    </div>
+    <div class="avg-rating">
+        <?= $recipeRating["average_rating"] ?>
+    </div>
 
     <div class="recipe-ingredients">
         <div class="in-kitchen-container">

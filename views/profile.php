@@ -1,6 +1,6 @@
 <?php $title = "Profile"; ?>
 
-<?php /*require_once('profileTemplate.php')*/ ?>
+<?php /*require_once('profileTemplate.php')*/?>
 
 
 <?php ob_start() ?>
@@ -21,7 +21,9 @@
     <ul class="search-output"></ul>
 </form>
 <main class="liked-recommended-container">
-    <div class="liked-recommend-buttons"><button class="recommend-button">Recommended Recipes</button><button class="liked-button">Liked Recipes</button></div>
+    <div class="liked-recommend-buttons"><button class="recommend-button">Searched Recipes</button>
+        <a href="?action=addUserFavouriteRecipes"><button class="liked-button">Liked Recipes</button></a>
+    </div>
     <div class="liked-recommend">
         <div class="recommended-recipes">
             <?php
@@ -75,7 +77,7 @@
 </main>
 
 
-<?php /*ob_start()*/ ?>
+<?php /*ob_start()*/?>
 
 
 <?php $content = ob_get_clean() ?>

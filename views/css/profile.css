@@ -187,6 +187,9 @@
     height: 100vh;
     overflow-y: scroll;
 }
+.favourite-recipes{
+    color: blue;
+}
 
 .liked-recipes {
     display: grid;

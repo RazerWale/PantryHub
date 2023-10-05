@@ -139,33 +139,52 @@ class MainPageController
     public function recipePage()
     {
         if (!isset($_GET['id'])) {
+            http_response_code(400);
             throw new Exception('no id is provided!');
         }
         $id = $_GET['id'];
         $userId = $_SESSION['userId'];
-        $recipe = $this->recipeManager->fetchRecipe($id);
-        $recipeIngredients = $recipe->getIngredients();
-        $isRecipeLiked = $this->userManager->isRecipeLiked($userId, $id);
+        try {
+            $recipe = $this->recipeManager->fetchRecipe($id);
+            $recipeIngredients = $recipe->getIngredients();
+            $isRecipeLiked = $this->recipeManager->isRecipeLiked($userId, $id);
 
-        $userIngredients = $this->userManager->fetchUserIngredients($userId);
-        $userIngredientsIds = array_map(function ($ingredient) {
-            return $ingredient->getId();
-        }, $userIngredients);
+            $userIngredients = $this->userManager->fetchUserIngredients($userId);
+            $userIngredientsIds = array_map(function ($ingredient) {
+                return $ingredient->getId();
+            }, $userIngredients);
 
-        $ingredientsUserHave = [];
-        $ingredientsUserHaveNot = [];
+            $ingredientsUserHave = [];
+            $ingredientsUserHaveNot = [];
 
-        foreach ($recipeIngredients as $ingredients) {
-            $ingredientId = $ingredients->getId();
-            if (in_array($ingredientId, $userIngredientsIds)) {
-                $ingredientsUserHave[] = $ingredients;
-            } else {
-                $ingredientsUserHaveNot[] = $ingredients;
+            foreach ($recipeIngredients as $ingredients) {
+                $ingredientId = $ingredients->getId();
+                if (in_array($ingredientId, $userIngredientsIds)) {
+                    $ingredientsUserHave[] = $ingredients;
+                } else {
+                    $ingredientsUserHaveNot[] = $ingredients;
+                }
             }
+            $recipeRating = $this->recipeManager->fetchRecipeRating($id);
+
+        } catch (Throwable $t) {
+            http_response_code(500);
+            echo json_encode($t->getMessage());
         }
-
-
         require_once('views/recipe.php');
+    }
+    public function addUserFavouriteRecipes()
+    {
+        $userId = $_SESSION['userId'];
+        try {
+            $recipesIds = $this->userManager->fetchUserFavouriteRecipesIds($userId);
+            $recipes = $this->recipeManager->fetchRecipesByIds($recipesIds);
+        } catch (Throwable $t) {
+            http_response_code(500);
+            throw new Exception($t->getMessage());
+        }
+        require_once('views/profile.php');
+
     }
     public function kitchenPage()
     {
