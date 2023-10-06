@@ -38,9 +38,9 @@
         <div class="profile-template-body">
             <div class="profile-container">
                 <div class="profilemenu">
-                    <img class="logo" src="images/pantryhublogo.svg" alt="">
+                    <a href="?action=profilePage"><img class="logo" src="images/pantryhublogo.svg" alt=""></a>
                     <ul class="nav-links">
-                        <li><a href="http://localhost/PantryHub/?action=profilePage">Home</a></li>
+                        <li><a href="?action=profilePage">Home</a></li>
                         <li><a href="#">Personal Info</a></li>
                         <li><a href="#">Payment</a></li>
                         <li><a href="#">Support/FAQ</a></li>
@@ -55,12 +55,13 @@
                 </div>
             </div>
             <div class="search-container">
-                <form class="search-form" action="?action=search" method="GET">
-                    <input type="hidden" name="action" value="search">
-                    <input type="text" placeholder="Search Here" id="search" name="search-item" autocomplete="off">
-                    <button type="submit">Search</button>
-                    <ul class="search-output"></ul>
-                </form>
+
+                <!-- <form class="search-form" action="?action=search" method="GET">
+                        <input type="hidden" name="action" value="search">
+                        <input type="text" placeholder="Search Here" id="search" name="search-item" autocomplete="off">
+                        <button type="submit">Search</button>
+                        <ul class="search-output"></ul>
+                    </form> -->
                 <?= $content ?>
             </div>
         </div>

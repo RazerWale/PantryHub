@@ -80,6 +80,14 @@ try {
                 exit;
             }
             break;
+        case 'appliancesByLetter';
+            if ($_SESSION['loggedIn']) {
+                $main->addAppliances();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
+            break;
         case 'searchByLetters';
             if ($_SESSION['loggedIn']) {
                 $main->searchByLetters();

@@ -3,6 +3,7 @@ require_once('models/UserManager.php');
 require_once('models/IngredientManager.php');
 
 
+
 /**
  * Summary of MainPageController
  */
@@ -23,6 +24,12 @@ class MainPageController
      * @var IngredientManager
      */
     protected $ingredientManager;
+    /**
+     * Summary of userManager
+     * @var EquipmentManager
+     */
+    protected $equipmentManager;
+
 
     //protected $ingredientManager;
 
@@ -31,6 +38,7 @@ class MainPageController
         $this->recipeManager = new RecipeManager();
         $this->userManager = new UserManager();
         $this->ingredientManager = new IngredientManager();
+        $this->equipmentManager = new EquipmentManager();
     }
     public function default()
     {
@@ -166,7 +174,6 @@ class MainPageController
                 }
             }
             $recipeRating = $this->recipeManager->fetchRecipeRating($id);
-
         } catch (Throwable $t) {
             http_response_code(500);
             echo json_encode($t->getMessage());
@@ -184,11 +191,21 @@ class MainPageController
             throw new Exception($t->getMessage());
         }
         require_once('views/profile.php');
-
     }
     public function kitchenPage()
     {
         require_once('views/kitchen.php');
+    }
+
+    public function addAppliances()
+    {
+        if (!empty($_GET['add-appliances-input'])) {
+            $applianceSearchItem = $_GET['add-appliances-input'];
+            $applianceName = $this->equipmentManager->appliancesByLetter($applianceSearchItem);
+            $results = [];
+            $results = [$applianceName];
+            echo json_encode($results);
+        }
     }
 
     public function addGroceries()

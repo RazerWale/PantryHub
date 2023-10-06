@@ -14,6 +14,12 @@
 <?php $style = ob_get_clean() ?>
 
 <?php ob_start() ?>
+<form class="search-form" action="?action=search" method="GET">
+    <input type="hidden" name="action" value="search">
+    <input type="text" placeholder="Search Here" id="search" name="search-item" autocomplete="off">
+    <button type="submit">Search</button>
+    <ul class="search-output"></ul>
+</form>
 <main class="liked-recommended-container">
     <div class="liked-recommend-buttons">
         <a href="?action=profilePage" style="text-decoration:none">
@@ -31,8 +37,10 @@
             /** @var RecipeEntity $recipe */
             foreach ($recipes as $recipe) { ?>
                 <div class="rec-recipe">
+                    <img class="like-button" src="images/heart.svg" alt="">
 
-                    <img src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-480x360.jpg" alt="">
+                    <img class="recipe-img" src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-240x150.jpg"
+                        alt="">
                     <!--<div class="recipe-link-container">
                         <div class="recipe-links">
                             <img src="images/heart.svg" alt="">
@@ -43,7 +51,7 @@
                     <a class="recipe-name" href="?action=recipePage&id=<?= $recipe->getId() ?>">
                         <?= $recipe->getName() ?>
                     </a>
-                    <div class="time"><img src="images/timer.svg" alt=""><span>minutes</span></div>
+                    <div class="time"><img src="images/timer.svg" alt=""><span>min.</span></div>
                     <ul class="recipe-ingredients">
                         <!-- <li> -->
                         <!-- <a href="#">Ingredients</a> -->
@@ -64,27 +72,12 @@
                             <img src="images/timer.svg" alt="">
                         </div>
                     </div> -->
-                    <img class="like-button" src="images/heart.svg" alt="">
                 </div>
+
             <?php } ?>
 
 
         </div>
-        <!--<div class="liked-recipes">
-            <div class="liked-recipe">
-                <img src="https://spoonacular.com/recipeImages/636589-636x393.jpg" alt="">
-                <div class="recipe-links">
-                    <img src="images/heart.svg" alt="">
-                    <img src="images/share.svg" alt="">
-                    <img src="images/timer.svg" alt="">
-                </div>
-                <a href="#">Butternut Squash Frittata</a>
-                <div class="recipe-ingredients">
-                    <div class="ingredients-needed">butter, nuts, squash</div>
-                    <div class="ingredients-owned">eggs, milk, chicken</div>
-                </div>
-            </div>
-        </div>-->
     </div>
 </main>
 

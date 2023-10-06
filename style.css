@@ -173,8 +173,7 @@ p, label {
 .profile-template-body {
     display: flex;
     align-items: start;
-    /* background-color: var(--tertiary-bg-color); */
-    gap: 5rem;
+    gap: 2rem;
     /*grid-template-rows: 300px 1fr;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 80px 1fr 1fr 1fr;*/
@@ -243,6 +242,10 @@ p, label {
 
 .logo {
     padding: 40px 10px;
+}
+
+.search-container {
+    text-align: center;
 }
 
 .search-form {

@@ -1,13 +1,26 @@
-.liked-recommend {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
-    /* overflow-y: scroll; */
+/*.liked-recommend {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    /* width: 80%; */
+    /* justify-content: center;
+    align-items: center; 
+}*/
+
+/* .liked-recommended-container {
+    margin-right: 20px;
+} */
+
+.recommended-recipes {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);;
+    gap: 2rem;
+    /* background-color: aqua; */
+
 }
 
 .liked-recommend-buttons button{
-    width: 44%;
+    width: 40%;
     height: 50px;
     border-radius: 5px;
     border: none;
@@ -25,24 +38,23 @@
     background-color: var(--main-font-color);
 }
 
-.liked-button {
-    color: var(--main-font-color);
-    /* background-color: var(--secondary-bg-color); */
-    background-color: #bda891;
+.fave-recipes {
+    color: var(--secondary-bg-color);
+    background-color: #81838e;
 }
 
-.recommended-recipes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
+/*.recommended-recipes {
+    margin: 20px 0;
+    width: 40%;
+}*/
 
 .rec-recipe {
-    margin: 20px 0;
-    text-align: center;
+    margin: 10px 0;
+    padding: 10px 20px;
     background-color: #f2eee9;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    width: 90%;
-    height: 370px;
+    /* width: 20%; */
+    height: 400px;
 }
 
 .recipe-name {
@@ -51,11 +63,12 @@
     font-size: 1.2em;
     text-decoration: none;
     color: var(--main-font-color);
+    overflow: hidden;
 }
 
-.rec-recipe img:first-of-type {
+.recipe-img {
     border-radius: 5px;
-    width: 60%;
+    /* width: 60%; */
     margin-top: 10px;
 }
 
@@ -66,9 +79,7 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow:hidden;
-    /* white-space: nowrap; */
-    text-align: center;
-    width: 100%;
+    width: 90%;
     line-height: 2;
 }
 
@@ -92,19 +103,25 @@
 
 .time img {
     height: 25px;
+    margin: 10px 0;
     /* top: 15px;
     right: -150px; */
 }
 
 .like-button {
+    display: block;
     height: 30px;
+    position: relative; 
+    left: 292px;
+    bottom: 2px;
 }
+
 
 /* .recipe-info img:last-of-type {
     height: 25px;
     right: 150px;
     top: 5px;
-} */ */
+} */
 
 /*.recipe-ingredients a {
     display: block;
