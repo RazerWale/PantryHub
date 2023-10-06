@@ -173,6 +173,7 @@ p, label {
 .profile-template-body {
     display: flex;
     align-items: start;
+    /* background-color: var(--tertiary-bg-color); */
     gap: 5rem;
     /*grid-template-rows: 300px 1fr;
     grid-template-columns: 300px 1fr;
@@ -187,7 +188,7 @@ p, label {
     grid-column-start: 1;*/
     position: sticky;
     height: 100vh;
-    width: 300px;
+    /* width: 300px; */
     top: 0;
 }
 

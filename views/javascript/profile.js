@@ -64,6 +64,7 @@ function addSearchInput(resMessages) {
 
 document
   .querySelector(".search-container")
+  // .querySelector(".liked-recommend")
   .addEventListener("scroll", function () {
     const contentContainer = this;
     if (
@@ -72,6 +73,7 @@ document
       !end
     ) {
       count++;
+      console.log("you suck!");
       fetchRecipes(count);
     }
   });
@@ -99,10 +101,10 @@ function fetchRecipes(count) {
 function addRecipes(resMessages) {
   const recommendedRecipes = document.querySelector(".recommended-recipes");
 
-  for (const i of resMessages) {
-    const recipeId = resMessages[i]["id"];
-    const recipeName = resMessages[i]["name"];
-    const recipeIngredients = resMessages[i]["ingredients"];
+  for (const recipe of resMessages) {
+    const recipeId = recipe["id"];
+    const recipeName = recipe["name"];
+    const recipeIngredients = recipe["ingredients"];
 
     const recName = document.createElement("a");
     recName.classList.add("recipe-name");
@@ -131,8 +133,8 @@ function addRecipes(resMessages) {
     li.appendChild(ulDropdown);
     ul.appendChild(li);
 
-    for (const index of recipeIngredients) {
-      const ingredientName = recipeIngredients[index]["name"];
+    for (const ingr of recipeIngredients) {
+      const ingredientName = ingr["name"];
       const ingredient = document.createElement("li");
       ingredient.classList.add("ingredient");
       ingredient.textContent = ingredientName;

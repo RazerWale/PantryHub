@@ -1,8 +1,8 @@
 .profile-template-body {
-    display: flex;
-    align-items: start;
+    /* display: flex;
+    align-items: start; */
     gap: 1rem;
-    background-color: var(--tertiary-bg-color);
+    /* background-color: var(--tertiary-bg-color); */
     /*grid-template-rows: 300px 1fr;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 80px 1fr 1fr 1fr;*/
@@ -15,7 +15,7 @@
     /*grid-row-start: 1;
     grid-column-start: 1;*/
     position: sticky;
-    height: 90vh;
+    /* height: 90vh; */
     top: 0;
 }
 

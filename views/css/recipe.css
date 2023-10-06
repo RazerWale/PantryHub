@@ -50,14 +50,22 @@
     width: 80%;
     margin: 50px;
 }
-
-.recipe-ingredients div {
-    background-color: var(--primary-bg-color);
-    width: 100%;
-    height: 100px;
+.to-buy, .recipe-appliances{
     overflow: scroll;
+    height: 150px;
+    padding: 0 8px;
+}
+.to-buy p{
+    display: flex;
+    justify-content: space-between;
+}
+
+.to-buy-container, .in-kitchen-container {
+    padding: 5px 0;
+    background-color: var(--primary-bg-color);
     color: var(--main-font-color);
     border-radius: 10px;
+    width: 100%;
 }
 
 .recipe-ingredients div h3 {

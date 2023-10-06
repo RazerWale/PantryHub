@@ -2,10 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* height: 100vh; */
+    /* overflow-y: scroll; */
 }
 
 .liked-recommend-buttons button{
-    width: 45%;
+    width: 44%;
     height: 50px;
     border-radius: 5px;
     border: none;
@@ -25,13 +27,13 @@
 
 .liked-button {
     color: var(--main-font-color);
-    background-color: var(--secondary-bg-color);
+    /* background-color: var(--secondary-bg-color); */
+    background-color: #bda891;
 }
 
 .recommended-recipes {
     display: grid;
-    margin: 20px 0;
-    width: 40%;
+    grid-template-columns: 1fr 1fr;
 }
 
 .rec-recipe {
@@ -147,7 +149,7 @@
 .recipe-link-container {
     display: inline-block;
 }*/
-.search-form{
+#search{
     position: relative;
 }
 .search-output{

@@ -1,6 +1,6 @@
 <?php $title = "Recipe"; ?>
 
-<?php /*require_once('profileTemplate.php')*/ ?>
+<?php /*require_once('profileTemplate.php')*/?>
 
 
 <?php ob_start() ?>
@@ -32,7 +32,7 @@
                 <button class="tag">
                     <?= $diet ?>
                 </button>
-        <?php }
+            <?php }
         } ?>
     </div>
     <?php if ($isRecipeLiked) { ?>
@@ -71,18 +71,22 @@
             <div class="to-buy">
                 <?php foreach ($ingredientsUserHave as $ingredient) { ?>
                     <p class="green">
-                        <span class="ingredient-have-name"><?= $ingredient->getName() ?><span>
-                                <span class="units">
-                                    <?= $ingredient->getQuantityMetric() ?>
-                                    <?= $ingredient->getUnitMetric() ?>
-                                </span>
+                        <span class="ingredient-have-name">
+                            <?= $ingredient->getName() ?>
+                        </span>
+                        <span class="units">
+                            <?= $ingredient->getQuantityMetric() ?>
+                            <?= $ingredient->getUnitMetric() ?>
+                        </span>
                     </p>
 
                 <?php } ?>
                 <!--<hr>-->
                 <?php foreach ($ingredientsUserHaveNot as $ingredient) { ?>
                     <p class="">
-                        <span class="ingredient-dont-have-name"><?= $ingredient->getName() ?></span>
+                        <span class="ingredient-dont-have-name">
+                            <?= $ingredient->getName() ?>
+                        </span>
                         <span class="units">
                             <?= $ingredient->getQuantityMetric() ?>
                             <?= $ingredient->getUnitMetric() ?>
@@ -131,4 +135,4 @@
 <?php $script = ob_get_clean() ?>
 
 <?php require_once('template.php')
-?>
+    ?>
