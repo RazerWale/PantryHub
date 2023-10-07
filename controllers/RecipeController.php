@@ -64,11 +64,6 @@ class RecipeController
             echo json_encode('Error! no recipe provided!');
             die;
         }
-        // if (!isset($_POST['recipeRating'])) {
-        //     http_response_code(400);
-        //     echo json_encode('Error! no recipe rating is provided!');
-        //     die;
-        // }
         $recipeId = $_GET['recipeId'];
         $userId = $_SESSION['userId'];
         $recipeRating = $_POST['recipeRating'];

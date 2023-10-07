@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title>
         <?= $title ?>
-        <!-- PHP -->
     </title>
     <link href="style.css" rel="stylesheet" />
-    <!-- <link href="views/css/profileTemplate.css" rel="stylesheet" /> -->
     <?= $style ?>
-    <!-- PHP -->
 </head>
 
 <body <?php if (isset($_SESSION['loggedIn'])) { ?> style="background-color: var(--secondary-bg-color);" <?php } ?>>
@@ -74,14 +71,14 @@
             let hamburgerBtn = document.querySelector('.hamburger-icon');
             let navMenu = document.querySelector('.nav-links');
 
-            hamburgerBtn.addEventListener('click', function() {
+            hamburgerBtn.addEventListener('click', function () {
                 //hamburgerBtn.classList.toggle("inactive");
                 navMenu.classList.toggle("active");
                 hamburgerExitBtn.classList.toggle("active");
 
             });
 
-            hamburgerExitBtn.addEventListener('click', function() {
+            hamburgerExitBtn.addEventListener('click', function () {
                 hamburgerExitBtn.classList.remove("active");
                 //hamburgerBtn.style.classList.remove("inactive");
                 //hamburgerBtn.style.classList.toggle("active");
