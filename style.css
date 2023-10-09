@@ -171,6 +171,11 @@ header a {
     cursor: pointer;
 }
 
+
+.search-container {
+    width: 100%;
+} 
+
 /* ----------SEARCH STYLE---------- */
 
 .search-form input{

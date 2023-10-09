@@ -2,26 +2,75 @@ h1 {
     font-size: 5rem;
     margin: 20px;
     display: block;
+    text-align: center;
 }
 
 .kitchen-container {
-    width: 100%;
+    width: 80vw;
 }
 
-.search-container {
-    width: 100%;
+.kitchen-buttons {
+    height: 50px;
+    width: 80vw;
+    text-align: center;
+}
+
+.kitchen-buttons button {
+    width: 30%;
+    height: 100%;
+    margin: 0 5%;
+    border: none;
+    border-radius: 10px;
+    color: var(--secondary-bg-color);
+    font-family:"DM Sans";
+}
+
+.grocery-button {
+    background-color: var(--tertiary-bg-color);
+}
+
+.appliances-button {
+    background-color: #dba1a1;
+}
+
+
+.kitchen-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
 
 .groceries-list, .appliances-list {
-    width: 300px;
-    height: 100vh;
+    margin: 20px 0;
+    width: 80vw;
+    height: 55vh;
+    text-align: center;
+}
+
+.groceries-list button, .appliances-list button{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-font-color);
+    color: var(--secondary-bg-color);
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 50%;
     padding: 15px 10px;
     border: none;
     border-radius: 5px;
+    display: inline-block;
+}
+
+.grocery-options, .appliance-options {
+    position: absolute;
+    display: inline-block;
+    right: 335px;
+    width: 40%;
+    z-index: 2;
 }
 
 li {
@@ -30,13 +79,29 @@ li {
 
 .grocery-list {
     width: 100%;
-    background-color: #fff;
+    height: 50vh;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
+
+.grocery-list li{
+    width: 20%;
+    background-color: #f2eee9;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+
 
 li {
     padding: 15px 10px;
     text-align: left;
+}
+
+.grocery-options, .appliance-options {
+    background-color: white;
 }
 
 .grocery-options li:hover {
@@ -47,3 +112,15 @@ li {
     background-color: #ddd;
 }
 
+.appliances-list {
+     display: none;
+}
+
+input[type="submit"] {
+    width: 150px;
+    height: 40px;
+    align-self: center;
+    border: none;
+    background-color: var(--main-font-color);
+    color: var(--secondary-bg-color);
+}

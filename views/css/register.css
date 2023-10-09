@@ -43,49 +43,6 @@ h2 {
     border-radius: 5px;
 }
 
-/* ----------PROGRESS BAR STYLE---------- */
-
-.progress-bar {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 25%;
-    counter-reset: step;
-}
-
-.progress-bar::before {
-    content:'';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 100%;
-    background-color: #e5dcd3;
-}
-
-.progress-step {
-    width: 2rem;
-    height: 2rem;
-    background-color: #e5dcd3;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.progress-step::before {
-    counter-increment: step;
-    content: counter(step);
-    z-index: 1;
-    color: var(--main-font-color);
-    font-family: "DM Serif Display";
-}
-
-
-.progress-step-active {
-    background-color: var(--tertiary-bg-color);
-}
-
 /* ----------PAGES STYLE---------- */
 
 

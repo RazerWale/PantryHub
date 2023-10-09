@@ -61,7 +61,6 @@ transition: 150ms ease-in-out;
 .rec-recipe:hover {
     cursor: pointer;
     box-shadow:  4px 6px 15px -5px;
-    /* transform: scale(1.01); */
     transform:translateY(-1%) translateX(-0.5%);
 
 
@@ -95,7 +94,6 @@ transition: 150ms ease-in-out;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow:hidden;
-    /* width: 90%; */
     line-height: 2;
     text-align: center;
     padding: 0 2rem;
@@ -178,8 +176,6 @@ radio {
 
 .star:hover,
 .star:hover ~ .star
-/* input[type="radio"]:checked ~ label.star,
-input[type="radio"]:checked ~ label.star ~ .star */
  {
     color: #fdd835;
 }

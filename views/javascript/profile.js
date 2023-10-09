@@ -75,7 +75,6 @@ function addSearchInput(resMessages) {
 
 document
   .querySelector(".search-container")
-  // .querySelector(".liked-recommend")
   .addEventListener("scroll", function () {
     const contentContainer = this;
     if (searchParams.has("action", "addUserFavouriteRecipes")) {

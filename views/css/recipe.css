@@ -14,7 +14,6 @@
 
 .directions h3 {
     font-size: 2rem;
-    /*display: inline-block;*/
     text-align: center;
 }
 
@@ -124,17 +123,6 @@ h1 {
 .not-liked {
     color: green;
 }
-/* .rating {
-    font-size: 3rem;
-}
-.star {
-    cursor: pointer;
-    color: white;
-}
-.star:hover ~  {
-    cursor: pointer;
-    color: red;
-} */
 .rating {
     display: flex;
     flex-direction: row-reverse;
@@ -156,8 +144,6 @@ radio {
 
 .star:hover,
 .star:hover ~ .star
-/* input[type="radio"]:checked ~ label.star,
-input[type="radio"]:checked ~ label.star ~ .star */
  {
     color: #fdd835;
 }

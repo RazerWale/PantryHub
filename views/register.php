@@ -14,11 +14,6 @@
 
 <div class="container">
     <h1>Registration Form</h1>
-    <div class="progress-bar">
-        <div class="progress-step" data-title="Personal"></div>
-        <div class="progress-step" data-title="Diets & Restrictions"></div>
-        <div class="progress-step" data-title="Appliances"></div>
-    </div>
     <div class="form-outer">
         <form action="?action=registerUser" method="POST" id="form">
             <div class="page page1 slidepage">
