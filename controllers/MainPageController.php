@@ -46,9 +46,17 @@ class MainPageController
     }
     public function profilePage()
     {
+        $userId = $_SESSION['userId'];
+        $isRecipeLiked = [];
+        $recipeRating = [];
         $ids = $this->fetchRecipesIdsByIngredientsAndEquipments();
-        // $page = $_GET['page'];
         $recipes = $this->recipeManager->fetchRecipesByIds($ids);
+        foreach ($ids as $id) {
+            $isRecipeLiked[] = $this->recipeManager->isRecipeLiked($userId, $id);
+            $recipeRating[] = $this->recipeManager->fetchRecipeRating($id);
+        }
+
+
         require_once('views/profile.php');
     }
     public function profilePageJson()
@@ -155,8 +163,13 @@ class MainPageController
         try {
             $recipe = $this->recipeManager->fetchRecipe($id);
             $recipeIngredients = $recipe->getIngredients();
+            $recipeEquipments = $recipe->getEquipments();
             $isRecipeLiked = $this->recipeManager->isRecipeLiked($userId, $id);
-
+            $recipeEquipmentsNames = [];
+            foreach ($recipeEquipments as $equipment) {
+                $recipeEquipmentsNames[] = $equipment->getName();
+            }
+            $recipeEquipmentsNames = array_unique($recipeEquipmentsNames);
             $userIngredients = $this->userManager->fetchUserIngredients($userId);
             $userIngredientsIds = array_map(function ($ingredient) {
                 return $ingredient->getId();
@@ -186,6 +199,10 @@ class MainPageController
         try {
             $recipesIds = $this->userManager->fetchUserFavouriteRecipesIds($userId);
             $recipes = $this->recipeManager->fetchRecipesByIds($recipesIds);
+            foreach ($recipesIds as $id) {
+                $isRecipeLiked[] = $this->recipeManager->isRecipeLiked($userId, $id);
+                $recipeRating[] = $this->recipeManager->fetchRecipeRating($id);
+            }
         } catch (Throwable $t) {
             http_response_code(500);
             throw new Exception($t->getMessage());

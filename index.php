@@ -57,30 +57,76 @@ try {
             }
             break;
         case 'kitchenPage';
-            $main->kitchenPage();
+            if ($_SESSION['loggedIn']) {
+                $main->kitchenPage();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
+            break;
         case 'search';
-            $recipe->search();
+            if ($_SESSION['loggedIn']) {
+                $recipe->search();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'groceriesByLetter';
-            $main->addGroceries();
+            if ($_SESSION['loggedIn']) {
+                $main->addGroceries();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'appliancesByLetter';
-            $main->addAppliances();
+            if ($_SESSION['loggedIn']) {
+                $main->addAppliances();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'searchByLetters';
-            $main->searchByLetters();
+            if ($_SESSION['loggedIn']) {
+                $main->searchByLetters();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'removeFavouriteRecipe';
-            $user->removeFavouriteRecipe();
+            if ($_SESSION['loggedIn']) {
+                $user->removeFavouriteRecipe();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'addUserFavouriteRecipe';
-            $user->addUserFavouriteRecipe();
+            if ($_SESSION['loggedIn']) {
+                $user->addUserFavouriteRecipe();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'addOrUpdateRecipeRating';
-            $recipe->addOrUpdateRecipeRating();
+            if ($_SESSION['loggedIn']) {
+                $recipe->addOrUpdateRecipeRating();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         case 'addUserFavouriteRecipes';
-            $main->addUserFavouriteRecipes();
+            if ($_SESSION['loggedIn']) {
+                $main->addUserFavouriteRecipes();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
             break;
         default:
             $main->default();
