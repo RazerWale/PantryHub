@@ -1,7 +1,6 @@
 .container {
     width: 80vw;
     height: 80vh;
-    /*border-top: 1px solid var(--main-font-color);*/
     background-color: var(--secondary-bg-color);
     margin: 0 auto;
     padding: 20px 0;
@@ -10,6 +9,10 @@
 
 h1, h2 {
     text-align: center;
+}
+
+h2 {
+    margin: 10px;
 }
 
 .form-outer {
@@ -40,48 +43,7 @@ h1, h2 {
     border-radius: 5px;
 }
 
-/*.form-outer button {
-    height: 100%;
-    width: 50%;
-    border: none;
-    border-radius: 90px;
-    cursor: pointer;
-    text-transform: uppercase;
-}*/
-
-/*.container .progress-bar{
-    display: flex;
-    margin: 0 auto;
-    border: 1px solid black;
-    }
-
-.container .progress-bar .step{
-    text-align: center;
-    width: 100%;
-}
-
-.progress-bar .step p {
-    height: 50px;
-    width: 130px;
-    text-align: center;
-    /*border: 1px solid var(--main-font-color);
-}
-
-.progress-bar .step .bullet {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    border: 1px solid black;
-    display: inline-block;
-    border-radius: 50%;
-    font-size: 15px;
-    /*line-height: 25px;
-}
-
-.progress-bar .step span {
-    position:absolute;
-    /*left: 50%;
-}*/
+/* ----------PROGRESS BAR STYLE---------- */
 
 .progress-bar {
     position: relative;
@@ -119,21 +81,20 @@ h1, h2 {
     font-family: "DM Serif Display";
 }
 
-/*.progress-step::after {
-    content: attr(data-title);
-    position: absolute;
-    top: calc(100% + .75rem);
-    color: var(--main-font-color);
-    font-family: "DM Serif Display";
-}*/
 
 .progress-step-active {
     background-color: var(--tertiary-bg-color);
 }
 
+/* ----------PAGES STYLE---------- */
+
 
 .page {
     padding: 0 30px;
+}
+
+.page button:hover, #submit {
+    cursor: pointer;
 }
 
 .page1 {
@@ -152,23 +113,11 @@ h1, h2 {
     padding: 5px;
 }
 
-h2 {
-    margin: 10px;
-}
-
 .page1 h2, .page3 h2{
-    /*margin: 10px;*/
     grid-column-start: 1;
     grid-column-end: 3;
-
 }
 
-/*.page1:nth-last-of-type(1) {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}*/
 
 .page1 .field:last-of-type, .page3 .field:last-of-type{
     justify-self: center;
@@ -187,11 +136,6 @@ h2 {
     background-color: var(--tertiary-bg-color);
     color: var(--secondary-bg-color);
     font-family: "DM Sans";
-    /*margin: 20px 0;*/
-}
-
-.page button:hover, #submit {
-    cursor: pointer;
 }
 
 .page2 .field:not(.btns), .page3 .field:not(.btns){
@@ -202,12 +146,6 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    /*margin-top: 20px;
-    height: 70vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;*/
 }
 
 .page2 img, .page3 img {
@@ -227,7 +165,6 @@ h2 {
 }
 
 .page2 h2{
-    /*margin: 10px;*/
     grid-column-start: 1;
     grid-column-end: 5;
 
@@ -244,6 +181,24 @@ h2 {
     text-align: center;
 }
 
+.page2 button, #submit {
+    height: 100%;
+    width: 220px;
+    margin: 0 10px;
+    border-radius: 10px;
+    border: none;
+    color: var(--secondary-bg-color);
+    font-family: "DM Sans";
+}
+
+.page2 button:first-of-type, .page3 button:first-of-type {
+    background-color: var(--main-font-color);
+}
+
+.page2 button:last-of-type, #submit {
+    background-color: var(--tertiary-bg-color);
+}
+
 .page3 .btns {
     grid-column-start: 1;
     grid-column-end: 5;
@@ -255,36 +210,6 @@ h2 {
     text-align: center;
 }
 
-/*.page2 .field:last-of-type{
-    height: 45px;
-    width: 100%;
-    justify-self: center;
-    align-self: end;
-    text-align: center;
-}*/
-
-.page2 button, #submit {
-    height: 100%;
-    width: 220px;
-    margin: 0 10px;
-    border-radius: 10px;
-    border: none;
-    /*background-color: var(--tertiary-bg-color);*/
-    color: var(--secondary-bg-color);
-    font-family: "DM Sans";
-    /*margin: 20px 0;*/
-}
-
-.page2 button:first-of-type, .page3 button:first-of-type {
-    background-color: var(--main-font-color);
-    /*margin: 20px 0;*/
-}
-
-.page2 button:last-of-type, #submit {
-    background-color: var(--tertiary-bg-color);
-    /*margin: 20px 0;*/
-}
-
 .page3 {
     margin-top: 20px;
     height: 70vh;
@@ -294,10 +219,6 @@ h2 {
     grid-template-rows: 50px 130px 130px 100px;
     grid-template-columns: 1fr 1fr;
 }
-
-/*.active-pass {
-    transform: translateX(-500px);
-}*/
 
 @media(max-width: 950px) {
 

@@ -1,21 +1,9 @@
-/*.liked-recommend {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    /* width: 80%; */
-    /* justify-content: center;
-    align-items: center; 
-}*/
 
-/* .liked-recommended-container {
-    margin-right: 20px;
-} */
 
 .recommended-recipes {
     display: grid;
     grid-template-columns: repeat(3, 30%);;
     gap: 2rem;
-    /* background-color: aqua; */
 
 }
 
@@ -43,17 +31,12 @@
     background-color: #81838e;
 }
 
-/*.recommended-recipes {
-    margin: 20px 0;
-    width: 40%;
-}*/
 
 .rec-recipe {
     margin: 10px 0;
     padding: 10px 20px;
     background-color: #f2eee9;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    /* width: 20%; */
     height: 400px;
 }
 
@@ -68,12 +51,10 @@
 
 .recipe-img {
     border-radius: 5px;
-    /* width: 60%; */
     margin-top: 10px;
 }
 
 .recipe-ingredients {
-    /* background-color: var(--tertiary-bg-color); */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -85,7 +66,6 @@
 
  .recipe-ingredients li{
     font-family: "DM Sans";
-    /* color: var(--tertiary-bg-color); */
     list-style: none;
     display: inline-block;
     position: relative;
@@ -93,19 +73,10 @@
     font-size: 13px;
 }
 
-/* .recipe-info {
-    display: inline-block;
-}
-
-.recipe-info img {
-    position: relative;
-}*/
 
 .time img {
     height: 25px;
     margin: 10px 0;
-    /* top: 15px;
-    right: -150px; */
 }
 
 .like-button {
@@ -117,40 +88,6 @@
 }
 
 
-/* .recipe-info img:last-of-type {
-    height: 25px;
-    right: 150px;
-    top: 5px;
-} */
-
-/*.recipe-ingredients a {
-    display: block;
-    padding: 20px 25px;
-    text-decoration: none;
-    text-align: center;
-    color: var(--secondary-bg-color);
-}
-
-.recipe-ingredients .dropdown li {
-    display: block;
-}
-
-.recipe-ingredients .dropdown {
-    width: 100%;
-    position: absolute;
-    z-index: 99;
-    display: none;
-    background-color: var(--tertiary-bg-color);
-}
-
-.recipe-ingredients a:hover {
-    cursor: pointer;
-}
-
-.recipe-ingredients li:hover .dropdown {
-    display: block;
-} */
-
 .recipe-links {
     display: flex;
     flex-direction: column;
@@ -159,13 +96,6 @@
     width: 20px;
 }
 
-/*.recipe-links img {
-    height: 20px;
-}
-
-.recipe-link-container {
-    display: inline-block;
-}*/
 .search-form{
     position: relative;
 }

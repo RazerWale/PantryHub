@@ -1,11 +1,9 @@
 <?php $title = "Profile"; ?>
 
-<?php /*require_once('profileTemplate.php')*/ ?>
 
 
 <?php ob_start() ?>
 
-<!--<link rel="stylesheet" href="path to the file">-->
 <link rel="stylesheet" href="views/css/profile.css">
 <style>
 
@@ -33,37 +31,19 @@
                     <img class="like-button" src="images/heart.svg" alt="">
 
                     <img class="recipe-img" src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-240x150.jpg" alt="">
-                    <!--<div class="recipe-link-container">
-                        <div class="recipe-links">
-                            <img src="images/heart.svg" alt="">
-                            <img src="images/share.svg" alt="">
-                            <img src="images/timer.svg" alt="">
-                        </div>
-                    </div>-->
+
                     <a class="recipe-name" href="?action=recipePage&id=<?= $recipe->getId() ?>">
                         <?= $recipe->getName() ?>
                     </a>
                     <div class="time"><img src="images/timer.svg" alt=""><span>min.</span></div>
                     <ul class="recipe-ingredients">
-                        <!-- <li> -->
-                        <!-- <a href="#">Ingredients</a> -->
-                        <!-- <ul class="dropdown"> -->
                         <?php foreach ($recipe->getIngredients() as $ingredient) { ?>
                             <li class="ingredient">
                                 <?= $ingredient->getName() ?>,
                             </li>
 
                         <?php } ?>
-                        <!-- </ul> -->
-                        <!-- </li> -->
                     </ul>
-                    <!-- <div class="recipe-misc-container">
-                        <div class="recipe-info">
-                            <img src="images/heart.svg" alt="">
-                            <img src="images/share.svg" alt="">
-                            <img src="images/timer.svg" alt="">
-                        </div>
-                    </div> -->
                 </div>
 
             <?php } ?>
@@ -74,9 +54,6 @@
 </main>
 
 
-<?php /*ob_start()*/ ?>
-
-
 <?php $content = ob_get_clean() ?>
 
 
@@ -84,7 +61,7 @@
 
 
 <script src='views/javascript/profile.js'>
-    /* JScript for this page is here! */
+
 </script>
 
 <?php $script = ob_get_clean() ?>

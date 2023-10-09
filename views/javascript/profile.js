@@ -79,14 +79,14 @@ document
 function fetchRecipes(count) {
   const searchParams = new URLSearchParams(window.location.search);
   let url = `index.php?action=profilePageJson&page=${count}`;
-  const xhr = new XMLHttpRequest(); // create the HTTP request
+  const xhr = new XMLHttpRequest(); 
   if (searchParams.has("search-item")) {
     url = `index.php?action=searchPageJson&page=${count}&search-item=${searchParams.get(
       "search-item"
     )}`;
   }
-  xhr.open("GET", url); // open the request with parameter message
-  xhr.send(); // send request to the server
+  xhr.open("GET", url); 
+  xhr.send(); 
   xhr.addEventListener("load", (e) => {
     const resMessages = JSON.parse(xhr.responseText);
     if (resMessages.length == 0) {
@@ -146,21 +146,18 @@ function addRecipes(resMessages) {
   }
 }
 
-//////////////////////////
 
 let likedBtn = document.querySelector(".fave-recipes");
 let recBtn = document.querySelector(".recommend-button");
-//let likedSlide = document.querySelector(".liked-recipes");
 
 likedBtn.addEventListener("click", function(e) {
-  //likedSlide.style.display = "grid";
+
   console.log('yo')
   likedBtn.style.backgroundColor = "var(--main-font-color)";
   recBtn.style.backgroundColor = "#81838e";
 });
 
 recBtn.addEventListener("click", function(e) {
-  //likedSlide.style.display = "none";
   console.log('no')
   recBtn.style.backgroundColor = "var(--main-font-color)";
   likedBtn.style.backgroundColor = "#81838e";
