@@ -50,6 +50,7 @@ transition: 150ms ease-in-out;
 }
 .like-button{
     width: 2rem;
+    transition: 150ms ease-in-out;
 }
 
 .fave-recipes {
@@ -74,8 +75,6 @@ transition: 150ms ease-in-out;
     box-shadow:  4px 6px 15px -5px;
     /* transform: scale(1.01); */
     transform:translateY(-1%) translateX(-0.5%);
-
-
 }
 
 .recipeName{
@@ -206,15 +205,13 @@ transition: 150ms ease-in-out;
     height: 100vh;
     overflow-y: scroll;
 }
-.favourite-recipes{
-    color: blue;
-}
+
 .rating {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0 0 .3rem 0;
 
 }
@@ -222,20 +219,16 @@ radio {
     display: none;
 }
   
-  .star {
+.halfStar:hover,
+.half:hover ~ .half .halfStar,
+.half:hover ~ .half .full .fullStar
+/* .full:hover .fullStar */
+/* .full:hover ~ .halfStar */
+ {
+    fill: #fdd835;
     cursor: pointer;
-    font-size: 2rem;
-    color: #ddd;
-    margin-right: 5px;
 }
 
-.star:hover,
-.star:hover ~ .star
-/* input[type="radio"]:checked ~ label.star,
-input[type="radio"]:checked ~ label.star ~ .star */
- {
-    color: #fdd835;
-}
 .count-rating {
     font-size: 1rem;
 }
@@ -260,6 +253,46 @@ input[type="radio"]:checked ~ label.star ~ .star */
     fill: white;
     stroke: black;
 }
+.like-button:hover {
+    transform: scale(1.1);
+}
 .like-button path:hover {
     stroke: red;
 }
+.full {
+    position: absolute;
+    left: 0px;
+    z-index: -1;
+
+}
+.half {
+    position: relative;
+    z-index: 2;
+    margin-right: 18px;
+}
+
+.halfStar {
+    width: 15px;
+    height: 30px;
+    fill: rgb(221,221,221);
+}
+
+.fullStar {
+    width: 30px;
+    height: 30px;
+fill: rgb(221,221,221);
+}
+
+.halfStar path,
+.fullStar path{
+    stroke-width: 0;
+}
+
+.full:hover  .fullfStar
+{
+    fill: red;
+}
+.full:hover #piss  {
+    /* Your styles for the .halfStar SVG when hovering over .full label */
+    fill: red;
+  }

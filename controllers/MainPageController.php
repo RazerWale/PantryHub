@@ -51,12 +51,6 @@ class MainPageController
         $recipeRating = [];
         $ids = $this->fetchRecipesIdsByIngredientsAndEquipments();
         $recipes = $this->recipeManager->fetchRecipesByIds($ids);
-        foreach ($ids as $id) {
-            $isRecipeLiked[] = $this->recipeManager->isRecipeLiked($userId, $id);
-            $recipeRating[] = $this->recipeManager->fetchRecipeRating($id);
-        }
-
-
         require_once('views/profile.php');
     }
     public function profilePageJson()

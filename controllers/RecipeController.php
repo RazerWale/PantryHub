@@ -44,6 +44,7 @@ class RecipeController
     public function search()
     {
         $recipes = [];
+        $userId = $_SESSION['userId'];
 
         if (!empty($_GET['search-item'])) {
             $searchItem = $_GET['search-item'];
@@ -52,8 +53,6 @@ class RecipeController
                 $recipeEntity = $this->recipeManager->fetchRecipe($recipe);
                 $recipes[] = $recipeEntity;
             }
-            // var_dump($arrayRecipes);
-            // return $recipes;
         }
         require_once('views/profile.php');
     }
