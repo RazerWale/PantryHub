@@ -36,7 +36,6 @@
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-    font-family: "DM Sans";
     margin: 20px 0;
     color: var(--main-font-color);
 }
@@ -89,20 +88,3 @@
         grid-row-end:5;
     }
   }
-
-/* @media only screen and (max-width: 800px) {
-    ul {
-        display: flex;
-        position:fixed;
-        inset: 0 0 0 60%;
-        background-color: var(--secondary-bg-color);
-        gap: 1em;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0;
-    }
-
-    li:hover {
-        transform: scale(1.1);
-    }
-} */

@@ -129,14 +129,10 @@ try {
             }
             break;
         default:
-            //should bring me to the home page
             $main->default();
             break;
     }
 } catch (Throwable $e) {
-    // displayError($e->getMessage());
     echo $e->getMessage();
     throw $e;
-    // die;
-    // displayTheError($e);
 }

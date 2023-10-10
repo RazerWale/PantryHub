@@ -52,18 +52,10 @@
                 </div>
             </div>
             <div class="search-container">
-
-                <!-- <form class="search-form" action="?action=search" method="GET">
-                        <input type="hidden" name="action" value="search">
-                        <input type="text" placeholder="Search Here" id="search" name="search-item" autocomplete="off">
-                        <button type="submit">Search</button>
-                        <ul class="search-output"></ul>
-                    </form> -->
                 <?= $content ?>
             </div>
         </div>
     <?php } ?>
-    <!-- PHP -->
     <script>
         <?php if (!isset($_SESSION['loggedIn'])) { ?>
 
@@ -71,22 +63,18 @@
             let hamburgerBtn = document.querySelector('.hamburger-icon');
             let navMenu = document.querySelector('.nav-links');
 
-            hamburgerBtn.addEventListener('click', function () {
-                //hamburgerBtn.classList.toggle("inactive");
+            hamburgerBtn.addEventListener('click', function() {
                 navMenu.classList.toggle("active");
                 hamburgerExitBtn.classList.toggle("active");
 
             });
 
-            hamburgerExitBtn.addEventListener('click', function () {
+            hamburgerExitBtn.addEventListener('click', function() {
                 hamburgerExitBtn.classList.remove("active");
-                //hamburgerBtn.style.classList.remove("inactive");
-                //hamburgerBtn.style.classList.toggle("active");
                 navMenu.classList.remove("active");
             });
         <?php } ?>
     </script>
-    <!-- PHP -->
     <?= $script ?>
 </body>
 

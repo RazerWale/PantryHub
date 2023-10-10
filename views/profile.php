@@ -2,6 +2,7 @@
 
 
 <?php ob_start() ?>
+
 <link rel="stylesheet" href="views/css/profile.css">
 <style>
 </style>
@@ -33,8 +34,7 @@
             foreach ($recipes as $recipe) { ?>
                 <div class="rec-recipe">
                     <div>
-                        <img class="recipe-img"
-                            src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-240x150.jpg" alt="">
+                        <img class="recipe-img" src="https://spoonacular.com/recipeImages/<?= $recipe->getId() ?>-240x150.jpg" alt="">
                     </div>
                     <div class="recipeName">
                         <a class="recipe-name" href="?action=recipePage&id=<?= $recipe->getId() ?>">
@@ -160,11 +160,8 @@
 
                     </div>
                     <div class="time">
-                        <svg class="timeImg" width="50" height="18" viewBox="0 0 50 50" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.28888 12.5C3.89568 16.0752 2.5 20.3747 2.5 25C2.5 37.4265 12.5736 47.5 25 47.5C37.4265 47.5 47.5 37.4265 47.5 25C47.5 12.5736 37.4265 2.5 25 2.5V10M25 25L15 15"
-                                stroke="#2D3142" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg class="timeImg" width="50" height="18" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.28888 12.5C3.89568 16.0752 2.5 20.3747 2.5 25C2.5 37.4265 12.5736 47.5 25 47.5C37.4265 47.5 47.5 37.4265 47.5 25C47.5 12.5736 37.4265 2.5 25 2.5V10M25 25L15 15" stroke="#2D3142" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <span>
                             <?= $recipe->getTimeToCook() ?> min.
@@ -190,11 +187,8 @@
                                 <?php } else { ?>
                                 <?= 'not-liked' ?> 
                                 <?php } ?>
-                                " recipe-id=<?= $recipe->getId() ?> width="60" height="60" viewBox="0 0 60 60"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M30 15.0005C25.5015 9.75792 17.9844 8.13775 12.3481 12.9384C6.7117 17.739 5.91817 25.7652 10.3444 31.443C14.0246 36.1635 25.162 46.1198 28.8122 49.3423C29.2205 49.7028 29.4247 49.883 29.663 49.9538C29.8707 50.0155 30.0982 50.0155 30.3062 49.9538C30.5445 49.883 30.7485 49.7028 31.157 49.3423C34.8072 46.1198 45.9445 36.1635 49.6247 31.443C54.051 25.7652 53.3543 17.6885 47.621 12.9384C41.8878 8.18825 34.4985 9.75792 30 15.0005Z"
-                                    stroke="#2D3142" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                " recipe-id=<?= $recipe->getId() ?> width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M30 15.0005C25.5015 9.75792 17.9844 8.13775 12.3481 12.9384C6.7117 17.739 5.91817 25.7652 10.3444 31.443C14.0246 36.1635 25.162 46.1198 28.8122 49.3423C29.2205 49.7028 29.4247 49.883 29.663 49.9538C29.8707 50.0155 30.0982 50.0155 30.3062 49.9538C30.5445 49.883 30.7485 49.7028 31.157 49.3423C34.8072 46.1198 45.9445 36.1635 49.6247 31.443C54.051 25.7652 53.3543 17.6885 47.621 12.9384C41.8878 8.18825 34.4985 9.75792 30 15.0005Z" stroke="#2D3142" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                     </div>
@@ -203,11 +197,13 @@
         </div>
     </div>
 </main>
+
+
 <?php $content = ob_get_clean() ?>
 <?php ob_start() ?>
 
 <script src='views/javascript/profile.js'>
-    /* JScript for this page is here! */
+
 </script>
 
 <?php $script = ob_get_clean() ?>

@@ -6,7 +6,6 @@
 
 <link rel="stylesheet" href="views/css/login.css">
 <style>
-    /* CSS for this page is here! */
 </style>
 
 <?php $style = ob_get_clean() ?>

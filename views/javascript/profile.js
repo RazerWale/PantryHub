@@ -75,7 +75,6 @@ function addSearchInput(resMessages) {
 
 document
   .querySelector(".search-container")
-  // .querySelector(".liked-recommend")
   .addEventListener("scroll", function () {
     const contentContainer = this;
     if (searchParams.has("action", "addUserFavouriteRecipes")) {
@@ -93,14 +92,14 @@ document
 
 function fetchRecipes(count) {
   let url = `index.php?action=profilePageJson&page=${count}`;
-  const xhr = new XMLHttpRequest(); // create the HTTP request
+  const xhr = new XMLHttpRequest(); 
   if (searchParams.has("search-item")) {
     url = `index.php?action=searchPageJson&page=${count}&search-item=${searchParams.get(
       "search-item"
     )}`;
   }
-  xhr.open("GET", url); // open the request with parameter message
-  xhr.send(); // send request to the server
+  xhr.open("GET", url); 
+  xhr.send(); 
   xhr.addEventListener("load", (e) => {
     const resMessages = JSON.parse(xhr.responseText);
     if (resMessages.length == 0) {
