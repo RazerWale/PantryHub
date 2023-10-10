@@ -166,9 +166,8 @@ radio {
   
 .halfStar:hover,
 .half:hover ~ .half .halfStar,
-.half:hover ~ .half .full .fullStar
-/* .full:hover .fullStar */
-/* .full:hover ~ .halfStar */
+.half:hover ~ .half .full .fullStar,
+.full:hover .fullStar
  {
     fill: #fdd835;
     cursor: pointer;
@@ -237,7 +236,3 @@ fill: rgb(221,221,221);
 {
     fill: red;
 }
-.full:hover #piss  {
-    /* Your styles for the .halfStar SVG when hovering over .full label */
-    fill: red;
-  }

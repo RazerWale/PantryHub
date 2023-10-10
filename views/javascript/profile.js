@@ -92,14 +92,14 @@ document
 
 function fetchRecipes(count) {
   let url = `index.php?action=profilePageJson&page=${count}`;
-  const xhr = new XMLHttpRequest(); 
+  const xhr = new XMLHttpRequest();
   if (searchParams.has("search-item")) {
     url = `index.php?action=searchPageJson&page=${count}&search-item=${searchParams.get(
       "search-item"
     )}`;
   }
-  xhr.open("GET", url); 
-  xhr.send(); 
+  xhr.open("GET", url);
+  xhr.send();
   xhr.addEventListener("load", (e) => {
     const resMessages = JSON.parse(xhr.responseText);
     if (resMessages.length == 0) {
@@ -188,5 +188,16 @@ for (let btn of likeBtn) {
       xhr.send();
       btn.classList.replace("not-liked", "liked");
     }
+  });
+}
+
+const fullStar = document.querySelectorAll(".full");
+for (let star of fullStar) {
+  const halfStar = star.previousElementSibling;
+  star.addEventListener("mouseover", (e) => {
+    halfStar.style.fill = "#fdd835";
+  });
+  star.addEventListener("mouseout", (e) => {
+    halfStar.style.fill = "";
   });
 }
