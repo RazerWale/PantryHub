@@ -126,7 +126,6 @@ header a {
 .profile-template-body {
     display: flex;
     align-items: start;
-    gap: 2rem;
 }
 
 .profile-container {
@@ -186,6 +185,9 @@ header a {
     font-family: "DM Sans";
     padding-left: 10px;
     margin: 3rem 1.5rem 0 0;
+}
+.search-form {
+    margin-left: 3rem;
 }
 
 .search-form button {

@@ -35,7 +35,20 @@ rating.addEventListener("change", (e) => {
       );
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       xhr.send(`recipeRating=${ratingInt}`);
+      xhr.addEventListener("load", (e) => {
+        location.reload();
+      });
       btn.checked = false;
     }
   }
 });
+const fullStar = document.querySelectorAll(".full");
+for (let star of fullStar) {
+  const halfStar = star.previousElementSibling;
+  star.addEventListener("mouseover", (e) => {
+    halfStar.style.fill = "#ffdf50";
+  });
+  star.addEventListener("mouseout", (e) => {
+    halfStar.style.fill = "";
+  });
+}

@@ -2,17 +2,18 @@
 
 .recommended-recipes {
     display: grid;
-    grid-template-columns: repeat(3, 22.5rem);;
+    grid-template-columns: repeat(3, 22.5rem);
     gap: 2rem;
+    justify-content: center;
 
 }
 
 .liked-recommend-buttons{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     font-family: "DM Sans";
-    margin: 3rem 3.3rem 3rem 0;
-    padding: 0 2rem;
+    gap: 5rem;
+    margin: 3rem;
 }
 
 .recommend-button:hover, .liked-button:hover {
@@ -73,12 +74,15 @@ transition: 150ms ease-in-out;
 }
 
 .recipe-name {
-    display: block;
     font-family: "DM Serif Display";
     font-size: 1.2em;
     text-decoration: none;
     color: var(--main-font-color);
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .recipe-img {
@@ -93,8 +97,6 @@ transition: 150ms ease-in-out;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow:hidden;
-    line-height: 2;
-    text-align: center;
     padding: 0 2rem;
 }
 
@@ -110,6 +112,8 @@ transition: 150ms ease-in-out;
 .time{
     display: flex;
     align-items: center;
+    margin-bottom: 1rem 0 0 0.3rem;
+    
 }
 .timeImg {
     width: 1.1rem;
@@ -133,8 +137,10 @@ transition: 150ms ease-in-out;
 .search-output{
     position: absolute;
     background-color: white;
-    width: 55.4rem;
+    width: 53.9rem;
     border-radius: 0 0 5px 5px;
+    z-index: 999;
+    box-shadow: 5px 10px 11px grey;
 }
 .search-result-div:hover{
     cursor: pointer;
@@ -149,6 +155,7 @@ transition: 150ms ease-in-out;
 .search-container{
     height: 100vh;
     overflow-y: scroll;
+    padding: 8px;
 }
 
 .rating {
@@ -164,15 +171,6 @@ radio {
     display: none;
 }
   
-.halfStar:hover,
-.half:hover ~ .half .halfStar,
-.half:hover ~ .half .full .fullStar,
-.full:hover .fullStar
- {
-    fill: #fdd835;
-    cursor: pointer;
-}
-
 .count-rating {
     font-size: 1rem;
 }
@@ -190,8 +188,8 @@ radio {
     padding: .3rem;
 }
 .liked, .liked path {
-    fill: red;
-    stroke: red;
+    fill: #eb1111;
+    stroke: #eb1111;
 }
 .not-liked, .not-liked path {
     fill: white;
@@ -201,7 +199,7 @@ radio {
     transform: scale(1.1);
 }
 .like-button path:hover {
-    stroke: red;
+    stroke: #eb1111;
 }
 .full {
     position: absolute;
@@ -232,7 +230,7 @@ fill: rgb(221,221,221);
     stroke-width: 0;
 }
 
-.full:hover  .fullfStar
+.starFill
 {
-    fill: red;
+    fill: #fdd835;
 }

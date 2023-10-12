@@ -68,7 +68,7 @@ input[type="text"] {
 .grocery-options, .appliance-options {
     position: absolute;
     display: inline-block;
-    right: 335px;
+    right: 372px;
     width: 40%;
     z-index: 2;
 }
@@ -84,13 +84,31 @@ li {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    padding: 1rem 0 0 1rem;
 }
 
-.grocery-list li{
+.grocerys-list-li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 20%;
-    background-color: #f2eee9;
+    background-color: white;
     border-radius: 5px;
-    margin: 5px 0;
+    margin: .5rem 0 0 1rem;
+    padding: 10px 5px;
+
+}
+.appliance-list-li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+    background-color: white;
+    border-radius: 5px;
+    margin: .5rem 0 0 1rem;
+    padding: 10px 5px;
 }
 
 

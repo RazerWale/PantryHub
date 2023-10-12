@@ -69,7 +69,8 @@ class RecipeManager extends Manager
         $req = $this->db->query('
         SELECT * 
         FROM recipes 
-        ORDER BY name DESC  
+        ORDER BY RAND()
+        LIMIT 10 OFFSET 0
     '); // this query gives you all the recipes from DB ordered by name
         $rows = $req->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
@@ -91,8 +92,9 @@ class RecipeManager extends Manager
             $recipe->setEquipments($equipments);
 
             $result[] = $recipe;
+            // var_dump($ingredients);
+
         }
-        // var_dump($result);
         return $result;
     }
     /**
@@ -409,7 +411,7 @@ class RecipeManager extends Manager
         ');
         $req->execute([$userId, $recipeId, $rating]);
     }
-    public function updateRecipeRating(int $userId, int $recipeId, int $newRating)
+    public function updateRecipeRating(int $userId, int $recipeId, float $newRating)
     {
         $req = $this->db->prepare('
         UPDATE recipe_rating

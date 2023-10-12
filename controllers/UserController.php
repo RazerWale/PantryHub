@@ -154,4 +154,16 @@ class UserController
         $userId = $_SESSION['userId'];
         $this->userManager->deleteUserFavouriteRecipe($userId, $recipeId);
     }
+    public function addGrocerysAndAppliances()
+    {
+        $userId = $_SESSION['userId'];
+        $data = json_decode(file_get_contents("php://input"), true);
+        foreach ($data['ingredients'] as $ingredient) {
+            $userIngredients = new UsersIngredientsEntity('', $ingredient);
+            $this->userManager->insertUserIngredient($userId, $userIngredients);
+        }
+        foreach ($data['equipments'] as $equipment) {
+            $this->userManager->insertUserEquipment($userId, $equipment);
+        }
+    }
 }

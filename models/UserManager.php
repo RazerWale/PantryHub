@@ -134,20 +134,12 @@ class UserManager extends Manager
     {
         $req = $this->db->prepare('
         INSERT INTO users_ingredients(user_id, 
-        ingredient_id, 
-        quantity_us, 
-        quantity_metric, 
-        unit_us, 
-        unit_metric)
-        VALUES (?,?,?,?,?,?)
+        ingredient_id)
+        VALUES (?,?)
         ');
         $req->execute([
             $userId,
-            $userIngredients->getId(),
-            $userIngredients->getQuantityUs(),
-            $userIngredients->getQuantityMetric(),
-            $userIngredients->getUnitUs(),
-            $userIngredients->getUnitMetric()
+            $userIngredients->getId()
         ]);
     }
     /**

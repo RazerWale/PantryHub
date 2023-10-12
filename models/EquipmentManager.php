@@ -91,7 +91,7 @@ class EquipmentManager extends Manager
         $searchParams = '%' . $applianceSearchItem . '%';
 
         $req = $this->db->prepare('
-        SELECT DISTINCT equipments.name as equipment_name 
+        SELECT DISTINCT equipments.name as equipment_name, equipments.id as id 
         FROM equipments
         WHERE LOWER(equipments.name) LIKE LOWER(:applianceSearchItem)');
         $req->bindParam(':applianceSearchItem', $searchParams, PDO::PARAM_STR);

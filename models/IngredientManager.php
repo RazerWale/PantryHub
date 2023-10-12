@@ -86,7 +86,7 @@ class IngredientManager extends Manager
          ');
         $reqIngredients->execute([$id]);
         $resultIngredients = $reqIngredients->fetchAll(PDO::FETCH_ASSOC);
-
+        $ingredients = [];
         // set Ingredients
         foreach ($resultIngredients as $ingredient) {
             $recipeIngredients = new RecipeIngredientsEntity($ingredient['name'], $ingredient['ingredient_id'], $ingredient['image_url'], $ingredient['calories'], $ingredient['type']);
@@ -118,7 +118,7 @@ class IngredientManager extends Manager
         $searchParams = '%' . $grocerySearchItem . '%';
 
         $req = $this->db->prepare('
-        SELECT DISTINCT ingredients.name as ingredient_name 
+        SELECT DISTINCT ingredients.name as ingredient_name, ingredients.id as id 
         FROM ingredients 
         WHERE LOWER(ingredients.name) LIKE LOWER(:grocerySearchItem)');
         $req->bindParam(':grocerySearchItem', $searchParams, PDO::PARAM_STR);

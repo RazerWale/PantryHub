@@ -52,7 +52,7 @@
 .to-buy, .recipe-appliances{
     overflow: scroll;
     height: 150px;
-    padding: 0 8px;
+    padding: 0 12px;
 }
 .to-buy p{
     display: flex;
@@ -76,7 +76,7 @@
     flex-direction: row;
     gap: 20px;
     margin: 20px;
-    justify-content: space-between;
+    justify-content: center;
     width: 80%;
 }
 
@@ -95,19 +95,6 @@ h1 {
 
 .like-btn-container {
     position: relative;
-}
-
-.like-recipe {
-    position: absolute;
-    right: 300px;
-    height: 40px;
-}
-
-.timer-recipe {
-    position: absolute;
-    height: 30px;
-    top: 270px;
-    right: 305px;
 }
 
 .star-recipe {
@@ -149,4 +136,85 @@ radio {
 }
 .count-rating {
     font-size: 1rem;
+}
+.green {
+    color: green;
+}
+.halfStar:hover,
+.half:hover ~ .half .halfStar,
+.half:hover ~ .half .full .fullStar,
+.full:hover .fullStar
+ {
+    fill: #ffdf50;
+    cursor: pointer;
+}
+
+.count-rating {
+    font-size: 1rem;
+}
+.full {
+    position: absolute;
+    left: 0px;
+    z-index: -1;
+
+}
+.half {
+    position: relative;
+    z-index: 2;
+    margin-right: 18px;
+}
+
+.halfStar {
+    width: 15px;
+    height: 30px;
+    fill: rgb(221,221,221);
+}
+
+.fullStar {
+    width: 30px;
+    height: 30px;
+fill: rgb(221,221,221);
+}
+
+.halfStar path,
+.fullStar path{
+    stroke-width: 0;
+}
+
+.starFill
+{
+    fill: #fdd835;
+}
+.picAndButtons {
+    display: flex;
+    margin-left: 60px;
+}
+.info-btn-container {
+    display: flex;
+    flex-direction: column;
+}
+.time {
+    margin-left: .22rem;
+    display: flex;
+    align-items: center;
+}
+.liked, .liked path {
+    fill: #eb1111;
+    stroke: #eb1111;
+}
+.not-liked, .not-liked path {
+    fill: #F6F4EE;
+    stroke: black;
+}
+.like-recipe:hover {
+    transform: scale(1.1);
+}
+.like-recipe path:hover {
+    stroke: #eb1111;
+}
+.favourite-recipe {
+    transition: 150ms ease-in-out;
+}
+.favourite-recipe:hover {
+cursor: pointer;
 }

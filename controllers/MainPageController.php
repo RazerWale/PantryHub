@@ -49,8 +49,14 @@ class MainPageController
         $userId = $_SESSION['userId'];
         $isRecipeLiked = [];
         $recipeRating = [];
+        $recipes = [];
         $ids = $this->fetchRecipesIdsByIngredientsAndEquipments();
-        $recipes = $this->recipeManager->fetchRecipesByIds($ids);
+        // $recipes = $this->recipeManager->fetchRecipesByIds($ids);
+        if (empty($this->recipeManager->fetchRecipesByIds($ids))) {
+            $recipes = $this->recipeManager->fetchRecipes();
+        } else {
+            $recipes = $this->recipeManager->fetchRecipesByIds($ids);
+        }
         require_once('views/profile.php');
     }
     public function profilePageJson()
@@ -58,10 +64,17 @@ class MainPageController
         $ids = $this->fetchRecipesIdsByIngredientsAndEquipments();
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $recipes = $this->recipeManager->fetchRecipesByIds($ids, $page);
+
         $result = array_map(function (RecipeEntity $recipe) {
+            $userId = $_SESSION['userId'];
+
             return [
                 'id' => $recipe->getId(),
                 'name' => $recipe->getName(),
+                'time' => $recipe->getTimeToCook(),
+                'calories' => round($recipe->getCalories(), 0),
+                'isLiked' => $this->recipeManager->isRecipeLiked($userId, $recipe->getId()),
+                'rating' => $this->recipeManager->fetchRecipeRating($recipe->getId()),
                 'ingredients' => array_map(function (RecipeIngredientsEntity $ingredient) {
                     return [
                         'name' => $ingredient->getName()
@@ -81,6 +94,9 @@ class MainPageController
             $ids = $this->recipeManager->search($searchItem, $page);
             $recipes = $this->recipeManager->fetchRecipesByIds($ids);
             $result = array_map(function (RecipeEntity $recipe) {
+                if (!$recipe->getId()) {
+                    return;
+                }
                 return [
                     'id' => $recipe->getId(),
                     'name' => $recipe->getName(),
@@ -213,7 +229,6 @@ class MainPageController
         if (!empty($_GET['add-appliances-input'])) {
             $applianceSearchItem = $_GET['add-appliances-input'];
             $applianceName = $this->equipmentManager->appliancesByLetter($applianceSearchItem);
-            $results = [];
             $results = [$applianceName];
             echo json_encode($results);
         }
@@ -224,7 +239,6 @@ class MainPageController
         if (!empty($_GET['add-groceries-input'])) {
             $grocerySearchItem = $_GET['add-groceries-input'];
             $groceryName = $this->ingredientManager->groceriesByLetter($grocerySearchItem);
-            $results = [];
             $results = [$groceryName];
             echo json_encode($results);
         }

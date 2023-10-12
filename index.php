@@ -8,12 +8,14 @@ try {
     require_once('controllers/EquipmentController.php');
     require_once('controllers/UserController.php');
     require_once('controllers/MainPageController.php');
+    require_once('controllers/KitchenController.php');
 
     $recipe = new RecipeController();
     $ingredient = new IngredientController();
     $equipment = new EquipmentController();
     $user = new UserController();
     $main = new MainPageController();
+    $kitchen = new KitchenController();
 
     $route = $_GET['action'] ?? null;
 
@@ -58,7 +60,23 @@ try {
             break;
         case 'kitchenPage';
             if ($_SESSION['loggedIn']) {
-                $main->kitchenPage();
+                $kitchen->kitchenPage();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
+            break;
+        case 'removeUserIngredient';
+            if ($_SESSION['loggedIn']) {
+                $kitchen->removeUserIngredient();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
+            break;
+        case 'removeUserEquipment';
+            if ($_SESSION['loggedIn']) {
+                $kitchen->removeUserEquipment();
             } else {
                 header('Location: ?action=login');
                 exit;
@@ -123,6 +141,14 @@ try {
         case 'addUserFavouriteRecipes';
             if ($_SESSION['loggedIn']) {
                 $main->addUserFavouriteRecipes();
+            } else {
+                header('Location: ?action=login');
+                exit;
+            }
+            break;
+        case 'addGrocerysAndAppliances';
+            if ($_SESSION['loggedIn']) {
+                $user->addGrocerysAndAppliances();
             } else {
                 header('Location: ?action=login');
                 exit;
